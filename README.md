@@ -27,7 +27,7 @@ a game already stored as `casual` moves that row to `tournament`.
 | `saves/` | the games themselves, one `.fod` each (the game's own save format) |
 | `data/games.csv` | the table: one row per game, the canonical list |
 | `data/rejected.csv` | uploads that were not stored, and why (no file is kept) |
-| `docs/` | the search site (GitHub Pages), `index.json` built from `games.csv` |
+| `docs/` | the search site (GitHub Pages), `index.json` built from `games.csv`; `config.js` holds the one copy of the repository's download URL |
 | `tools/` | the Python that checks uploads and files them |
 | `worker/` | the Cloudflare Worker the mod uploads to |
 | `tests/` | `python -m pytest` |
@@ -85,6 +85,9 @@ CF_ACCOUNT_ID=... CF_KV_NAMESPACE_ID=... CF_API_TOKEN=... python tools/process_i
 
 # rebuild docs/index.json from data/games.csv
 python tools/build_index.py
+
+# preview the site exactly as GitHub Pages serves it, at http://localhost:8000/
+python -m http.server -d docs 8000
 
 # the tests (no network, no secrets)
 python -m pytest
