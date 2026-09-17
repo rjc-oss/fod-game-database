@@ -10,12 +10,18 @@ MAX_BODY_BYTES = "4000000"
 binding = "INCOMING"
 id = "1d239e3d6af5454a99002e519299ce16"
 
-# Rate limiting binding. The spec's [[ratelimits]] key is not what wrangler
-# currently accepts; this is the documented form. index.js skips rate limiting
-# (with a log line) if the binding is missing, so a syntax change here cannot
-# take the endpoint down.
-[[unsafe.bindings]]
+# Rate limiting binding. Must be [[ratelimits]]: wrangler also accepts the older
+# [[unsafe.bindings]] form with type = "ratelimit", but that binds as "Unsafe
+# Metadata" and .limit() never limits anything.
+#
+# NOT ENFORCING as of 2026-09-17 on this (free) account, despite deploying as a
+# real "Rate Limit" binding: limit() returns {success:true} for every call on one
+# key — 16 requests spaced 2s apart against 5/60s, and bursts, all allowed. Not a
+# burst/eventual-consistency artefact, and not namespace_id (1001 and 2001 behave
+# the same). Cause unknown; suspect free-plan no-op. index.js fails open, so the
+# endpoint currently has NO abuse protection beyond its validation checks.
+# Revisit before the mod goes out widely (a Durable Object counter is the fallback).
+[[ratelimits]]
 name = "UPLOAD_LIMIT"
-type = "ratelimit"
 namespace_id = "1001"
 simple = { limit = 5, period = 60 }
