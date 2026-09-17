@@ -14,11 +14,15 @@ players' names as the game showed them. There are no accounts and nothing else a
 
 Each game goes into one of two databases, chosen by which button was clicked:
 
-- **tournament** — games played as part of a tournament.
+- **tournament** — games played as part of the Discord community's tournament. A game sent there that was
+  not part of it may be moved to casual or removed.
 - **casual** — everything else.
 
 A game can only be in one. If the same game is uploaded twice it is stored once; a `tournament` upload of
 a game already stored as `casual` moves that row to `tournament`.
+
+An upload is not on the site straight away: games are filed in batches, so a new one usually appears
+within about an hour.
 
 ## What's here
 
