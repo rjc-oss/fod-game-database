@@ -3,10 +3,71 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FoD game database</title>
+<title>Fury of Dracula game database</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>FoD game database</h1>
-<p>Placeholder. The searchable game table will be published here.</p>
+<header>
+  <h1>Fury of Dracula game database</h1>
+  <p class="blurb">Finished games of <em>Fury of Dracula: Digital Edition</em>, uploaded from the Dracula
+    mod's Game Over screen. Every game is kept as the game's own save file, so any of them can be
+    replayed move by move.</p>
+</header>
+
+<main>
+  <div class="controls">
+    <label class="search">
+      <span class="visually-hidden">Search player names</span>
+      <input id="search" type="search" placeholder="Search a player's name" autocomplete="off" spellcheck="false">
+    </label>
+
+    <div class="chips" role="group" aria-label="Database">
+      <button type="button" class="chip is-on" data-filter="database" data-value="all">All</button>
+      <button type="button" class="chip" data-filter="database" data-value="tournament">Tournament</button>
+      <button type="button" class="chip" data-filter="database" data-value="casual">Casual</button>
+    </div>
+
+    <div class="chips" role="group" aria-label="Winner">
+      <button type="button" class="chip is-on" data-filter="winner" data-value="all">Either side</button>
+      <button type="button" class="chip" data-filter="winner" data-value="Hunters">Hunter wins</button>
+      <button type="button" class="chip" data-filter="winner" data-value="Dracula">Dracula wins</button>
+    </div>
+  </div>
+
+  <p id="count" class="count" role="status">Loading…</p>
+
+  <div class="table-scroll">
+    <table id="games">
+      <thead>
+        <tr>
+          <th><button type="button" class="sort" data-key="received_at_utc">Date</button></th>
+          <th><button type="button" class="sort" data-key="hunters">Hunters</button></th>
+          <th><button type="button" class="sort" data-key="dracula">Dracula</button></th>
+          <th><button type="button" class="sort" data-key="winner_side">Winner</button></th>
+          <th class="num" title="Dracula's influence at the end; he wins at 13"><button type="button" class="sort" data-key="influence">Influence</button></th>
+          <th class="num" title="Dracula's health at the end, out of the maximum in that game"><button type="button" class="sort" data-key="dracula_health">Health</button></th>
+          <th class="num" title="Days the hunters survived"><button type="button" class="sort" data-key="days_completed">Days</button></th>
+          <th class="num" title="Influence less the damage the hunters dealt, plus 2 for a game of 21 days or more"><button type="button" class="sort" data-key="score">Score</button></th>
+          <th><button type="button" class="sort" data-key="database">Database</button></th>
+          <th title="A save replays correctly only with the same mod version and settings"><button type="button" class="sort" data-key="mod_version">Mod</button></th>
+          <th class="download-col">Download</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+
+  <p id="message" class="message" hidden></p>
+</main>
+
+<footer>
+  <p>A downloaded save goes in the game's <code>Fury of Dracula_Data\FuryOfDracula\Saves\&lt;slot&gt;\</code>
+    folder, and replays correctly only with the mod version and config code it was played with.</p>
+  <p><a id="repo-link" href="https://github.com/rjc-oss/fod-game-database">The repository</a>
+    <span id="generated" class="generated"></span></p>
+</footer>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
