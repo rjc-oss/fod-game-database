@@ -1,5 +1,31 @@
 {
- "generated": "2026-09-17T22:26:24Z",
- "count": 0,
- "games": []
+ "generated": "2026-09-17T22:37:38Z",
+ "count": 1,
+ "games": [
+  {
+   "id": "20260917T223538Z-1bc8bb01",
+   "received_at_utc": "2026-09-17T22:35:38.597Z",
+   "database": "casual",
+   "file": "Lordgodalming_Drjohnseward_Vanhelsing_Minaharker_Vs_Rtowin_2026-09-17_22-35-38.fod",
+   "hunters": "Lord Godalming & Dr. John Seward & Van Helsing & Mina Harker",
+   "dracula": "RToWin",
+   "winner_side": "Hunters",
+   "winner_players": "Lord Godalming & Dr. John Seward & Van Helsing & Mina Harker",
+   "loser_players": "RToWin",
+   "influence": 0,
+   "dracula_health": 0,
+   "dracula_max_health": 15,
+   "days_completed": 1,
+   "score": -15,
+   "game_type": "Local",
+   "has_ai": true,
+   "save_version": 40,
+   "mod_version": "0.50.0",
+   "config_code": "0C818D",
+   "identifier": "032c5cf7-1ab9-497d-a9f0-5ec799e6d437",
+   "log_sha256": "9f0131c0fe99210e55adcfa51b207aea41dc9275dce2fe0839427ccf5523bb16",
+   "ended_at_utc": "2026-09-17T22:35:27Z",
+   "action_count": 25
+  }
+ ]
 }
