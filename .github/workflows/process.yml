@@ -1,0 +1,55 @@
+name: process
+
+# Drains the Cloudflare KV staging area into this repository: the Worker pokes this workflow after every
+# upload (repository_dispatch), and the hourly run catches anything a missed poke left behind.
+on:
+  repository_dispatch:
+    types: [fod-upload]
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+# One run at a time: a burst of uploads collapses into at most one running and one queued run, and every
+# run processes everything staged, so nothing is lost by not running them in parallel.
+concurrency:
+  group: process-incoming
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # KV is eventually consistent: a key written seconds ago may not be listed yet.
+      - name: Let the upload settle in KV
+        if: github.event_name == 'repository_dispatch'
+        run: sleep 60
+
+      - name: Process incoming saves
+        env:
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_KV_NAMESPACE_ID: ${{ secrets.CF_KV_NAMESPACE_ID }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+        run: python tools/process_incoming.py
+
+      # A push made with GITHUB_TOKEN doesn't trigger workflows, so this can't loop.
+      - name: Commit what changed
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Add games from the upload queue"
+          git pull --rebase
+          git push
