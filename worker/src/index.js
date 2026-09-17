@@ -11,6 +11,7 @@ const SAVE_TYPE_RE =
 const META_NUMBERS = [
   "influence",
   "draculaHealth",
+  "draculaMaxHealth",
   "daysCompleted",
   "gameType",
   "saveVersion",
@@ -27,6 +28,30 @@ function fail(status, message) {
 // yyyyMMddTHHmmssZ — ids sort by time.
 function stamp(date) {
   return date.toISOString().replace(/[-:]/g, "").replace(/\.\d+Z$/, "Z");
+}
+
+// One object per client IP: how many uploads it has made in the current window.
+// Memory only, so an evicted object starts a new window rather than locking anyone out.
+export class UploadLimiter {
+  constructor() {
+    this.windowStart = 0;
+    this.count = 0;
+  }
+
+  async fetch(request) {
+    const url = new URL(request.url);
+    const limit = parseInt(url.searchParams.get("limit"), 10) || 5;
+    const period = parseInt(url.searchParams.get("period"), 10) || 60;
+    const now = Date.now();
+    if (now - this.windowStart >= period * 1000) {
+      this.windowStart = now;
+      this.count = 0;
+    }
+    this.count++;
+    return new Response(JSON.stringify({ success: this.count <= limit }), {
+      headers: { "Content-Type": "application/json" },
+    });
+  }
 }
 
 export default {
@@ -51,13 +76,23 @@ export default {
     if (!Number.isFinite(declaredBytes)) return fail(411, "bad Content-Length");
     if (declaredBytes > maxBytes) return fail(413, "file too large");
 
-    // 4. Rate limit per client IP.
-    if (env.UPLOAD_LIMIT) {
+    // 4. Rate limit per client IP (a Durable Object per IP; see wrangler.toml).
+    if (env.UPLOAD_LIMITER) {
       const ip = request.headers.get("CF-Connecting-IP") || "unknown";
-      const { success } = await env.UPLOAD_LIMIT.limit({ key: ip });
-      if (!success) return fail(429, "too many uploads, wait a minute");
+      try {
+        const limiter = env.UPLOAD_LIMITER.get(env.UPLOAD_LIMITER.idFromName(ip));
+        const answer = await limiter.fetch(
+          "https://limiter/hit?limit=" + encodeURIComponent(env.UPLOAD_LIMIT) +
+            "&period=" + encodeURIComponent(env.UPLOAD_LIMIT_PERIOD_SECONDS)
+        );
+        const { success } = await answer.json();
+        if (!success) return fail(429, "too many uploads, wait a minute");
+      } catch (e) {
+        // Fail open: a broken limiter must not stop players saving their games.
+        console.log("rate limiter error: " + e);
+      }
     } else {
-      console.log("UPLOAD_LIMIT binding missing; rate limiting skipped");
+      console.log("UPLOAD_LIMITER binding missing; rate limiting skipped");
     }
 
     // 5. Meta header: small, ASCII, schema 1, numbers where numbers belong.

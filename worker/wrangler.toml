@@ -5,23 +5,24 @@ compatibility_date = "2026-09-01"
 [vars]
 GITHUB_REPO = "rjc-oss/fod-game-database"
 MAX_BODY_BYTES = "4000000"
+UPLOAD_LIMIT = "5"
+UPLOAD_LIMIT_PERIOD_SECONDS = "60"
 
 [[kv_namespaces]]
 binding = "INCOMING"
 id = "1d239e3d6af5454a99002e519299ce16"
 
-# Rate limiting binding. Must be [[ratelimits]]: wrangler also accepts the older
-# [[unsafe.bindings]] form with type = "ratelimit", but that binds as "Unsafe
-# Metadata" and .limit() never limits anything.
-#
-# NOT ENFORCING as of 2026-09-17 on this (free) account, despite deploying as a
-# real "Rate Limit" binding: limit() returns {success:true} for every call on one
-# key — 16 requests spaced 2s apart against 5/60s, and bursts, all allowed. Not a
-# burst/eventual-consistency artefact, and not namespace_id (1001 and 2001 behave
-# the same). Cause unknown; suspect free-plan no-op. index.js fails open, so the
-# endpoint currently has NO abuse protection beyond its validation checks.
-# Revisit before the mod goes out widely (a Durable Object counter is the fallback).
-[[ratelimits]]
-name = "UPLOAD_LIMIT"
-namespace_id = "1001"
-simple = { limit = 5, period = 60 }
+# Rate limiting. The platform's own [[ratelimits]] binding deploys as a real
+# "Rate Limit" binding here but never limits: limit() returned {success:true} for
+# every call on one key (16 requests 2s apart against 5/60s, and bursts; both
+# namespace_id 1001 and 2001). Suspected free-plan no-op. Replaced on 2026-09-17
+# with a Durable Object counter, which does enforce: one object per client IP,
+# holding a window start and a count in memory (an evicted object just starts a
+# new window, which is the safe direction).
+[[durable_objects.bindings]]
+name = "UPLOAD_LIMITER"
+class_name = "UploadLimiter"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["UploadLimiter"]
