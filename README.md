@@ -50,6 +50,9 @@ a game already stored as `casual` moves that row to `tournament`.
 | `days_completed` | days the hunters survived |
 | `score` | `influence − (dracula_max_health − dracula_health)`, plus 2 if the game lasted 21 days or more: what Dracula scored, less the damage the hunters dealt |
 | `game_type` | `Local` or `Network` |
+| `advanced_rules` | the advanced rules the game was set up with: power cards, free placement, rumour tokens, lairs |
+| `house_rules` | the game's own house rules that were not the standard ones; empty means a standard game |
+| `mod_house_rules` | the mod's house rules the game was played with, sliders with their number; empty means none |
 | `has_ai` | whether any seat was played by the computer |
 | `save_version` | the game's save format version |
 | `mod_version`, `config_code` | the mod version and settings the game was played with — **a save only replays correctly with the same ones** |
@@ -57,6 +60,15 @@ a game already stored as `casual` moves that row to `tournament`.
 | `log_sha256` | hash of the action log; two copies of one game that differ here went out of sync |
 | `ended_at_utc` | when the game ended, by the uploading player's clock (not trusted, not used for naming) |
 | `action_count` | how many actions the game took |
+
+## Replaying a game
+
+The `.fod` carries the setup it was played with: the advanced rules, the game's own house rules, and the
+mod's house rules too — the mod keeps those inside the game's house rules, so they travel with the save
+and with the online lobby. The three rules columns are read straight out of the file.
+
+What the file does *not* carry is a version of the game or of the mod: `save_version` is only the save
+format the game branches on, so `mod_version` and `config_code` are what tell you which build replays it.
 
 ## How a game gets here
 

@@ -32,6 +32,11 @@
       <button type="button" class="chip" data-filter="winner" data-value="Hunters">Hunter wins</button>
       <button type="button" class="chip" data-filter="winner" data-value="Dracula">Dracula wins</button>
     </div>
+
+    <div class="chips" role="group" aria-label="When">
+      <button type="button" class="chip is-on" data-filter="months" data-value="all">Any time</button>
+      <button type="button" class="chip" data-filter="months" data-value="4">Last 4 months</button>
+    </div>
   </div>
 
   <p id="count" class="count" role="status">Loading…</p>
@@ -40,7 +45,7 @@
     <table id="games">
       <thead>
         <tr>
-          <th><button type="button" class="sort" data-key="received_at_utc">Date</button></th>
+          <th title="When the server received the upload, in UTC (the file names use this time); your own time is in the cell's tooltip"><button type="button" class="sort" data-key="received_at_utc">Date (UTC)</button></th>
           <th><button type="button" class="sort" data-key="hunters">Hunters</button></th>
           <th><button type="button" class="sort" data-key="dracula">Dracula</button></th>
           <th><button type="button" class="sort" data-key="winner_side">Winner</button></th>
@@ -49,7 +54,8 @@
           <th class="num" title="Days the hunters survived"><button type="button" class="sort" data-key="days_completed">Days</button></th>
           <th class="num" title="Influence less the damage the hunters dealt, plus 2 for a game of 21 days or more"><button type="button" class="sort" data-key="score">Score</button></th>
           <th><button type="button" class="sort" data-key="database">Database</button></th>
-          <th title="A save replays correctly only with the same mod version and settings"><button type="button" class="sort" data-key="mod_version">Mod</button></th>
+          <th title="The advanced rules, house rules and mod house rules the game was set up with, all of them read out of the save itself"><button type="button" class="sort" data-key="house_rules">Rules</button></th>
+          <th title="The mod version and config code the game was played with: a save replays correctly only with the same ones"><button type="button" class="sort" data-key="mod_version">Mod</button></th>
           <th class="download-col">Download</th>
         </tr>
       </thead>

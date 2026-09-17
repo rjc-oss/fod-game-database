@@ -100,6 +100,61 @@ def test_an_ai_player_is_flagged(save):
     assert validate(body(save), envelope()).has_ai is True
 
 
+# --- the setup the game was played with ----------------------------------------------------------
+
+def test_reads_the_rules_out_of_the_save(save):
+    record = validate(body(save), envelope())
+
+    assert record.advanced_rules == "Power cards: all; Free placement; Rumour tokens; Lairs"
+    assert record.house_rules == "Dark Call draws an event card; Trail slides before Dracula moves"
+    # The mod's own house rules ride in HouseRules._powerCardsPlayLimits, highest bit first.
+    assert record.mod_house_rules == "Dracula starting damage 10; Feed healing 6; Dark Call damage 5"
+
+
+def test_a_standard_game_has_nothing_to_report(save):
+    rules = save["Config"]["HouseRules"]
+    rules["DarkCallDrawEventCard"] = False
+    rules["SlideTrailBeforeMovingDracula"] = False
+    rules["_powerCardsPlayLimits"] = {"$type": rules["_powerCardsPlayLimits"]["$type"]}
+    save["Config"]["AdvancedRules"].update(PowerCardsConfig=0, FreePlacement=True,
+                                           RumourTokens=False, Lairs=False)
+    record = validate(body(save), envelope())
+
+    assert record.advanced_rules == "Free placement"
+    assert record.house_rules == ""
+    assert record.mod_house_rules == ""
+
+
+def test_reads_the_power_cards_that_were_in_play(save):
+    save["Config"]["AdvancedRules"]["PowerCardsConfig"] = 1 | 8        # Hide and Dark Call
+    assert fodsave.advanced_rules(save["Config"]).startswith("Power cards: Hide, Dark Call;")
+
+
+def test_a_slider_set_to_zero_reads_as_zero(save):
+    # A stored 0 would make the game call the whole set standard, so the mod stores 0 as -1.
+    save["Config"]["HouseRules"]["_powerCardsPlayLimits"][str(1 << 17)] = fodsave.STORED_ZERO
+    assert "Feed healing 0" in fodsave.mod_house_rules(save["Config"])
+
+
+def test_a_mod_rule_this_database_has_not_heard_of_is_still_reported(save):
+    save["Config"]["HouseRules"]["_powerCardsPlayLimits"][str(1 << 15)] = 4
+    assert "Mod rule 32768 4" in fodsave.mod_house_rules(save["Config"])
+
+
+def test_a_vanilla_play_limit_is_a_house_rule_not_a_mod_rule(save):
+    save["Config"]["HouseRules"]["_powerCardsPlayLimits"]["2"] = 3     # Wolf Form, three plays
+    assert "Wolf Form limit 3" in fodsave.house_rules(save["Config"])
+    assert "Wolf Form" not in fodsave.mod_house_rules(save["Config"])
+
+
+def test_a_save_without_rules_says_so(save):
+    del save["Config"]["HouseRules"]
+    del save["Config"]["AdvancedRules"]
+    record = validate(body(save), envelope())
+    assert (record.advanced_rules, record.house_rules, record.mod_house_rules) == (
+        "unknown", "unknown", "unknown")
+
+
 # --- broken uploads ------------------------------------------------------------------------------
 
 def test_rejects_something_that_is_not_a_save():

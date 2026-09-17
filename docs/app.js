@@ -17,6 +17,7 @@
     search: "",
     database: "all",
     winner: "all",
+    months: "all",
     key: "received_at_utc",
     descending: true
   };
@@ -37,7 +38,7 @@
       games = (index && index.games) || [];
       var generated = document.getElementById("generated");
       if (generated && index && index.generated) {
-        generated.textContent = "index built " + stamp(index.generated);
+        generated.textContent = "index built " + local(index.generated);
       }
       render();
     })
@@ -105,6 +106,11 @@
   function matches(game) {
     if (state.database !== "all" && game.database !== state.database) { return false; }
     if (state.winner !== "all" && game.winner_side !== state.winner) { return false; }
+    if (state.months !== "all") {
+      var received = Date.parse(game.received_at_utc);
+      // A date we can't read is shown rather than hidden: it is still a real game.
+      if (!isNaN(received) && received < monthsAgo(Number(state.months))) { return false; }
+    }
     if (!state.search) { return true; }
     var names = ((game.hunters || "") + " " + (game.dracula || "")).toLowerCase();
     return names.indexOf(state.search) >= 0;
@@ -131,7 +137,7 @@
     var tr = document.createElement("tr");
 
     var date = cell(tr, stamp(game.received_at_utc));
-    date.title = "Upload " + (game.id || "") +
+    date.title = "Your time: " + local(game.received_at_utc) + "\nUpload " + (game.id || "") +
       (game.ended_at_utc ? "\nGame ended (player's clock): " + game.ended_at_utc : "") +
       (game.game_type ? "\n" + game.game_type + " game" : "") +
       (game.action_count ? "\n" + game.action_count + " actions" : "");
@@ -158,9 +164,18 @@
     tag.textContent = game.database || "";
     database.appendChild(tag);
 
-    var mod = cell(tr, game.mod_version || "");
-    mod.title = "Config code " + (game.config_code || "?") + ", save version " +
-      text(game.save_version) + "\nA save replays correctly only with the same mod version and config code.";
+    // Everything the save was played with, and nothing the save itself carries: the game's own build
+    // version is not stored in a .fod, so the mod version and config code are what makes it replay.
+    var rules = cell(tr, summarise(game));
+    rules.className = "rules";
+    rules.title = "Advanced rules: " + (game.advanced_rules || "?") +
+      "\nHouse rules: " + (game.house_rules || "none beyond the standard ones") +
+      "\nMod house rules: " + (game.mod_house_rules || "none");
+
+    var mod = cell(tr, (game.mod_version || "?") + " · " + (game.config_code || "?"));
+    mod.title = "Mod version " + (game.mod_version || "?") + ", config code " +
+      (game.config_code || "?") + ", save version " + text(game.save_version) +
+      "\nA save replays correctly only with the same mod version and config code.";
     if (game.has_ai) {
       var ai = document.createElement("span");
       ai.className = "ai";
@@ -258,9 +273,38 @@
     return value === null || value === undefined || value === "" ? "?" : String(value);
   }
 
+  function summarise(game) {
+    // What was not standard about this game, shortest useful form; the cell's tooltip has it all.
+    var changed = [game.mod_house_rules, game.house_rules].filter(function (part) {
+      return part && part !== "unknown";
+    }).join("; ");
+    if (changed) { return changed; }
+    if (game.house_rules === "unknown" || game.advanced_rules === "unknown") { return "?"; }
+    return "Standard";
+  }
+
+  function monthsAgo(months) {
+    var when = new Date();
+    when.setMonth(when.getMonth() - months);
+    return when.getTime();
+  }
+
   function stamp(iso) {
-    // "2026-09-17T21:37:44.163Z" -> "2026-09-17 21:37" (UTC, as stored; no local-time surprises).
+    // "2026-09-17T21:37:44.163Z" -> "2026-09-17 21:37", still UTC: the file names use this time.
     if (!iso) { return "?"; }
     return String(iso).slice(0, 10) + " " + String(iso).slice(11, 16);
+  }
+
+  function local(iso) {
+    // The same moment in whatever timezone the browser is in, named so nobody has to guess.
+    var when = new Date(iso);
+    if (!iso || isNaN(when.getTime())) { return stamp(iso); }
+    var zone = "";
+    try {
+      zone = " " + Intl.DateTimeFormat().resolvedOptions().timeZone;
+    } catch (error) {
+      zone = "";
+    }
+    return when.toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" }) + zone;
   }
 })();
