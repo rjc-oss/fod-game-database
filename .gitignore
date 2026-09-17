@@ -1,3 +1,6 @@
 .cf_token
 node_modules/
 .wrangler/
+__pycache__/
+*.pyc
+.pytest_cache/
