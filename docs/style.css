@@ -155,14 +155,6 @@ tbody tr:hover { background: color-mix(in srgb, var(--accent) 7%, transparent); 
 
 td.names { white-space: normal; min-width: 9ch; }
 
-/* The rules a game was played with: enough to see at a glance, all of it in the tooltip. */
-td.rules {
-  max-width: 30ch;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: var(--quiet);
-}
-
 .side-hunters { color: var(--hunters); font-weight: 600; }
 .side-dracula { color: var(--dracula); font-weight: 600; }
 

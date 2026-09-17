@@ -164,18 +164,14 @@
     tag.textContent = game.database || "";
     database.appendChild(tag);
 
-    // Everything the save was played with, and nothing the save itself carries: the game's own build
-    // version is not stored in a .fod, so the mod version and config code are what makes it replay.
-    var rules = cell(tr, summarise(game));
-    rules.className = "rules";
-    rules.title = "Advanced rules: " + (game.advanced_rules || "?") +
-      "\nHouse rules: " + (game.house_rules || "none beyond the standard ones") +
-      "\nMod house rules: " + (game.mod_house_rules || "none");
-
+    // Everything needed to replay the game: the mod version and config code, which the save does not
+    // carry, and the rules it was set up with, which it does.
     var mod = cell(tr, (game.mod_version || "?") + " · " + (game.config_code || "?"));
     mod.title = "Mod version " + (game.mod_version || "?") + ", config code " +
       (game.config_code || "?") + ", save version " + text(game.save_version) +
-      "\nA save replays correctly only with the same mod version and config code.";
+      "\nAdvanced rules: " + (game.advanced_rules || "?") +
+      "\nHouse rules: " + (game.house_rules || "none beyond the standard ones") +
+      "\nMod house rules: " + (game.mod_house_rules || "none");
     if (game.has_ai) {
       var ai = document.createElement("span");
       ai.className = "ai";
@@ -273,8 +269,11 @@
     return value === null || value === undefined || value === "" ? "?" : String(value);
   }
 
+  // What was not standard about a game, in one short line. The table doesn't show it — the Mod column's
+  // tooltip has the rules in full — but the Discord integration wants exactly this.
+  window.fodSummariseRules = summarise;
+
   function summarise(game) {
-    // What was not standard about this game, shortest useful form; the cell's tooltip has it all.
     var changed = [game.mod_house_rules, game.house_rules].filter(function (part) {
       return part && part !== "unknown";
     }).join("; ");
