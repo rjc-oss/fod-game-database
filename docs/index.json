@@ -1,0 +1,31 @@
+{
+ "generated": "2026-09-17T21:57:33Z",
+ "count": 1,
+ "games": [
+  {
+   "id": "20260917T213744Z-da9f9ee5",
+   "received_at_utc": "2026-09-17T21:37:44.163Z",
+   "database": "tournament",
+   "file": "Rtowin_Vs_Player2_2026-09-17_21-37-44.fod",
+   "hunters": "RToWin",
+   "dracula": "Player 2",
+   "winner_side": "Hunters",
+   "winner_players": "RToWin",
+   "loser_players": "Player 2",
+   "influence": 0,
+   "dracula_health": 0,
+   "dracula_max_health": 15,
+   "days_completed": 1,
+   "score": -15,
+   "game_type": "Local",
+   "has_ai": false,
+   "save_version": 40,
+   "mod_version": "0.50.0",
+   "config_code": "0C818D",
+   "identifier": "25fe28e4-99db-41b3-9a22-77f4c6e274da",
+   "log_sha256": "7050f2e4ba196619d06123f6e131732f9a918ad0dedb38ba945e0aa4a4d31e48",
+   "ended_at_utc": "2026-09-17T21:08:48Z",
+   "action_count": 23
+  }
+ ]
+}
