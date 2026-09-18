@@ -41,10 +41,10 @@ def test_the_site_reads_the_same_character_names_as_the_tools():
     assert re.search(r'var AI_NAME = "([^"]+)"', APP_JS).group(1) == AI_NAME
 
 
-def test_the_site_understands_the_link_the_announcements_send():
-    # tools/announce_discord.py posts .../?game=<upload id>.
-    assert "game=" in APP_JS, "app.js no longer reads the ?game= link Discord messages point at"
-    assert "linkedGame" in APP_JS
+def test_the_site_understands_the_links_the_announcements_send():
+    # tools/announce_discord.py posts .../?save=<file>; ?game=<upload id> is understood too.
+    assert 'parameter("save")' in APP_JS, "app.js no longer reads the ?save= link Discord points at"
+    assert 'parameter("game")' in APP_JS
 
 
 def test_the_download_base_points_at_the_saves_folder():

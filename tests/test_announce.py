@@ -47,7 +47,8 @@ class FakeDiscord:
         self.posts.append({
             "url": request.full_url,
             "headers": dict(request.headers),
-            "body": json.loads(request.data.decode("utf-8")),
+            "raw": request.data,
+            "body": _payload(request),
         })
         if self.fail is not None:
             failure, self.fail = self.fail, None
@@ -61,6 +62,23 @@ class FakeDiscord:
         return False
 
     status = 204
+
+
+def _payload(request):
+    """The message Discord is being sent, JSON body or multipart form."""
+    if "json" in str(request.headers.get("Content-type", "")):
+        return json.loads(request.data.decode("utf-8"))
+    form = request.data.split(b"\r\n\r\n", 1)[1]
+    return json.loads(form.split(b"\r\n--", 1)[0].decode("utf-8"))
+
+
+def attached(post):
+    """(filename, bytes) of the save hung on a post, or None if it went without one."""
+    if "multipart" not in str(post["headers"].get("Content-type", "")):
+        return None
+    part = post["raw"].split(b'name="files[0]"; filename="', 1)[1]
+    name, rest = part.split(b'"\r\n', 1)
+    return name.decode("utf-8"), rest.split(b"\r\n\r\n", 1)[1].rsplit(b"\r\n--", 1)[0]
 
 
 def http_error(code, body=b"{}"):
@@ -88,7 +106,7 @@ def test_the_message_reads_as_the_announcement_should():
 
     assert words == ("New game available, RToWin Vs scotSWORD, with house rules Feed healing 3; "
                      "Dark Call draws an event card, mod 0.50.0 config 0C818D, "
-                     "https://example.test/db/?game=20260918T005007Z-869a14da")
+                     "https://example.test/db/?save=Rtowin_Vs_Scotsword_2026-09-18_00-50-07.fod")
 
 
 def test_a_tournament_game_says_so():
@@ -117,9 +135,10 @@ def test_a_person_beside_the_computer_keeps_their_name():
     assert "RToWin & AI Vs" in announce_discord.message(game, site="https://example.test/")
 
 
-def test_the_link_is_the_site_showing_that_game():
+def test_the_link_downloads_the_save_by_name_not_by_upload_id():
+    # By file name, so it works in the minute before Pages has rebuilt the index the table is drawn from.
     assert announce_discord.link(GAME, site="https://example.test/db/").endswith(
-        "/db/?game=20260918T005007Z-869a14da")
+        "/db/?save=Rtowin_Vs_Scotsword_2026-09-18_00-50-07.fod")
 
 
 def test_names_cannot_break_the_line_in_two():
@@ -145,6 +164,26 @@ def test_posting_sends_the_line_and_forbids_mentions():
     assert discord.posts[0]["body"]["content"] == "New game available"
     # Player names come from their own machines: nothing they write may ping the server.
     assert discord.posts[0]["body"]["allowed_mentions"] == {"parse": []}
+    assert attached(discord.posts[0]) is None
+
+
+def test_the_messages_are_posted_under_the_database_s_name():
+    discord = FakeDiscord()
+
+    announce_discord.send(WEBHOOK, "New game available", opener=discord)
+
+    assert discord.posts[0]["body"]["username"] == "FoD Game Database"
+
+
+def test_the_save_is_hung_on_the_message_so_it_downloads_from_discord():
+    discord = FakeDiscord()
+
+    assert announce_discord.send(WEBHOOK, "New game available", file=("a_game.fod", b"{\"save\": 1}"),
+                                 opener=discord) is True
+
+    assert attached(discord.posts[0]) == ("a_game.fod", b"{\"save\": 1}")
+    assert discord.posts[0]["body"]["content"] == "New game available"
+    assert discord.posts[0]["body"]["username"] == "FoD Game Database"
 
 
 def test_a_rate_limit_is_waited_out_and_the_message_still_goes():
@@ -170,6 +209,27 @@ def test_a_discord_that_cannot_be_reached_is_only_a_warning():
     assert announce_discord.send(WEBHOOK, "x", opener=discord, sleep=lambda seconds: None) is False
 
 
+def test_the_attachment_is_the_game_s_own_save(tmp_path):
+    (tmp_path / GAME["file"]).write_bytes(b"the save")
+
+    assert announce_discord.attachment(GAME, saves=tmp_path) == (GAME["file"], b"the save")
+
+
+def test_a_save_that_is_not_there_is_announced_without_one(tmp_path):
+    assert announce_discord.attachment(GAME, saves=tmp_path) is None
+
+
+def test_a_save_too_big_for_discord_is_left_off(tmp_path, monkeypatch):
+    (tmp_path / GAME["file"]).write_bytes(b"x" * 100)
+    monkeypatch.setattr(announce_discord, "MAX_ATTACHMENT", 10)
+
+    assert announce_discord.attachment(GAME, saves=tmp_path) is None
+
+
+def test_a_file_name_cannot_reach_out_of_the_saves_folder(tmp_path):
+    assert announce_discord.attachment({"file": "../data/games.csv"}, saves=tmp_path) is None
+
+
 # The run itself -----------------------------------------------------------
 
 
@@ -184,14 +244,17 @@ def announced(tmp_path, monkeypatch):
     return path
 
 
-def test_a_run_posts_one_message_for_each_new_game(announced, monkeypatch):
+def test_a_run_posts_one_message_for_each_new_game(announced, monkeypatch, tmp_path):
     discord = FakeDiscord()
+    (tmp_path / GAME["file"]).write_bytes(b"the save")
+    monkeypatch.setattr(announce_discord, "SAVES", tmp_path)
     monkeypatch.setenv("DISCORD_WEBHOOK_URL", WEBHOOK)
     monkeypatch.setattr(announce_discord.urllib.request, "urlopen", discord)
 
     assert announce_discord.main([]) == 0
     assert len(discord.posts) == 1
     assert discord.posts[0]["body"]["content"].startswith("New game available, RToWin Vs scotSWORD")
+    assert attached(discord.posts[0]) == (GAME["file"], b"the save")
 
 
 def test_nothing_to_announce_is_not_a_failure(tmp_path, monkeypatch):
@@ -209,7 +272,7 @@ def test_a_dry_run_posts_nothing(announced, monkeypatch, capsys):
     monkeypatch.setattr(announce_discord.urllib.request, "urlopen", _explode)
 
     assert announce_discord.main(["--dry-run"]) == 0
-    assert "https://example.test/?game=" in capsys.readouterr().out
+    assert "https://example.test/?save=" in capsys.readouterr().out
 
 
 def _explode(*arguments, **keywords):

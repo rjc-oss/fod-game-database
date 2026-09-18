@@ -3,8 +3,9 @@
 
    Downloads go through fetch + a Blob URL because the `download` attribute is ignored on a
    cross-origin link — a plain link to raw.githubusercontent.com would show the JSON in the tab
-   instead of saving a .fod. That is also why the Discord announcements link here, with ?game=<id>:
-   the page shows that game alone and downloads it. */
+   instead of saving a .fod. That is also why the Discord announcements link here: ?save=<file> fetches
+   that save and hands it over straight away, without waiting for the table (the index is only rebuilt
+   when Pages redeploys, a minute or so after the file itself is there), and ?game=<id> shows one game. */
 
 (function () {
   "use strict";
@@ -23,8 +24,10 @@
 
   var games = [];
   var state = {
-    // The game a ?game=<id> link points at, shown on its own; any filter or search clears it.
-    game: linkedGame(),
+    // What a link points at: a game by upload id, a save by file name. Shown on their own; any filter
+    // or search clears them.
+    game: parameter("game"),
+    save: parameter("save"),
     search: "",
     database: "all",
     winner: "all",
@@ -33,11 +36,15 @@
     descending: true
   };
 
-  var pending = !!state.game;          // download the linked game once, as soon as it is on the page
+  var pending = !!state.game;          // a ?game= link downloads once the table knows which file it is
 
   var rows = document.getElementById("rows");
   var count = document.getElementById("count");
   var message = document.getElementById("message");
+
+  // A linked save is fetched at once, before the table has loaded: the file is in the repository as
+  // soon as the message is posted, while the index behind the table is a redeploy behind.
+  if (state.save) { download(state.save); }
 
   // Loading ---------------------------------------------------------------
 
@@ -68,7 +75,7 @@
 
   document.getElementById("search").addEventListener("input", function (event) {
     state.search = event.target.value.trim().toLowerCase();
-    state.game = "";
+    state.game = state.save = "";
     render();
   });
 
@@ -76,7 +83,7 @@
     chip.addEventListener("click", function () {
       var group = chip.getAttribute("data-filter");
       state[group] = chip.getAttribute("data-value");
-      state.game = "";
+      state.game = state.save = "";
       Array.prototype.forEach.call(
         document.querySelectorAll('.chip[data-filter="' + group + '"]'),
         function (other) { other.classList.toggle("is-on", other === chip); });
@@ -102,10 +109,13 @@
 
   function render() {
     var shown = games.filter(matches);
+    var linked = state.game || state.save;
+    var downloaded = state.save;       // kept for the notice: the fallback below clears state.save
     var stale = false;
-    if (state.game && shown.length === 0 && games.length > 0) {
-      // The link points at a game this index doesn't hold yet: games are filed in batches.
-      state.game = "";
+    if (linked && shown.length === 0 && games.length > 0) {
+      // The link points at a game this index doesn't hold yet: it is rebuilt when Pages redeploys, a
+      // minute or so behind the save itself. A ?save= download is already on its way regardless.
+      state.game = state.save = "";
       pending = false;
       stale = true;
       shown = games.filter(matches);
@@ -120,13 +130,14 @@
     if (games.length === 0) {
       say("No games yet. Finish a game with the mod and use the Game Over screen to send one.", false);
     } else if (stale) {
-      say("That link points at a game the list doesn't hold yet — new games appear when the next " +
-          "batch is filed, usually within about an hour. Showing every game.", false);
+      say(downloading(downloaded, "The list doesn't have that game yet — it appears here a minute " +
+                      "or so after the save does. Showing every game."), false);
     } else if (shown.length === 0) {
       say("No game matches that.", false);
-    } else if (state.game) {
-      say("One game, the one the link points at. Its save downloads on its own; if the browser stops " +
-          "that, use the Save button. Any filter above brings back every game.", false);
+    } else if (linked) {
+      say(downloading(downloaded,
+                      "One game, the one the link points at. Any filter above brings back every game."),
+          false);
     } else {
       say("", false);
     }
@@ -139,6 +150,7 @@
   }
 
   function matches(game) {
+    if (state.save) { return game.file === state.save; }
     if (state.game) { return game.id === state.game; }
     if (state.database !== "all" && game.database !== state.database) { return false; }
     if (state.winner !== "all" && game.winner_side !== state.winner) { return false; }
@@ -243,10 +255,10 @@
     return shown.join(NAME_JOIN);
   }
 
-  function linkedGame() {
-    // The Discord announcements link here as .../?game=<upload id>.
-    var found = /[?&]game=([^&]*)/.exec(window.location.search || "") ||
-                /[#&]game=([^&]*)/.exec(window.location.hash || "");
+  function parameter(name) {
+    // The Discord announcements link here as .../?save=<file>; ?game=<upload id> works too.
+    var pattern = new RegExp("[?&#]" + name + "=([^&]*)");
+    var found = pattern.exec(window.location.search || "") || pattern.exec(window.location.hash || "");
     if (!found) { return ""; }
     try {
       return decodeURIComponent(found[1]).trim();
@@ -255,22 +267,30 @@
     }
   }
 
+  function downloading(file, words) {
+    // Browsers can stop a download nobody clicked for, so never let the page look like it did nothing.
+    return file ? "Downloading " + file + ". If your browser stopped that, use the Save button. " + words
+      : words;
+  }
+
   function button(game) {
     var element = document.createElement("button");
     element.type = "button";
     element.className = "download";
     element.textContent = "Save";
     element.title = game.file || "";
-    element.addEventListener("click", function () { download(game, element); });
+    element.addEventListener("click", function () { download(game.file, element); });
     return element;
   }
 
-  function download(game, element) {
-    if (!game.file) { return; }
-    element.disabled = true;
-    element.classList.remove("failed");
-    element.textContent = "…";
-    fetch(CONFIG.rawBase + encodeURIComponent(game.file), { cache: "no-store" })
+  function download(file, element) {
+    if (!file) { return; }
+    if (element) {
+      element.disabled = true;
+      element.classList.remove("failed");
+      element.textContent = "…";
+    }
+    fetch(CONFIG.rawBase + encodeURIComponent(file), { cache: "no-store" })
       .then(function (answer) {
         if (!answer.ok) { throw new Error("HTTP " + answer.status); }
         return answer.blob();
@@ -279,20 +299,26 @@
         var url = URL.createObjectURL(blob);
         var link = document.createElement("a");
         link.href = url;
-        link.download = game.file;
+        link.download = file;
         document.body.appendChild(link);
         link.click();
         link.remove();
         // Revoked late: some browsers cancel the save if the URL dies too soon.
         setTimeout(function () { URL.revokeObjectURL(url); }, 30000);
+        if (!element) { return; }
         element.textContent = "Saved";
         setTimeout(function () { element.textContent = "Save"; element.disabled = false; }, 2500);
       })
       .catch(function (error) {
+        if (!element) {
+          say(file + " could not be downloaded (" + error.message + "). It may not have been filed " +
+              "yet; try again in a minute.", true);
+          return;
+        }
         element.textContent = "Failed";
         element.classList.add("failed");
         element.disabled = false;
-        element.title = game.file + " could not be downloaded: " + error.message;
+        element.title = file + " could not be downloaded: " + error.message;
       });
   }
 
