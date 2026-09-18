@@ -47,8 +47,7 @@ class FakeDiscord:
         self.posts.append({
             "url": request.full_url,
             "headers": dict(request.headers),
-            "raw": request.data,
-            "body": _payload(request),
+            "body": json.loads(request.data.decode("utf-8")),
         })
         if self.fail is not None:
             failure, self.fail = self.fail, None
@@ -62,23 +61,6 @@ class FakeDiscord:
         return False
 
     status = 204
-
-
-def _payload(request):
-    """The message Discord is being sent, JSON body or multipart form."""
-    if "json" in str(request.headers.get("Content-type", "")):
-        return json.loads(request.data.decode("utf-8"))
-    form = request.data.split(b"\r\n\r\n", 1)[1]
-    return json.loads(form.split(b"\r\n--", 1)[0].decode("utf-8"))
-
-
-def attached(post):
-    """(filename, bytes) of the save hung on a post, or None if it went without one."""
-    if "multipart" not in str(post["headers"].get("Content-type", "")):
-        return None
-    part = post["raw"].split(b'name="files[0]"; filename="', 1)[1]
-    name, rest = part.split(b'"\r\n', 1)
-    return name.decode("utf-8"), rest.split(b"\r\n\r\n", 1)[1].rsplit(b"\r\n--", 1)[0]
 
 
 def http_error(code, body=b"{}"):
@@ -164,7 +146,6 @@ def test_posting_sends_the_line_and_forbids_mentions():
     assert discord.posts[0]["body"]["content"] == "New game available"
     # Player names come from their own machines: nothing they write may ping the server.
     assert discord.posts[0]["body"]["allowed_mentions"] == {"parse": []}
-    assert attached(discord.posts[0]) is None
 
 
 def test_the_messages_are_posted_under_the_database_s_name():
@@ -174,16 +155,6 @@ def test_the_messages_are_posted_under_the_database_s_name():
 
     assert discord.posts[0]["body"]["username"] == "FoD Game Database"
 
-
-def test_the_save_is_hung_on_the_message_so_it_downloads_from_discord():
-    discord = FakeDiscord()
-
-    assert announce_discord.send(WEBHOOK, "New game available", file=("a_game.fod", b"{\"save\": 1}"),
-                                 opener=discord) is True
-
-    assert attached(discord.posts[0]) == ("a_game.fod", b"{\"save\": 1}")
-    assert discord.posts[0]["body"]["content"] == "New game available"
-    assert discord.posts[0]["body"]["username"] == "FoD Game Database"
 
 
 def test_a_rate_limit_is_waited_out_and_the_message_still_goes():
@@ -209,27 +180,6 @@ def test_a_discord_that_cannot_be_reached_is_only_a_warning():
     assert announce_discord.send(WEBHOOK, "x", opener=discord, sleep=lambda seconds: None) is False
 
 
-def test_the_attachment_is_the_game_s_own_save(tmp_path):
-    (tmp_path / GAME["file"]).write_bytes(b"the save")
-
-    assert announce_discord.attachment(GAME, saves=tmp_path) == (GAME["file"], b"the save")
-
-
-def test_a_save_that_is_not_there_is_announced_without_one(tmp_path):
-    assert announce_discord.attachment(GAME, saves=tmp_path) is None
-
-
-def test_a_save_too_big_for_discord_is_left_off(tmp_path, monkeypatch):
-    (tmp_path / GAME["file"]).write_bytes(b"x" * 100)
-    monkeypatch.setattr(announce_discord, "MAX_ATTACHMENT", 10)
-
-    assert announce_discord.attachment(GAME, saves=tmp_path) is None
-
-
-def test_a_file_name_cannot_reach_out_of_the_saves_folder(tmp_path):
-    assert announce_discord.attachment({"file": "../data/games.csv"}, saves=tmp_path) is None
-
-
 # The run itself -----------------------------------------------------------
 
 
@@ -244,17 +194,14 @@ def announced(tmp_path, monkeypatch):
     return path
 
 
-def test_a_run_posts_one_message_for_each_new_game(announced, monkeypatch, tmp_path):
+def test_a_run_posts_one_message_for_each_new_game(announced, monkeypatch):
     discord = FakeDiscord()
-    (tmp_path / GAME["file"]).write_bytes(b"the save")
-    monkeypatch.setattr(announce_discord, "SAVES", tmp_path)
     monkeypatch.setenv("DISCORD_WEBHOOK_URL", WEBHOOK)
     monkeypatch.setattr(announce_discord.urllib.request, "urlopen", discord)
 
     assert announce_discord.main([]) == 0
     assert len(discord.posts) == 1
     assert discord.posts[0]["body"]["content"].startswith("New game available, RToWin Vs scotSWORD")
-    assert attached(discord.posts[0]) == (GAME["file"], b"the save")
 
 
 def test_nothing_to_announce_is_not_a_failure(tmp_path, monkeypatch):

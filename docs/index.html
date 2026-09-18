@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fury of Dracula game database</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 <header>
@@ -66,13 +66,12 @@
 </main>
 
 <footer>
-  <p>A downloaded save goes in the game's <code>Fury of Dracula_Data\FuryOfDracula\Saves\&lt;slot&gt;\</code>
-    folder, and replays correctly only with the mod version and config code it was played with.</p>
   <p><a id="repo-link" href="https://github.com/rjc-oss/fod-game-database">The repository</a>
     <span id="generated" class="generated"></span></p>
 </footer>
 
-<script src="config.js"></script>
-<script src="app.js"></script>
+<!-- ?v= is bumped whenever these change: Pages serves them with max-age=600. -->
+<script src="config.js?v=2"></script>
+<script src="app.js?v=2"></script>
 </body>
 </html>

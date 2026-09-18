@@ -6,11 +6,9 @@ the commit has been pushed, so the link in the message already works. One messag
     New tournament game available, AI Vs RToWin, with house rules Feed healing 3, mod 0.50.0
     config 0C818D, https://rjc-oss.github.io/fod-game-database/?save=Rtowin_Vs_Scotsword_...fod
 
-The save itself rides along as an attachment, which is what really makes a message a download: a save is
-a few tens of kB, and Discord hands it over the moment the message appears. The link is the same file
-from the site, for anyone reading the channel later: ?save=<file> downloads it straight from
-raw.githubusercontent.com, so it works even in the minute before GitHub Pages has rebuilt the index (a
-plain link to the file would show the JSON in the tab instead: it is served as text/plain).
+The link is the download: ?save=<file> has the site fetch that save from raw.githubusercontent.com and
+hand it over, which works even in the minute before GitHub Pages has rebuilt the index behind the table
+(a plain link to the file would show the JSON in the tab instead: it is served as text/plain).
 
 Nothing here can fail the pipeline: the games are already in the repository by the time it runs, so a
 missing webhook, or a Discord that won't answer, prints a warning and exits 0.
@@ -28,7 +26,6 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
-import uuid
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -38,12 +35,9 @@ from fodsave import RULE_JOIN, display_players  # noqa: E402
 SITE_URL = "https://rjc-oss.github.io/fod-game-database/"
 BOT_NAME = "FoD Game Database"   # what the messages are posted as, whatever the webhook is called
 MAX_CONTENT = 2000               # Discord's limit on a message
-MAX_ATTACHMENT = 7_000_000       # under Discord's 8 MB, and well over the 4 MB an upload may be
 TIMEOUT = 30
 RETRIES = 2                      # one retry, for the rate limit or a hiccup
 USER_AGENT = "fod-game-database (+https://github.com/rjc-oss/fod-game-database)"
-
-SAVES = Path(__file__).resolve().parent.parent / "saves"
 
 
 def link(game, site=None):
@@ -54,22 +48,6 @@ def link(game, site=None):
     """
     base = site or os.environ.get("FOD_SITE_URL") or SITE_URL
     return "{}?save={}".format(base, urllib.parse.quote(str(game.get("file", "")), safe=""))
-
-
-def attachment(game, saves=None):
-    """The game's own save, to hang on the message, or None if it isn't there to be read."""
-    name = str(game.get("file", ""))
-    if not name or "/" in name or "\\" in name or name.startswith("."):
-        return None
-    path = (saves or SAVES) / name
-    try:
-        if path.stat().st_size > MAX_ATTACHMENT:
-            print("{} is too big to attach; the link still has it.".format(name), file=sys.stderr)
-            return None
-        return name, path.read_bytes()
-    except OSError as e:
-        print("{} could not be read ({}); the link still has it.".format(name, e), file=sys.stderr)
-        return None
 
 
 def summarise_rules(game):
@@ -102,47 +80,25 @@ def plain(text):
     return " ".join(str(text if text is not None else "").split())
 
 
-def post(url, content, file=None, opener=None):
-    """Post one message, with the save attached when there is one.
-
-    Raises urllib's errors; the caller turns them into warnings.
-    """
+def post(url, content, opener=None):
+    """Post one message. Raises urllib's errors; the caller turns them into warnings."""
     payload = json.dumps({
         "content": content,
         "username": BOT_NAME,
         "allowed_mentions": {"parse": []},
     }).encode("utf-8")
-    request = urllib.request.Request(url, method="POST")
-    if file is None:
-        request.data = payload
-        request.add_header("Content-Type", "application/json")
-    else:
-        boundary = "----fod" + uuid.uuid4().hex
-        request.data = _multipart(payload, file[0], file[1], boundary)
-        request.add_header("Content-Type", "multipart/form-data; boundary=" + boundary)
+    request = urllib.request.Request(url, data=payload, method="POST")
+    request.add_header("Content-Type", "application/json")
     request.add_header("User-Agent", USER_AGENT)
     with (opener or urllib.request.urlopen)(request, timeout=TIMEOUT) as answer:
         return getattr(answer, "status", None) or answer.getcode()
 
 
-def _multipart(payload, name, data, boundary):
-    """The one form Discord takes a file in: the message as payload_json, the file as files[0]."""
-    safe_name = name.replace('"', "").replace("\r", "").replace("\n", "")
-    return b"".join([
-        "--{}\r\nContent-Disposition: form-data; name=\"payload_json\"\r\n"
-        "Content-Type: application/json\r\n\r\n".format(boundary).encode("utf-8"), payload, b"\r\n",
-        "--{}\r\nContent-Disposition: form-data; name=\"files[0]\"; filename=\"{}\"\r\n"
-        "Content-Type: application/octet-stream\r\n\r\n".format(boundary, safe_name).encode("utf-8"),
-        data, b"\r\n",
-        "--{}--\r\n".format(boundary).encode("utf-8"),
-    ])
-
-
-def send(url, content, file=None, opener=None, sleep=time.sleep):
+def send(url, content, opener=None, sleep=time.sleep):
     """Post, waiting out a rate limit once. True if Discord took it."""
     for attempt in range(RETRIES):
         try:
-            post(url, content, file, opener)
+            post(url, content, opener)
             return True
         except urllib.error.HTTPError as e:
             if e.code == 429 and attempt + 1 < RETRIES:
@@ -196,9 +152,8 @@ def main(argv):
     sent = 0
     for game in games:
         words = message(game)
-        file = attachment(game)
-        print("{}{}".format(words, "" if file is None else "  [+ {}]".format(file[0])))
-        if dry_run or send(url, words, file):
+        print(words)
+        if dry_run or send(url, words):
             sent += 1
     print("Announced {} of {} game(s){}.".format(sent, len(games), " (dry run)" if dry_run else ""))
     return 0

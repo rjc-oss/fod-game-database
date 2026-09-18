@@ -22,8 +22,8 @@ A game can only be in one. If the same game is uploaded twice it is stored once;
 a game already stored as `casual` moves that row to `tournament`.
 
 An upload is not on the site straight away: games are filed in batches, so a new one usually appears
-within about an hour. Each new game is then announced in the Discord as **FoD Game Database**, with the
-save attached and a link to the same file here.
+within about an hour. Each new game is then announced in the Discord as **FoD Game Database**, with a
+link that downloads the save.
 
 ## What's here
 
@@ -91,18 +91,15 @@ mod (Game Over screen)  --POST .fod + result-->  Cloudflare Worker  --> Workers 
 
 The announcement runs after the commit has been pushed, so its link already works. It is the last step
 and cannot fail the run: with no `DISCORD_WEBHOOK_URL` secret, or a Discord that won't answer, the games
-are in the repository just the same. One line per game, posted as **FoD Game Database**, with the `.fod`
-attached:
+are in the repository just the same. One line per game, posted as **FoD Game Database**:
 
 ```
 New tournament game available, AI Vs RToWin, with house rules Feed healing 3, mod 0.50.0 config 0C818D,
 https://rjc-oss.github.io/fod-game-database/?save=Rtowin_Vs_Scotsword_2026-09-18_00-50-07.fod
 ```
 
-The attachment is what makes the message a download: a save is a few tens of kB, and it is there the
-moment the message is. The link is the same file from the site, for anyone reading the channel later.
-It names the **file**, not the upload id, because the file can be fetched as soon as the commit is
-pushed, while the index the table is drawn from is only rebuilt when Pages redeploys a minute or so
+The link names the **file**, not the upload id, because the file can be fetched as soon as the commit
+is pushed, while the index the table is drawn from is only rebuilt when Pages redeploys a minute or so
 later; `?save=<file>` downloads it whether or not the table has caught up (a plain link to the file
 would show the JSON in the browser instead: raw.githubusercontent.com serves it as text). `?game=<id>`
 still works and shows one game. Player names reach Discord as plain text with mentions turned off.
