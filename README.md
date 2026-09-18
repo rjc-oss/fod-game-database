@@ -89,8 +89,10 @@ mod (Game Over screen)  --POST .fod + result-->  Cloudflare Worker  --> Workers 
                                                   one message per new game, after the push
 ```
 
-The announcement runs after the commit has been pushed, so its link already works. It is the last step
-and cannot fail the run: with no `DISCORD_WEBHOOK_URL` secret, or a Discord that won't answer, the games
+The announcement runs after the commit has been pushed, so its link already works, and then waits for
+GitHub Pages to redeploy (at most `FOD_SITE_WAIT`, five minutes, and usually under one) so that the
+reader gets the game's row on the site as well as the download. Nothing is lost by the wait: games are
+filed in hourly batches. It is the last step and cannot fail the run: with no `DISCORD_WEBHOOK_URL` secret, or a Discord that won't answer, the games
 are in the repository just the same. One line per game, posted as **FoD Game Database**:
 
 ```
@@ -118,7 +120,7 @@ Nothing to install: Python 3.12 and the standard library (`pytest` only for the 
 # what the processor would do, without writing or deleting anything
 CF_ACCOUNT_ID=... CF_KV_NAMESPACE_ID=... CF_API_TOKEN=... python tools/process_incoming.py --dry-run
 
-# the Discord messages for a run's games, printed instead of posted
+# the Discord messages for a run's games, printed instead of posted (and without the wait)
 FOD_ANNOUNCE_FILE=... python tools/announce_discord.py --dry-run
 
 # rebuild docs/index.json from data/games.csv

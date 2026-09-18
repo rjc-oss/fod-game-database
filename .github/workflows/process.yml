@@ -56,9 +56,11 @@ jobs:
           git pull --rebase
           git push
 
-      # After the push, so the link in each message already downloads the save. A Discord that won't
-      # answer is only a warning: the games are in the repository either way.
+      # After the push, so the link in each message already downloads the save. It then waits for GitHub
+      # Pages to redeploy (up to FOD_SITE_WAIT) so the reader gets the game's row as well. A Discord
+      # that won't answer is only a warning: the games are in the repository either way.
       - name: Announce new games on Discord
+        timeout-minutes: 10
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           FOD_ANNOUNCE_FILE: ${{ runner.temp }}/announce.json

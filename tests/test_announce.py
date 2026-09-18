@@ -63,6 +63,30 @@ class FakeDiscord:
     status = 204
 
 
+class FakeSite:
+    """The site's index.json, as urlopen hands it over: a list of the files it lists this minute."""
+
+    def __init__(self, *listings):
+        self.listings = list(listings)          # one per look; the last one repeats
+        self.looks = []
+
+    def __call__(self, request, timeout=None):
+        self.looks.append(request.full_url)
+        files = self.listings[min(len(self.looks) - 1, len(self.listings) - 1)]
+        self.body = json.dumps({"count": len(files),
+                                "games": [{"file": name} for name in files]}).encode("utf-8")
+        return self
+
+    def read(self):
+        return self.body
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exception):
+        return False
+
+
 def http_error(code, body=b"{}"):
     return urllib.error.HTTPError(WEBHOOK, code, "no", {}, _Body(body))
 
@@ -180,6 +204,55 @@ def test_a_discord_that_cannot_be_reached_is_only_a_warning():
     assert announce_discord.send(WEBHOOK, "x", opener=discord, sleep=lambda seconds: None) is False
 
 
+# Waiting for the page ------------------------------------------------------
+
+
+def test_the_message_waits_until_the_site_lists_the_new_save():
+    site = FakeSite([], ["something_else.fod"], ["something_else.fod", GAME["file"]])
+    waited = []
+
+    assert announce_discord.wait_for_site([GAME["file"]], site="https://example.test/", opener=site,
+                                          sleep=waited.append, timeout=300, poll=15) is True
+    assert waited == [15, 15]                   # two looks too early, then the third found it
+
+
+def test_a_site_that_never_catches_up_is_announced_anyway():
+    site = FakeSite([])
+
+    assert announce_discord.wait_for_site([GAME["file"]], site="https://example.test/", opener=site,
+                                          sleep=lambda seconds: None, timeout=30, poll=15) is False
+
+
+def test_nothing_is_waited_for_when_the_site_already_has_it():
+    site = FakeSite([GAME["file"]])
+
+    assert announce_discord.wait_for_site([GAME["file"]], site="https://example.test/", opener=site,
+                                          sleep=_explode, timeout=300) is True
+    assert len(site.looks) == 1
+
+
+def test_the_index_is_asked_for_afresh_each_look():
+    # Pages serves index.json with max-age=600: a cached copy would never show the new game.
+    site = FakeSite([GAME["file"]])
+    announce_discord.wait_for_site([GAME["file"]], site="https://example.test/", opener=site,
+                                   sleep=lambda seconds: None, timeout=30)
+
+    assert "index.json?at=" in site.looks[0]
+
+
+def test_a_site_that_cannot_be_read_does_not_stop_the_announcement():
+    def broken(request, timeout=None):
+        raise OSError("no route")
+
+    assert announce_discord.wait_for_site([GAME["file"]], site="https://example.test/", opener=broken,
+                                          sleep=lambda seconds: None, timeout=15, poll=15) is False
+
+
+def test_the_wait_can_be_turned_off():
+    assert announce_discord.wait_for_site([GAME["file"]], site="https://example.test/", opener=_explode,
+                                          sleep=_explode, timeout=0) is False
+
+
 # The run itself -----------------------------------------------------------
 
 
@@ -190,6 +263,7 @@ def announced(tmp_path, monkeypatch):
     path.write_text(json.dumps([GAME]), encoding="utf-8")
     monkeypatch.setenv("FOD_ANNOUNCE_FILE", str(path))
     monkeypatch.setenv("FOD_SITE_URL", "https://example.test/")
+    monkeypatch.setenv("FOD_SITE_WAIT", "0")
     monkeypatch.delenv("DISCORD_WEBHOOK_URL", raising=False)
     return path
 
