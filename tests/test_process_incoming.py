@@ -107,6 +107,39 @@ def test_accepts_a_game_and_files_it(repo, save):
     assert index["games"][0]["has_ai"] is False
 
 
+def test_the_games_it_added_are_left_for_the_discord_step(repo, save, tmp_path, monkeypatch):
+    announce = tmp_path / "announce.json"
+    monkeypatch.setenv("FOD_ANNOUNCE_FILE", str(announce))
+    stage(repo, "20260917T213744Z-aaaaaaaa", save)
+
+    assert run() == 0
+
+    announced = json.loads(announce.read_text(encoding="utf-8"))
+    assert [game["id"] for game in announced] == ["20260917T213744Z-aaaaaaaa"]
+    assert announced[0]["file"] == "Rtowin_Vs_Player2_2026-09-17_21-37-44.fod"
+
+
+def test_nothing_is_left_for_discord_when_nothing_was_added(repo, save, tmp_path, monkeypatch):
+    announce = tmp_path / "announce.json"
+    monkeypatch.setenv("FOD_ANNOUNCE_FILE", str(announce))
+    stage(repo, "20260917T213744Z-aaaaaaaa", save)
+    assert run() == 0
+    announce.unlink()
+    stage(repo, "20260917T220000Z-bbbbbbbb", save)          # the same game again: nothing new to say
+
+    assert run() == 0
+    assert not announce.exists()
+
+
+def test_a_dry_run_leaves_nothing_for_discord(repo, save, tmp_path, monkeypatch):
+    announce = tmp_path / "announce.json"
+    monkeypatch.setenv("FOD_ANNOUNCE_FILE", str(announce))
+    stage(repo, "20260917T213744Z-aaaaaaaa", save)
+
+    assert run(["--dry-run"]) == 0
+    assert not announce.exists()
+
+
 def test_the_same_game_twice_is_stored_once(repo, save):
     stage(repo, "20260917T213744Z-aaaaaaaa", save)
     assert run() == 0

@@ -6,7 +6,8 @@ The Worker parks every accepted upload under `incoming/<id>` in KV: one line of 
   * writes `saves/<name>.fod` and appends a row to `data/games.csv`, or
   * appends a line to `data/rejected.csv` saying why (no file is kept),
 
-then deletes the key either way. Rebuilds `docs/index.json` at the end and writes a Markdown summary to
+then deletes the key either way. Rebuilds `docs/index.json` at the end, lists what it added in
+$FOD_ANNOUNCE_FILE for tools/announce_discord.py, and writes a Markdown summary to
 $GITHUB_STEP_SUMMARY. Bad uploads are not a pipeline failure: it exits 0 even if everything was rejected,
 and 1 only when the Cloudflare API itself won't answer.
 
@@ -164,6 +165,7 @@ def main(argv):
     if not dry_run:
         if changed:
             _write_rows(rows)
+        _write_announcement(accepted)
         if rejected:
             _append_rejected(rejected)
         count = build_index.build(GAMES_CSV, build_index.INDEX_JSON)
@@ -234,6 +236,19 @@ def _append_rejected(rejected):
         if new:
             writer.writerow(REJECTED_COLUMNS)
         writer.writerows(rejected)
+
+
+def _write_announcement(accepted):
+    """The games this run added, for tools/announce_discord.py.
+
+    It is a separate step because it runs after the commit has been pushed: only then does the download
+    link in a Discord message work. Written only when $FOD_ANNOUNCE_FILE says where (the workflow).
+    """
+    path = os.environ.get("FOD_ANNOUNCE_FILE")
+    if not path or not accepted:
+        return
+    games = [dict(zip(COLUMNS, record.row())) for record in accepted]
+    Path(path).write_text(json.dumps(games, indent=1, ensure_ascii=False), encoding="utf-8")
 
 
 def _delete(kv, key, dry_run, warnings):

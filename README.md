@@ -22,7 +22,8 @@ A game can only be in one. If the same game is uploaded twice it is stored once;
 a game already stored as `casual` moves that row to `tournament`.
 
 An upload is not on the site straight away: games are filed in batches, so a new one usually appears
-within about an hour.
+within about an hour. Each new game is then announced in the Discord, with a link that opens the site on
+that game and downloads its save.
 
 ## What's here
 
@@ -32,7 +33,7 @@ within about an hour.
 | `data/games.csv` | the table: one row per game, the canonical list |
 | `data/rejected.csv` | uploads that were not stored, and why (no file is kept) |
 | `docs/` | the search site (GitHub Pages), `index.json` built from `games.csv`; `config.js` holds the one copy of the repository's download URL |
-| `tools/` | the Python that checks uploads and files them |
+| `tools/` | the Python that checks uploads, files them, and announces them in the Discord |
 | `worker/` | the Cloudflare Worker the mod uploads to |
 | `tests/` | `python -m pytest` |
 
@@ -46,7 +47,7 @@ within about an hour.
 | `received_at_utc` | when the server received it (the file names use this time too) |
 | `database` | `tournament` or `casual` |
 | `file` | the save in `saves/` |
-| `hunters`, `dracula` | player names as the game showed them; a person holding several hunter seats is named once |
+| `hunters`, `dracula` | player names as the game showed them; a person holding several hunter seats is named once. A seat still called after its character (`Van Helsing`, `Dracula`…) was the computer: the site and the Discord messages show it as `AI`, and the stored name stays as the game had it |
 | `winner_side` | `Hunters` or `Dracula` |
 | `winner_players`, `loser_players` | the names on each side |
 | `influence` | Dracula's influence at the end (0–13; he wins at 13) |
@@ -83,7 +84,23 @@ mod (Game Over screen)  --POST .fod + result-->  Cloudflare Worker  --> Workers 
                                                                                  v
                                             GitHub Actions: tools/process_incoming.py
                                           checks it, names it, commits saves/ + data/
+                                                                                 |
+                                                  tools/announce_discord.py  <----+
+                                                  one message per new game, after the push
 ```
+
+The announcement runs after the commit has been pushed, so its link already works. It is the last step
+and cannot fail the run: with no `DISCORD_WEBHOOK_URL` secret, or a Discord that won't answer, the games
+are in the repository just the same. One line per game:
+
+```
+New tournament game available, AI Vs RToWin, with house rules Feed healing 3, mod 0.50.0 config 0C818D,
+https://rjc-oss.github.io/fod-game-database/?game=20260918T005007Z-869a14da
+```
+
+`?game=<id>` is the site showing that one game and downloading its save; a plain link to the file would
+show the JSON in the browser instead (raw.githubusercontent.com serves it as text). Player names reach
+Discord as plain text with mentions turned off.
 
 The Worker only does what is cheap (size, a header sniff, a rate limit) and never parses the file;
 `tools/fodsave.py` does the real checking on a runner. An upload is stored only if it is a genuine
@@ -99,6 +116,9 @@ Nothing to install: Python 3.12 and the standard library (`pytest` only for the 
 # what the processor would do, without writing or deleting anything
 CF_ACCOUNT_ID=... CF_KV_NAMESPACE_ID=... CF_API_TOKEN=... python tools/process_incoming.py --dry-run
 
+# the Discord messages for a run's games, printed instead of posted
+FOD_ANNOUNCE_FILE=... python tools/announce_discord.py --dry-run
+
 # rebuild docs/index.json from data/games.csv
 python tools/build_index.py
 
@@ -110,5 +130,5 @@ python -m pytest
 ```
 
 The Cloudflare values are also GitHub repository secrets (`CF_ACCOUNT_ID`, `CF_KV_NAMESPACE_ID`,
-`CF_API_TOKEN`), which is how the workflow reads them. Note that `wrangler kv key list` reads *local*
-state unless you pass `--remote`.
+`CF_API_TOKEN`), which is how the workflow reads them, as is `DISCORD_WEBHOOK_URL` for the
+announcements. Note that `wrangler kv key list` reads *local* state unless you pass `--remote`.

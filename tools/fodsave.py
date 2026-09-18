@@ -40,6 +40,14 @@ NAME_JOIN = " & "
 MAX_TOKEN = 20
 RULE_JOIN = "; "
 
+# The names the game gives seats nobody renamed (GameConfig.DefaultConfig in Assembly-CSharp). A computer
+# seat keeps its character's name, and that is the only trace of it in a row: the save says which seats
+# were the computer, but games.csv keeps only has_ai, for the game as a whole. So a name from this list
+# is shown as "AI" wherever players are shown: here, and in the same words in docs/app.js. The names
+# the game was played under are what is stored; this is display only.
+CHARACTER_NAMES = ("Lord Godalming", "Dr. John Seward", "Van Helsing", "Mina Harker", "Dracula")
+AI_NAME = "AI"
+
 # The setup the game was played with. All of it is in the file's Config, and all of it is needed to
 # replay the game. AdvancedRules.PowerCards: the five real cards are bits 1..16.
 POWER_CARDS = ((1, "Hide"), (2, "Wolf Form"), (4, "Misdirect"), (8, "Dark Call"), (16, "Feed"))
@@ -144,6 +152,22 @@ def file_token(name):
     if not token:
         token = "Player"
     return token[0].upper() + token[1:].lower()
+
+
+def display_players(names):
+    """Players as they are shown: a seat still called after its character reads as "AI", once.
+
+    Takes a games.csv names cell or a list of names. Several computer seats collapse into one "AI", the
+    way one person holding several hunter seats is named once.
+    """
+    if isinstance(names, str):
+        names = names.split(NAME_JOIN) if names else []
+    shown = []
+    for name in names:
+        label = AI_NAME if (name or "").strip() in CHARACTER_NAMES else (name or "").strip()
+        if label and label not in shown:
+            shown.append(label)
+    return NAME_JOIN.join(shown)
 
 
 def file_name(hunters, dracula, when):

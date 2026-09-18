@@ -38,6 +38,8 @@ jobs:
           CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
           CF_KV_NAMESPACE_ID: ${{ secrets.CF_KV_NAMESPACE_ID }}
           CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          # The games it adds, for the Discord step below. Outside the repository: it must not be committed.
+          FOD_ANNOUNCE_FILE: ${{ runner.temp }}/announce.json
         run: python tools/process_incoming.py
 
       # A push made with GITHUB_TOKEN doesn't trigger workflows, so this can't loop.
@@ -53,3 +55,11 @@ jobs:
           git commit -m "Add games from the upload queue"
           git pull --rebase
           git push
+
+      # After the push, so the link in each message already downloads the save. A Discord that won't
+      # answer is only a warning: the games are in the repository either way.
+      - name: Announce new games on Discord
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          FOD_ANNOUNCE_FILE: ${{ runner.temp }}/announce.json
+        run: python tools/announce_discord.py

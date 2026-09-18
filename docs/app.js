@@ -3,7 +3,8 @@
 
    Downloads go through fetch + a Blob URL because the `download` attribute is ignored on a
    cross-origin link — a plain link to raw.githubusercontent.com would show the JSON in the tab
-   instead of saving a .fod. */
+   instead of saving a .fod. That is also why the Discord announcements link here, with ?game=<id>:
+   the page shows that game alone and downloads it. */
 
 (function () {
   "use strict";
@@ -12,8 +13,18 @@
   var NUMBERS = ["influence", "dracula_health", "dracula_max_health", "days_completed", "score",
                  "save_version", "action_count"];
 
+  // The names the game gives seats nobody renamed (GameConfig.DefaultConfig). A computer seat keeps its
+  // character's name, and that is all a row says about it: has_ai covers the whole game, not the seats.
+  // So those names are shown as "AI" here, the way tools/fodsave.py shows them in a Discord message.
+  // Kept in step with CHARACTER_NAMES there; tests/test_site.py checks the two lists agree.
+  var CHARACTER_NAMES = ["Lord Godalming", "Dr. John Seward", "Van Helsing", "Mina Harker", "Dracula"];
+  var AI_NAME = "AI";
+  var NAME_JOIN = " & ";
+
   var games = [];
   var state = {
+    // The game a ?game=<id> link points at, shown on its own; any filter or search clears it.
+    game: linkedGame(),
     search: "",
     database: "all",
     winner: "all",
@@ -21,6 +32,8 @@
     key: "received_at_utc",
     descending: true
   };
+
+  var pending = !!state.game;          // download the linked game once, as soon as it is on the page
 
   var rows = document.getElementById("rows");
   var count = document.getElementById("count");
@@ -55,6 +68,7 @@
 
   document.getElementById("search").addEventListener("input", function (event) {
     state.search = event.target.value.trim().toLowerCase();
+    state.game = "";
     render();
   });
 
@@ -62,6 +76,7 @@
     chip.addEventListener("click", function () {
       var group = chip.getAttribute("data-filter");
       state[group] = chip.getAttribute("data-value");
+      state.game = "";
       Array.prototype.forEach.call(
         document.querySelectorAll('.chip[data-filter="' + group + '"]'),
         function (other) { other.classList.toggle("is-on", other === chip); });
@@ -87,6 +102,14 @@
 
   function render() {
     var shown = games.filter(matches);
+    var stale = false;
+    if (state.game && shown.length === 0 && games.length > 0) {
+      // The link points at a game this index doesn't hold yet: games are filed in batches.
+      state.game = "";
+      pending = false;
+      stale = true;
+      shown = games.filter(matches);
+    }
     shown.sort(compare);
 
     rows.textContent = "";
@@ -96,14 +119,27 @@
     count.textContent = summary(shown.length, games.length);
     if (games.length === 0) {
       say("No games yet. Finish a game with the mod and use the Game Over screen to send one.", false);
+    } else if (stale) {
+      say("That link points at a game the list doesn't hold yet — new games appear when the next " +
+          "batch is filed, usually within about an hour. Showing every game.", false);
     } else if (shown.length === 0) {
       say("No game matches that.", false);
+    } else if (state.game) {
+      say("One game, the one the link points at. Its save downloads on its own; if the browser stops " +
+          "that, use the Save button. Any filter above brings back every game.", false);
     } else {
       say("", false);
+    }
+
+    if (pending && state.game && shown.length > 0) {
+      pending = false;
+      var first = rows.querySelector(".download");
+      if (first) { first.click(); }
     }
   }
 
   function matches(game) {
+    if (state.game) { return game.id === state.game; }
     if (state.database !== "all" && game.database !== state.database) { return false; }
     if (state.winner !== "all" && game.winner_side !== state.winner) { return false; }
     if (state.months !== "all") {
@@ -112,13 +148,17 @@
       if (!isNaN(received) && received < monthsAgo(Number(state.months))) { return false; }
     }
     if (!state.search) { return true; }
-    var names = ((game.hunters || "") + " " + (game.dracula || "")).toLowerCase();
-    return names.indexOf(state.search) >= 0;
+    // The names as shown too, so searching "AI" finds the games the computer played.
+    var shownNames = ((game.hunters || "") + " " + (game.dracula || "") + " " +
+                      displayNames(game.hunters) + " " + displayNames(game.dracula)).toLowerCase();
+    return shownNames.indexOf(state.search) >= 0;
   }
 
   function compare(a, b) {
-    var left = a[state.key];
-    var right = b[state.key];
+    // The name columns sort by what the table shows, so the computer's games sit together under "AI".
+    var shown = state.key === "hunters" || state.key === "dracula";
+    var left = shown ? displayNames(a[state.key]) : a[state.key];
+    var right = shown ? displayNames(b[state.key]) : b[state.key];
     var order;
     if (NUMBERS.indexOf(state.key) >= 0) {
       order = (left === null || left === undefined ? -Infinity : left) -
@@ -143,14 +183,14 @@
       (game.action_count ? "\n" + game.action_count + " actions" : "");
 
     // Names are the one column allowed to wrap: several hunters make a long line.
-    cell(tr, game.hunters || "").className = "names";
-    cell(tr, game.dracula || "").className = "names";
+    names(tr, game.hunters);
+    names(tr, game.dracula);
 
     var winner = cell(tr, "");
     var side = document.createElement("span");
     side.className = game.winner_side === "Hunters" ? "side-hunters" : "side-dracula";
     side.textContent = game.winner_side || "";
-    side.title = (game.winner_players || "") + " beat " + (game.loser_players || "");
+    side.title = displayNames(game.winner_players) + " beat " + displayNames(game.loser_players);
     winner.appendChild(side);
 
     number(tr, game.influence);
@@ -184,6 +224,35 @@
     download.className = "download-col";
     download.appendChild(button(game));
     return tr;
+  }
+
+  function names(tr, players) {
+    var td = cell(tr, displayNames(players));
+    td.className = "names";
+    // The names the seats were played under are still there for anyone who wants them.
+    if (players && td.textContent !== players) { td.title = "In the game: " + players; }
+    return td;
+  }
+
+  function displayNames(players) {
+    var shown = [];
+    String(players || "").split(NAME_JOIN).forEach(function (name) {
+      var label = CHARACTER_NAMES.indexOf(name.trim()) >= 0 ? AI_NAME : name.trim();
+      if (label && shown.indexOf(label) < 0) { shown.push(label); }
+    });
+    return shown.join(NAME_JOIN);
+  }
+
+  function linkedGame() {
+    // The Discord announcements link here as .../?game=<upload id>.
+    var found = /[?&]game=([^&]*)/.exec(window.location.search || "") ||
+                /[#&]game=([^&]*)/.exec(window.location.hash || "");
+    if (!found) { return ""; }
+    try {
+      return decodeURIComponent(found[1]).trim();
+    } catch (error) {
+      return found[1].trim();
+    }
   }
 
   function button(game) {

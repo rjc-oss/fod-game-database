@@ -14,7 +14,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "tools"))
 
-from fodsave import COLUMNS  # noqa: E402
+from fodsave import AI_NAME, CHARACTER_NAMES, COLUMNS  # noqa: E402
 
 DOCS = Path(__file__).resolve().parent.parent / "docs"
 APP_JS = (DOCS / "app.js").read_text(encoding="utf-8")
@@ -31,6 +31,20 @@ def test_every_sortable_column_exists():
     keys = set(re.findall(r'data-key="([a-z_]+)"', (DOCS / "index.html").read_text(encoding="utf-8")))
     assert keys, "no sortable headers found in index.html"
     assert keys <= set(COLUMNS)
+
+
+def test_the_site_reads_the_same_character_names_as_the_tools():
+    # The site shows a seat still called after its character as "AI"; the Discord messages say the same.
+    # The list is written out in both places, so this is what keeps them in step.
+    listed = re.search(r"var CHARACTER_NAMES = \[([^\]]*)\]", APP_JS).group(1)
+    assert tuple(re.findall(r'"([^"]+)"', listed)) == CHARACTER_NAMES
+    assert re.search(r'var AI_NAME = "([^"]+)"', APP_JS).group(1) == AI_NAME
+
+
+def test_the_site_understands_the_link_the_announcements_send():
+    # tools/announce_discord.py posts .../?game=<upload id>.
+    assert "game=" in APP_JS, "app.js no longer reads the ?game= link Discord messages point at"
+    assert "linkedGame" in APP_JS
 
 
 def test_the_download_base_points_at_the_saves_folder():
