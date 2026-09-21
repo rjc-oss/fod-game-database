@@ -21,6 +21,25 @@ Each game goes into one of two databases, chosen by which button was clicked:
 A game can only be in one. If the same game is uploaded twice it is stored once; a `tournament` upload of
 a game already stored as `casual` moves that row to `tournament`.
 
+### Tournaments
+
+The Discord community's tournaments are listed in `data/tournaments.csv`, one row per tournament:
+
+| Column | |
+|---|---|
+| `name` | what the site's dropdown calls it |
+| `start_utc` | when it starts, in UTC: `2026-10-01T18:00:00Z` (a bare date, `2026-10-01`, means the start of that day) |
+| `end_utc` | when it ends, in UTC, the same way (a bare date means the end of that day); empty for the latest one while it is still going on |
+| `format` | how it is played, shown under the dropdown when it is chosen |
+
+A `tournament` game belongs to the tournament the server received it during (from the start, up to but
+not including the end); casual games never belong to one. Tournaments may not overlap, and only the latest
+may be left without an end. Nothing about this is stored in `games.csv`: each game's tournament is worked
+out again whenever `docs/index.json` is built, so adding a tournament, or correcting a date, re-files every
+game. Committing a change to the file rebuilds the site's index straight away. A list that breaks these
+rules is ignored (the site shows no tournaments) and the run's summary says why, but games are still filed.
+Pick one on the site with the dropdown, or link to it as `?tournament=<name>`.
+
 An upload is not on the site straight away: games are filed in batches, so a new one usually appears
 within about an hour. Each new game is then announced in the Discord as **FoD Game Database**, with a
 link that downloads the save.
@@ -32,7 +51,8 @@ link that downloads the save.
 | `saves/` | the games themselves, one `.fod` each (the game's own save format) |
 | `data/games.csv` | the table: one row per game, the canonical list |
 | `data/rejected.csv` | uploads that were not stored, and why (no file is kept) |
-| `docs/` | the search site (GitHub Pages), `index.json` built from `games.csv`; `config.js` holds the one copy of the repository's download URL |
+| `data/tournaments.csv` | the tournaments and their dates, which decide each tournament game's tournament |
+| `docs/` | the search site (GitHub Pages), `index.json` built from `games.csv` and `tournaments.csv`; `config.js` holds the one copy of the repository's download URL |
 | `tools/` | the Python that checks uploads, files them, and announces them in the Discord |
 | `worker/` | the Cloudflare Worker the mod uploads to |
 | `tests/` | `python -m pytest` |
@@ -123,7 +143,7 @@ CF_ACCOUNT_ID=... CF_KV_NAMESPACE_ID=... CF_API_TOKEN=... python tools/process_i
 # the Discord messages for a run's games, printed instead of posted (and without the wait)
 FOD_ANNOUNCE_FILE=... python tools/announce_discord.py --dry-run
 
-# rebuild docs/index.json from data/games.csv
+# rebuild docs/index.json from data/games.csv and data/tournaments.csv
 python tools/build_index.py
 
 # preview the site exactly as GitHub Pages serves it, at http://localhost:8000/

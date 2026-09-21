@@ -71,7 +71,7 @@ h1 {
   font: inherit;
 }
 
-#search:focus-visible, .chip:focus-visible, .sort:focus-visible, .download:focus-visible {
+#search:focus-visible, #tournament:focus-visible, .chip:focus-visible, .sort:focus-visible, .download:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
@@ -96,6 +96,22 @@ h1 {
   border-color: var(--accent);
   color: var(--accent-ink);
 }
+
+.picker { display: block; max-width: 100%; }
+
+#tournament {
+  max-width: 100%;
+  padding: 7px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--card);
+  color: inherit;
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.tournament-info { margin: 0 0 6px; font-size: 0.9rem; }
 
 .count { margin: 0 0 10px; color: var(--quiet); font-size: 0.9rem; }
 

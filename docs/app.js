@@ -23,6 +23,7 @@
   var NAME_JOIN = " & ";
 
   var games = [];
+  var tournaments = [];                // newest first, as index.json lists them
   var state = {
     // What a link points at: a game by upload id, a save by file name. Shown on their own; any filter
     // or search clears them.
@@ -30,6 +31,8 @@
     save: parameter("save"),
     search: "",
     database: "all",
+    // A tournament's name, or "all". ?tournament=<name> picks one, for a link to a tournament's games.
+    tournament: parameter("tournament") || "all",
     winner: "all",
     months: "all",
     key: "received_at_utc",
@@ -56,6 +59,8 @@
     })
     .then(function (index) {
       games = (index && index.games) || [];
+      tournaments = (index && index.tournaments) || [];
+      fillTournaments();
       var generated = document.getElementById("generated");
       if (generated && index && index.generated) {
         generated.textContent = "index built " + local(index.generated);
@@ -91,6 +96,33 @@
     });
   });
 
+  document.getElementById("tournament").addEventListener("change", function (event) {
+    state.tournament = event.target.value;
+    state.game = state.save = "";
+    render();
+  });
+
+  function fillTournaments() {
+    var select = document.getElementById("tournament");
+    tournaments.forEach(function (tournament) {
+      var option = document.createElement("option");
+      option.value = tournament.name;
+      option.textContent = tournament.name + (tournament.end_utc ? "" : " (ongoing)");
+      select.appendChild(option);
+    });
+    // A link to a tournament that isn't in the list (renamed, or mistyped) shows every game instead.
+    if (!findTournament(state.tournament)) { state.tournament = "all"; }
+    select.value = state.tournament;
+    document.getElementById("tournament-picker").hidden = tournaments.length === 0;
+  }
+
+  function findTournament(name) {
+    for (var i = 0; i < tournaments.length; i++) {
+      if (tournaments[i].name === name) { return tournaments[i]; }
+    }
+    return null;
+  }
+
   Array.prototype.forEach.call(document.querySelectorAll(".sort"), function (header) {
     header.addEventListener("click", function () {
       var key = header.getAttribute("data-key");
@@ -122,6 +154,7 @@
     }
     shown.sort(compare);
 
+    describeTournament();
     rows.textContent = "";
     shown.forEach(function (game) { rows.appendChild(row(game)); });
     markSortedColumn();
@@ -153,6 +186,7 @@
     if (state.save) { return game.file === state.save; }
     if (state.game) { return game.id === state.game; }
     if (state.database !== "all" && game.database !== state.database) { return false; }
+    if (state.tournament !== "all" && game.tournament !== state.tournament) { return false; }
     if (state.winner !== "all" && game.winner_side !== state.winner) { return false; }
     if (state.months !== "all") {
       var received = Date.parse(game.received_at_utc);
@@ -214,6 +248,7 @@
     var tag = document.createElement("span");
     tag.className = "tag " + (game.database || "");
     tag.textContent = game.database || "";
+    if (game.tournament) { tag.title = game.tournament; }
     database.appendChild(tag);
 
     // Everything needed to replay the game: the mod version and config code, which the save does not
@@ -330,6 +365,18 @@
       header.parentNode.setAttribute(
         "aria-sort", sorted ? (state.descending ? "descending" : "ascending") : "none");
     });
+  }
+
+  function describeTournament() {
+    // The chosen tournament's format and dates, in UTC like the table's Date column.
+    var info = document.getElementById("tournament-info");
+    var tournament = findTournament(state.tournament);
+    info.hidden = !tournament || !!(state.game || state.save);
+    if (info.hidden) { return; }
+    info.textContent = [tournament.format,
+                        stamp(tournament.start_utc) + " to " +
+                        (tournament.end_utc ? stamp(tournament.end_utc) : "now (ongoing)") + " UTC"]
+      .filter(Boolean).join(" · ");
   }
 
   function summary(shown, total) {

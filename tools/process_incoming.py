@@ -30,6 +30,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import build_index  # noqa: E402
+import tournaments  # noqa: E402
 from fodsave import COLUMNS, Reject, file_name, validate  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -113,6 +114,10 @@ def main(argv):
     by_identifier = {row["identifier"]: row for row in rows}
     used_names = {row["file"] for row in rows} | {path.name for path in _saved_files()}
     accepted, rejected, warnings, changed = [], [], [], False
+    try:
+        tournaments.load()
+    except tournaments.TournamentError as e:
+        warnings.append("data/tournaments.csv ignored, so no game is shown in a tournament: {}".format(e))
 
     for key in keys:
         try:

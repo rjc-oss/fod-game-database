@@ -1,10 +1,14 @@
 name: process
 
 # Drains the Cloudflare KV staging area into this repository: the Worker pokes this workflow after every
-# upload (repository_dispatch), and the hourly run catches anything a missed poke left behind.
+# upload (repository_dispatch), and the hourly run catches anything a missed poke left behind. An edit to
+# the tournament list runs it too, so the site's tournaments are rebuilt straight away.
 on:
   repository_dispatch:
     types: [fod-upload]
+  push:
+    branches: [main]
+    paths: [data/tournaments.csv]
   schedule:
     - cron: "17 * * * *"
   workflow_dispatch:
@@ -52,7 +56,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -m "Add games from the upload queue"
+          if [ "${{ github.event_name }}" = "push" ]; then
+            git commit -m "Rebuild the index for the tournament list"
+          else
+            git commit -m "Add games from the upload queue"
+          fi
           git pull --rebase
           git push
 

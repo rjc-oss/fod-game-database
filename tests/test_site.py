@@ -14,6 +14,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "tools"))
 
+from build_index import DERIVED_COLUMNS  # noqa: E402
 from fodsave import AI_NAME, CHARACTER_NAMES, COLUMNS  # noqa: E402
 
 DOCS = Path(__file__).resolve().parent.parent / "docs"
@@ -23,8 +24,8 @@ APP_JS = (DOCS / "app.js").read_text(encoding="utf-8")
 def test_the_site_reads_only_columns_that_exist():
     used = set(re.findall(r"\bgame\.([a-z_]+)\b", APP_JS))
     assert used, "no game fields found in app.js: has the code been rewritten?"
-    assert used <= set(COLUMNS), "app.js reads columns games.csv doesn't have: {}".format(
-        sorted(used - set(COLUMNS)))
+    known = set(COLUMNS) | set(DERIVED_COLUMNS)
+    assert used <= known, "app.js reads columns index.json doesn't have: {}".format(sorted(used - known))
 
 
 def test_every_sortable_column_exists():

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fury of Dracula game database</title>
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 <header>
@@ -27,6 +27,14 @@
       <button type="button" class="chip" data-filter="database" data-value="casual">Casual</button>
     </div>
 
+    <!-- Filled from index.json's tournament list (data/tournaments.csv); stays hidden while there are none. -->
+    <label id="tournament-picker" class="picker" hidden>
+      <span class="visually-hidden">Tournament</span>
+      <select id="tournament">
+        <option value="all">Every tournament</option>
+      </select>
+    </label>
+
     <div class="chips" role="group" aria-label="Winner">
       <button type="button" class="chip is-on" data-filter="winner" data-value="all">Either side</button>
       <button type="button" class="chip" data-filter="winner" data-value="Hunters">Hunter wins</button>
@@ -39,6 +47,7 @@
     </div>
   </div>
 
+  <p id="tournament-info" class="tournament-info" hidden></p>
   <p id="count" class="count" role="status">Loading…</p>
 
   <div class="table-scroll">
@@ -71,7 +80,7 @@
 </footer>
 
 <!-- ?v= is bumped whenever these change: Pages serves them with max-age=600. -->
-<script src="config.js?v=2"></script>
-<script src="app.js?v=2"></script>
+<script src="config.js?v=3"></script>
+<script src="app.js?v=3"></script>
 </body>
 </html>

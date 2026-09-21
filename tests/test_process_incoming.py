@@ -19,6 +19,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "tools"))
 
 import build_index  # noqa: E402
 import process_incoming  # noqa: E402
+import tournaments  # noqa: E402
 
 from test_fodsave import FIXTURE, META, envelope  # noqa: E402
 
@@ -56,6 +57,7 @@ def repo(tmp_path, monkeypatch):
     monkeypatch.setattr(process_incoming, "GAMES_CSV", tmp_path / "data" / "games.csv")
     monkeypatch.setattr(process_incoming, "REJECTED_CSV", tmp_path / "data" / "rejected.csv")
     monkeypatch.setattr(build_index, "INDEX_JSON", tmp_path / "docs" / "index.json")
+    monkeypatch.setattr(tournaments, "TOURNAMENTS_CSV", tmp_path / "data" / "tournaments.csv")
     monkeypatch.setattr(process_incoming.Kv, "from_env", classmethod(lambda cls: kv))
     kv.root = tmp_path
     return kv
@@ -242,3 +244,29 @@ def test_meta_that_does_not_match_the_file_is_rejected(repo, save):
 
     assert games(repo) == []
     assert "hunters won at 13" in rejections(repo)[0]["reason"]
+
+
+def test_a_tournament_game_is_filed_under_the_tournament_it_arrived_during(repo, save):
+    (repo.root / "data").mkdir(parents=True, exist_ok=True)
+    (repo.root / "data" / "tournaments.csv").write_text(
+        "name,start_utc,end_utc,format\nSeptember Open,2026-09-01T00:00:00Z,,Swiss\n", encoding="utf-8")
+    stage(repo, "20260917T213744Z-aaaaaaaa", save, database="tournament")
+
+    assert run() == 0
+
+    index = json.loads((repo.root / "docs" / "index.json").read_text(encoding="utf-8"))
+    assert index["games"][0]["tournament"] == "September Open"
+    assert "tournament" not in games(repo)[0]            # worked out for the index, never stored
+
+
+def test_a_broken_tournament_list_is_a_warning_not_a_failure(repo, save, capsys):
+    (repo.root / "data").mkdir(parents=True, exist_ok=True)
+    (repo.root / "data" / "tournaments.csv").write_text(
+        "name,start_utc,end_utc,format\nA,2026-09-01T00:00:00Z,,Swiss\nB,2026-09-10T00:00:00Z,,Swiss\n",
+        encoding="utf-8")
+    stage(repo, "20260917T213744Z-aaaaaaaa", save, database="tournament")
+
+    assert run() == 0
+
+    assert len(games(repo)) == 1
+    assert "data/tournaments.csv ignored" in capsys.readouterr().out
