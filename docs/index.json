@@ -1,12 +1,12 @@
 {
- "generated": "2026-09-21T16:56:20Z",
+ "generated": "2026-09-21T16:56:35Z",
  "count": 7,
  "tournaments": [
   {
    "name": "LoD 2027 Knockout",
    "start_utc": "2027-11-01T00:00:00Z",
    "end_utc": "2027-12-31T00:00:00Z",
-   "format": "League"
+   "format": "Knockout"
   },
   {
    "name": "LoD 2027",
