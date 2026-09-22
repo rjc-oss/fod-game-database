@@ -1,6 +1,6 @@
 {
- "generated": "2026-09-22T19:26:52Z",
- "count": 7,
+ "generated": "2026-09-22T20:11:41Z",
+ "count": 8,
  "tournaments": [
   {
    "name": "LoD 2027 Knockout",
@@ -16,6 +16,35 @@
   }
  ],
  "games": [
+  {
+   "id": "20260922T193454Z-06ad15a7",
+   "received_at_utc": "2026-09-22T19:34:54.574Z",
+   "database": "casual",
+   "file": "Xmarksthescot_Vs_Dracula_2026-09-22_19-34-54.fod",
+   "hunters": "'X'MarksTheScot",
+   "dracula": "Dracula",
+   "winner_side": "Hunters",
+   "winner_players": "'X'MarksTheScot",
+   "loser_players": "Dracula",
+   "influence": 6,
+   "dracula_health": 0,
+   "dracula_max_health": 15,
+   "days_completed": 16,
+   "score": -9,
+   "game_type": "Local",
+   "advanced_rules": "Power cards: all; Free placement; Rumour tokens; Lairs",
+   "house_rules": "Trail slides before Dracula moves",
+   "mod_house_rules": "Bites score influence; Manchester becomes Whitby; Sister Agatha damage 1; Long Night at dawn or dusk; Bitten hunters carry one ticket (Mina too); Great Strength only at your location; Advanced Dracula AI; Heroic Leap damage limited by your health; Dracula mulligans his opening hand; Dracula starts with an encounter; Rifle does not clear Rats; Galatz becomes a port; Customs Search on entering a land region; Empowered Devilish Power; Heavenly Host discarded against Great Wolf; Mini VL Blood Transfusion; Hired Scouts playable as an action; Heavenly Host discarded against Desecrated Soil; Matured Spy always discards tickets; Misdirect can target sea locations; Garlic Wreath only discarded by Claws",
+   "has_ai": true,
+   "save_version": 40,
+   "mod_version": "0.63.0",
+   "config_code": "9A881B",
+   "identifier": "a557ef8e-5089-4323-b643-98c59dae5b65",
+   "log_sha256": "71d687d7a2412477f1900a1803363ca4f7734d9fa9144195716629312194e639",
+   "ended_at_utc": "2026-09-22T19:34:47Z",
+   "action_count": 687,
+   "tournament": ""
+  },
   {
    "id": "20260919T213131Z-f60e4d14",
    "received_at_utc": "2026-09-19T21:31:31.423Z",
