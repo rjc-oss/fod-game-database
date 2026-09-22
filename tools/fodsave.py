@@ -68,8 +68,8 @@ VANILLA_HOUSE_RULES = (
 )
 
 # The mod's own house rules are in the same save: HouseRules has no room for a new setting, so each one
-# is an entry in its private power card play limit dictionary, under a bit no power card uses, and only
-# when it is not at its default. A label with {} is a slider and shows its number; the rest are tick
+# is an entry in its private power card play limit dictionary, under a key that is not a power card
+# (the first rules took single bits, later ones take 1000, 1001, ...), and only when it is not at its default. A label with {} is a slider and shows its number; the rest are tick
 # boxes. Source of truth: src/DraculaMod/Fixes/HouseRuleFlag.cs and the *Rule.cs files beside it.
 STORED_ZERO = -1                 # how a slider's 0 is stored (a stored 0 would read as "no house rules")
 MOD_HOUSE_RULES = {
@@ -88,6 +88,20 @@ MOD_HOUSE_RULES = {
     1 << 18: "Rifle does not clear Rats",
     1 << 17: "Feed healing {}",
     1 << 16: "Dark Call damage {}",
+    1 << 15: "Galatz becomes a port",
+    1 << 14: "Heavenly Host discarded for Consecrated Ground",
+    1 << 13: "Customs Search on entering a land region",
+    1 << 12: "Empowered Devilish Power",
+    1 << 11: "Heavenly Host discarded against Great Wolf",
+    1 << 10: "Mini VL Blood Transfusion",
+    1 << 9: "Hired Scouts playable as an action",
+    1 << 8: "Heavenly Host discarded against Desecrated Soil",
+    1 << 7: "Matured Spy always discards tickets",
+    1 << 6: "Misdirect can target sea locations",
+    1 << 5: "Garlic Wreath only discarded by Claws",
+    3 << 29: "Bites score influence",
+    3 << 27: "Bitten hunters carry one ticket (not Mina)",
+    3 << 25: "Bitten hunters carry one ticket (Mina too)",
 }
 
 # Non-string columns, for reading games.csv back (build_index.py, the dedupe check).

@@ -137,8 +137,8 @@ def test_a_slider_set_to_zero_reads_as_zero(save):
 
 
 def test_a_mod_rule_this_database_has_not_heard_of_is_still_reported(save):
-    save["Config"]["HouseRules"]["_powerCardsPlayLimits"][str(1 << 15)] = 4
-    assert "Mod rule 32768 4" in fodsave.mod_house_rules(save["Config"])
+    save["Config"]["HouseRules"]["_powerCardsPlayLimits"][str(1999)] = 4
+    assert "Mod rule 1999 4" in fodsave.mod_house_rules(save["Config"])
 
 
 def test_a_vanilla_play_limit_is_a_house_rule_not_a_mod_rule(save):
