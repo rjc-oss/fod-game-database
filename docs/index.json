@@ -1,6 +1,6 @@
 {
- "generated": "2026-09-23T18:33:01Z",
- "count": 8,
+ "generated": "2026-09-23T18:48:09Z",
+ "count": 9,
  "tournaments": [
   {
    "name": "LoD 2027 Knockout",
@@ -16,6 +16,35 @@
   }
  ],
  "games": [
+  {
+   "id": "20260923T184705Z-1f95b05f",
+   "received_at_utc": "2026-09-23T18:47:05.586Z",
+   "database": "casual",
+   "file": "Rtowinlots_Vs_Dracula_2026-09-23_18-47-05.fod",
+   "hunters": "RToWinLots",
+   "dracula": "Dracula",
+   "winner_side": "Hunters",
+   "winner_players": "RToWinLots",
+   "loser_players": "Dracula",
+   "influence": 2,
+   "dracula_health": 0,
+   "dracula_max_health": 15,
+   "days_completed": 9,
+   "score": -13,
+   "game_type": "Local",
+   "advanced_rules": "Power cards: all; Free placement; Rumour tokens; Lairs",
+   "house_rules": "Trail slides before Dracula moves",
+   "mod_house_rules": "Advanced Dracula AI",
+   "has_ai": true,
+   "save_version": 40,
+   "mod_version": "0.68.0",
+   "config_code": "78E5DB",
+   "identifier": "c42429d0-347c-4a53-a3c6-1ebcf9975228",
+   "log_sha256": "b4dc22991df0d2d1b386b7ef071b57eba5d7822e5a62b8f16aff23c946eae83f",
+   "ended_at_utc": "2026-09-23T18:47:01Z",
+   "action_count": 518,
+   "tournament": ""
+  },
   {
    "id": "20260922T193454Z-06ad15a7",
    "received_at_utc": "2026-09-22T19:34:54.574Z",
