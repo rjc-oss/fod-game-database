@@ -1,6 +1,6 @@
 {
- "generated": "2026-09-24T17:15:28Z",
- "count": 9,
+ "generated": "2026-09-24T20:32:45Z",
+ "count": 10,
  "tournaments": [
   {
    "name": "LoD 2027 Knockout",
@@ -16,6 +16,35 @@
   }
  ],
  "games": [
+  {
+   "id": "20260924T194907Z-c5ea7216",
+   "received_at_utc": "2026-09-24T19:49:07.147Z",
+   "database": "casual",
+   "file": "Tarvalar_Vs_Rtowinlots_2026-09-24_19-49-07.fod",
+   "hunters": "Tarvalar",
+   "dracula": "RToWinLots",
+   "winner_side": "Dracula",
+   "winner_players": "RToWinLots",
+   "loser_players": "Tarvalar",
+   "influence": 13,
+   "dracula_health": 7,
+   "dracula_max_health": 15,
+   "days_completed": 18,
+   "score": 5,
+   "game_type": "Network",
+   "advanced_rules": "Power cards: all; Free placement; Rumour tokens; Lairs",
+   "house_rules": "Dark Call draws an event card; Dracula can't see the markers; Trail slides before Dracula moves",
+   "mod_house_rules": "",
+   "has_ai": false,
+   "save_version": 40,
+   "mod_version": "0.69.2",
+   "config_code": "E53A9F",
+   "identifier": "8fba1b0d-a044-45c5-bb9a-4020bf845e8b",
+   "log_sha256": "7b973c7ae533f58fbefe9b156ca0f0df7064b126de56e3f42ee6f3c6f30605ed",
+   "ended_at_utc": "2026-09-24T19:49:00Z",
+   "action_count": 768,
+   "tournament": ""
+  },
   {
    "id": "20260923T184705Z-1f95b05f",
    "received_at_utc": "2026-09-23T18:47:05.586Z",
