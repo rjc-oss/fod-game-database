@@ -1,6 +1,6 @@
 {
- "generated": "2026-09-26T09:55:37Z",
- "count": 10,
+ "generated": "2026-09-26T14:32:14Z",
+ "count": 11,
  "tournaments": [
   {
    "name": "LoD 2027 Knockout",
@@ -16,6 +16,35 @@
   }
  ],
  "games": [
+  {
+   "id": "20260926T104429Z-272b69df",
+   "received_at_utc": "2026-09-26T10:44:29.988Z",
+   "database": "casual",
+   "file": "Lordgodalming_Drjohnseward_Vanhelsing_Minaharker_Vs_Dracula_2026-09-26_10-44-29.fod",
+   "hunters": "Lord Godalming & Dr. John Seward & Van Helsing & Mina Harker",
+   "dracula": "Dracula",
+   "winner_side": "Dracula",
+   "winner_players": "Dracula",
+   "loser_players": "Lord Godalming & Dr. John Seward & Van Helsing & Mina Harker",
+   "influence": 13,
+   "dracula_health": 15,
+   "dracula_max_health": 15,
+   "days_completed": 21,
+   "score": 15,
+   "game_type": "Local",
+   "advanced_rules": "Power cards: all; Free placement; Rumour tokens; Lairs",
+   "house_rules": "Trail slides before Dracula moves",
+   "mod_house_rules": "Advanced Dracula AI",
+   "has_ai": true,
+   "save_version": 40,
+   "mod_version": "0.72.0",
+   "config_code": "A97C40",
+   "identifier": "38e0ccc4-dcea-52f0-b865-bfe0a46e783a",
+   "log_sha256": "0a7f75480fbf18412485f3923e333e6b7e97e997b4063c803609300dea79629e",
+   "ended_at_utc": "2026-09-26T10:44:22Z",
+   "action_count": 904,
+   "tournament": ""
+  },
   {
    "id": "20260924T194907Z-c5ea7216",
    "received_at_utc": "2026-09-24T19:49:07.147Z",
