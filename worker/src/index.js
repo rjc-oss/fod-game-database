@@ -151,12 +151,14 @@ export default {
     }
 
     // 8. Poke the repo so processing is instant. The hourly cron covers failures.
-    if (env.GITHUB_TOKEN) {
+    // A secret piped in from PowerShell starts with a byte-order mark, which GitHub answers with 401.
+    const githubToken = (env.GITHUB_TOKEN || "").replace(/^﻿/, "").trim();
+    if (githubToken) {
       ctx.waitUntil(
         fetch("https://api.github.com/repos/" + env.GITHUB_REPO + "/dispatches", {
           method: "POST",
           headers: {
-            Authorization: "Bearer " + env.GITHUB_TOKEN,
+            Authorization: "Bearer " + githubToken,
             Accept: "application/vnd.github+json",
             "User-Agent": "fod-saves",
             "Content-Type": "application/json",
