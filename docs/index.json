@@ -1,6 +1,6 @@
 {
- "generated": "2026-09-30T13:48:39Z",
- "count": 14,
+ "generated": "2026-09-30T17:13:08Z",
+ "count": 15,
  "tournaments": [
   {
    "name": "LoD 2027 Knockout",
@@ -16,6 +16,35 @@
   }
  ],
  "games": [
+  {
+   "id": "20260930T171159Z-6af5a945",
+   "received_at_utc": "2026-09-30T17:11:59.127Z",
+   "database": "casual",
+   "file": "Rtowin_Vs_Dracula_2026-09-30_17-11-59.fod",
+   "hunters": "RToWin",
+   "dracula": "Dracula",
+   "winner_side": "Hunters",
+   "winner_players": "RToWin",
+   "loser_players": "Dracula",
+   "influence": 0,
+   "dracula_health": 0,
+   "dracula_max_health": 15,
+   "days_completed": 16,
+   "score": -15,
+   "game_type": "Local",
+   "advanced_rules": "Power cards: all; Free placement; Rumour tokens; Lairs",
+   "house_rules": "Dark Call draws an event card; Trail slides before Dracula moves",
+   "mod_house_rules": "Bites score influence; Revised Consecrated Ground; Manchester becomes Whitby; Sister Agatha damage 1; Long Night at dawn or dusk; Great Strength only at your location; Advanced Dracula AI; Heroic Leap damage limited by your health; Dracula starts with an encounter; Rifle does not clear Rats; Galatz becomes a port; Customs Search on entering a land region; Empowered Devilish Power; Mod rule 1006 1; Mod rule 1004 1; Mod rule 1001 1; Mod rule 1000 1; Heavenly Host discarded against Desecrated Soil; Matured Spy always discards tickets; Misdirect can target sea locations; Garlic Wreath only discarded by Claws",
+   "has_ai": true,
+   "save_version": 40,
+   "mod_version": "0.86.0",
+   "config_code": "EEBB70",
+   "identifier": "d322410c-502c-4cec-8108-19fe45751ad4",
+   "log_sha256": "a43c9da4f50cdbf8817d84e32dac3761b341a6e1c9698d5f2093f8c15490face",
+   "ended_at_utc": "2026-09-30T17:11:56Z",
+   "action_count": 745,
+   "tournament": ""
+  },
   {
    "id": "20260929T215513Z-64ccb89d",
    "received_at_utc": "2026-09-29T21:55:13.545Z",
