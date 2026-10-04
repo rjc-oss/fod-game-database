@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-04T06:59:15Z",
- "count": 16,
+ "generated": "2026-10-04T11:40:37Z",
+ "count": 17,
  "tournaments": [
   {
    "name": "LoD 2027 Knockout",
@@ -16,6 +16,35 @@
   }
  ],
  "games": [
+  {
+   "id": "20261004T113929Z-dacd7441",
+   "received_at_utc": "2026-10-04T11:39:29.620Z",
+   "database": "casual",
+   "file": "Rtowin_Vs_Dracula_2026-10-04_11-39-29.fod",
+   "hunters": "RToWin",
+   "dracula": "Dracula",
+   "winner_side": "Hunters",
+   "winner_players": "RToWin",
+   "loser_players": "Dracula",
+   "influence": 1,
+   "dracula_health": 0,
+   "dracula_max_health": 15,
+   "days_completed": 11,
+   "score": -14,
+   "game_type": "Local",
+   "advanced_rules": "Power cards: all; Free placement; Rumour tokens; Lairs",
+   "house_rules": "Trail slides before Dracula moves",
+   "mod_house_rules": "Revised Consecrated Ground; Manchester becomes Whitby; Advanced Dracula AI; Heroic Leap damage limited by your health; Dracula starts with an encounter; Galatz becomes a port; Mod rule 1007 1; Mod rule 1006 1; Mod rule 1004 1; Mod rule 1001 1; Mod rule 1000 1; Garlic Wreath only discarded by Claws",
+   "has_ai": true,
+   "save_version": 40,
+   "mod_version": "0.93.0",
+   "config_code": "DA066B",
+   "identifier": "f8a214fe-d644-4e50-bea8-abb36c8a6c5c",
+   "log_sha256": "a5872e2568bf046e60ad524da0419ba18d9e8b7aa196f0c2166e5bd155442bf2",
+   "ended_at_utc": "2026-10-04T11:39:25Z",
+   "action_count": 538,
+   "tournament": ""
+  },
   {
    "id": "20261001T204039Z-45a15160",
    "received_at_utc": "2026-10-01T20:40:39.500Z",
