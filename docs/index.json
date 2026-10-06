@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-06T17:14:12Z",
- "count": 19,
+ "generated": "2026-10-06T17:21:37Z",
+ "count": 20,
  "tournaments": [
   {
    "name": "LoD 2027 Knockout",
@@ -16,6 +16,35 @@
   }
  ],
  "games": [
+  {
+   "id": "20261006T172027Z-e0486926",
+   "received_at_utc": "2026-10-06T17:20:27.687Z",
+   "database": "casual",
+   "file": "Rtowin_Vs_Fangsoffire_2026-10-06_17-20-27.fod",
+   "hunters": "RToWin",
+   "dracula": "Fangs of Fire",
+   "winner_side": "Hunters",
+   "winner_players": "RToWin",
+   "loser_players": "Fangs of Fire",
+   "influence": 7,
+   "dracula_health": 0,
+   "dracula_max_health": 15,
+   "days_completed": 13,
+   "score": -8,
+   "game_type": "Network",
+   "advanced_rules": "Power cards: all; Free placement; Rumour tokens; Lairs",
+   "house_rules": "Dark Call draws an event card; Trail slides before Dracula moves",
+   "mod_house_rules": "",
+   "has_ai": false,
+   "save_version": 40,
+   "mod_version": "0.96.0",
+   "config_code": "286274",
+   "identifier": "bc6cc258-2143-46da-a885-f9e15714811e",
+   "log_sha256": "ce82e2628ee8ab91d209e78eb67676e3d2f8c7161e5db9894fcaf07220e600ef",
+   "ended_at_utc": "2026-10-06T17:20:25Z",
+   "action_count": 517,
+   "tournament": ""
+  },
   {
    "id": "20261005T000012Z-160d1366",
    "received_at_utc": "2026-10-05T00:00:12.112Z",
