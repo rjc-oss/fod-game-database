@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-06T17:21:37Z",
- "count": 20,
+ "generated": "2026-10-06T21:04:30Z",
+ "count": 21,
  "tournaments": [
   {
    "name": "LoD 2027 Knockout",
@@ -16,6 +16,35 @@
   }
  ],
  "games": [
+  {
+   "id": "20261006T210320Z-2dd4f756",
+   "received_at_utc": "2026-10-06T21:03:20.991Z",
+   "database": "casual",
+   "file": "Rtowin_Vs_Tarvalar_2026-10-06_21-03-20.fod",
+   "hunters": "RToWin",
+   "dracula": "Tarvalar",
+   "winner_side": "Hunters",
+   "winner_players": "RToWin",
+   "loser_players": "Tarvalar",
+   "influence": 6,
+   "dracula_health": 0,
+   "dracula_max_health": 17,
+   "days_completed": 10,
+   "score": -11,
+   "game_type": "Network",
+   "advanced_rules": "Power cards: all; Free placement; Rumour tokens; Lairs",
+   "house_rules": "Dark Call draws an event card; Dracula can't see the markers; Trail slides before Dracula moves",
+   "mod_house_rules": "Revised Consecrated Ground; Sister Agatha damage 1; Dracula starts with an encounter; Dracula additional health 2",
+   "has_ai": false,
+   "save_version": 40,
+   "mod_version": "0.96.0",
+   "config_code": "A43411",
+   "identifier": "ce273997-91f8-4c65-ba25-7e4c2380f796",
+   "log_sha256": "1c5866d6b963c96e990b2ca01ceb683bb7a75cb1938bf35e574d95642e7d12da",
+   "ended_at_utc": "2026-10-06T21:03:19Z",
+   "action_count": 515,
+   "tournament": ""
+  },
   {
    "id": "20261006T172027Z-e0486926",
    "received_at_utc": "2026-10-06T17:20:27.687Z",
