@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-07T17:22:23Z",
- "count": 22,
+ "generated": "2026-10-07T21:34:52Z",
+ "count": 23,
  "tournaments": [
   {
    "name": "LoD 2027 Knockout",
@@ -16,6 +16,35 @@
   }
  ],
  "games": [
+  {
+   "id": "20261007T213342Z-91107497",
+   "received_at_utc": "2026-10-07T21:33:42.384Z",
+   "database": "casual",
+   "file": "Andrezot_Vs_Rtowin_2026-10-07_21-33-42.fod",
+   "hunters": "AndreZot",
+   "dracula": "RToWin",
+   "winner_side": "Dracula",
+   "winner_players": "RToWin",
+   "loser_players": "AndreZot",
+   "influence": 13,
+   "dracula_health": 9,
+   "dracula_max_health": 15,
+   "days_completed": 20,
+   "score": 7,
+   "game_type": "Network",
+   "advanced_rules": "Power cards: all; Free placement; Rumour tokens; Lairs",
+   "house_rules": "Dark Call draws an event card; Trail slides before Dracula moves",
+   "mod_house_rules": "",
+   "has_ai": false,
+   "save_version": 40,
+   "mod_version": "0.97.2",
+   "config_code": "B4EAFC",
+   "identifier": "3f3677f6-2d76-4b9b-bddf-d5151c563dae",
+   "log_sha256": "228ac887ea033fa9a417f0e0dc3780961e7966ce762d786699230a9431052318",
+   "ended_at_utc": "2026-10-07T21:33:08Z",
+   "action_count": 965,
+   "tournament": ""
+  },
   {
    "id": "20261007T172114Z-a6307d89",
    "received_at_utc": "2026-10-07T17:21:14.826Z",
