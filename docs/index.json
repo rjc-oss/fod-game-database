@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-07T16:34:25Z",
- "count": 21,
+ "generated": "2026-10-07T17:22:23Z",
+ "count": 22,
  "tournaments": [
   {
    "name": "LoD 2027 Knockout",
@@ -16,6 +16,35 @@
   }
  ],
  "games": [
+  {
+   "id": "20261007T172114Z-a6307d89",
+   "received_at_utc": "2026-10-07T17:21:14.826Z",
+   "database": "casual",
+   "file": "Rtowin_Vs_Dracula_2026-10-07_17-21-14.fod",
+   "hunters": "RToWin",
+   "dracula": "Dracula",
+   "winner_side": "Hunters",
+   "winner_players": "RToWin",
+   "loser_players": "Dracula",
+   "influence": 5,
+   "dracula_health": 0,
+   "dracula_max_health": 15,
+   "days_completed": 20,
+   "score": -10,
+   "game_type": "Local",
+   "advanced_rules": "Power cards: all; Free placement; Rumour tokens; Lairs",
+   "house_rules": "Trail slides before Dracula moves",
+   "mod_house_rules": "Revised Consecrated Ground; Manchester becomes Whitby; Sister Agatha damage 1; Advanced Dracula AI; Dracula starts with an encounter; Galatz becomes a port; Mod rule 1007 1; Mod rule 1006 1",
+   "has_ai": true,
+   "save_version": 40,
+   "mod_version": "0.97.1",
+   "config_code": "810B09",
+   "identifier": "43dd25d7-f889-4ed3-a1d7-0fd66143820f",
+   "log_sha256": "db3556845649cb427e3febcf9124a71c780011790b27d21ac2c129352da7dbdd",
+   "ended_at_utc": "2026-10-07T17:21:13Z",
+   "action_count": 1003,
+   "tournament": ""
+  },
   {
    "id": "20261006T210320Z-2dd4f756",
    "received_at_utc": "2026-10-06T21:03:20.991Z",
