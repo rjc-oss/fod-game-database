@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-11T18:07:06Z",
+ "generated": "2026-10-11T19:56:50Z",
  "count": 23,
  "tournaments": [
   {
@@ -15,6 +15,92 @@
    "format": "League"
   }
  ],
+ "ratings": {
+  "dracula": [
+   {
+    "key": "4de19fba3bc7:RToWin",
+    "name": "RToWin",
+    "shown": "RToWin",
+    "rating": 1537.71,
+    "games": 2,
+    "wins": 2,
+    "losses": 0,
+    "last_played": "2026-10-07T21:33:42Z"
+   },
+   {
+    "key": "4de19fba3bc7:RToWinLots",
+    "name": "RToWinLots",
+    "shown": "RToWinLots",
+    "rating": 1520.0,
+    "games": 1,
+    "wins": 1,
+    "losses": 0,
+    "last_played": "2026-09-24T19:49:07Z"
+   },
+   {
+    "key": "c84fc3bcadac:Tarvalar",
+    "name": "Tarvalar",
+    "shown": "Tarvalar",
+    "rating": 1481.15,
+    "games": 1,
+    "wins": 0,
+    "losses": 1,
+    "last_played": "2026-10-06T21:03:20Z"
+   },
+   {
+    "key": "706148f331c9:Fangs of Fire",
+    "name": "Fangs of Fire",
+    "shown": "Fangs of Fire",
+    "rating": 1480.0,
+    "games": 1,
+    "wins": 0,
+    "losses": 1,
+    "last_played": "2026-10-06T17:20:27Z"
+   }
+  ],
+  "hunter": [
+   {
+    "key": "4de19fba3bc7:RToWin",
+    "name": "RToWin",
+    "shown": "RToWin",
+    "rating": 1538.85,
+    "games": 2,
+    "wins": 2,
+    "losses": 0,
+    "last_played": "2026-10-07T21:33:42Z"
+   },
+   {
+    "key": "c84fc3bcadac:Tarvalar",
+    "name": "Tarvalar",
+    "shown": "Tarvalar",
+    "rating": 1480.0,
+    "games": 1,
+    "wins": 0,
+    "losses": 1,
+    "last_played": "2026-10-06T21:03:20Z"
+   },
+   {
+    "key": "ff218fc38d41:AndreZot",
+    "name": "AndreZot",
+    "shown": "AndreZot",
+    "rating": 1462.29,
+    "games": 2,
+    "wins": 0,
+    "losses": 2,
+    "last_played": "2026-10-07T21:33:42Z"
+   }
+  ],
+  "params": {
+   "start": 1500.0,
+   "k_new": 40.0,
+   "k_settled": 20.0,
+   "k_tournament_bonus": 10.0,
+   "new_games": 10,
+   "grace_days": 30,
+   "decay_points": 5.0,
+   "decay_days": 7
+  }
+ },
  "games": [
   {
    "id": "20261007T213342Z-91107497",
@@ -43,7 +129,19 @@
    "log_sha256": "228ac887ea033fa9a417f0e0dc3780961e7966ce762d786699230a9431052318",
    "ended_at_utc": "2026-10-07T21:33:08Z",
    "action_count": 965,
-   "tournament": ""
+   "hunter_player_ids": "ff218fc38d41",
+   "dracula_player_id": "4de19fba3bc7",
+   "tournament": "",
+   "elo": {
+    "dracula": [
+     1520.0,
+     1537.71
+    ],
+    "hunter": [
+     1480.0,
+     1462.29
+    ]
+   }
   },
   {
    "id": "20261007T172114Z-a6307d89",
@@ -72,7 +170,10 @@
    "log_sha256": "db3556845649cb427e3febcf9124a71c780011790b27d21ac2c129352da7dbdd",
    "ended_at_utc": "2026-10-07T17:21:13Z",
    "action_count": 1003,
-   "tournament": ""
+   "hunter_player_ids": "",
+   "dracula_player_id": "",
+   "tournament": "",
+   "elo": null
   },
   {
    "id": "20261006T210320Z-2dd4f756",
@@ -101,7 +202,19 @@
    "log_sha256": "1c5866d6b963c96e990b2ca01ceb683bb7a75cb1938bf35e574d95642e7d12da",
    "ended_at_utc": "2026-10-06T21:03:19Z",
    "action_count": 515,
-   "tournament": ""
+   "hunter_player_ids": "4de19fba3bc7",
+   "dracula_player_id": "c84fc3bcadac",
+   "tournament": "",
+   "elo": {
+    "dracula": [
+     1500.0,
+     1481.15
+    ],
+    "hunter": [
+     1520.0,
+     1538.85
+    ]
+   }
   },
   {
    "id": "20261006T172027Z-e0486926",
@@ -130,7 +243,19 @@
    "log_sha256": "ce82e2628ee8ab91d209e78eb67676e3d2f8c7161e5db9894fcaf07220e600ef",
    "ended_at_utc": "2026-10-06T17:20:25Z",
    "action_count": 517,
-   "tournament": ""
+   "hunter_player_ids": "4de19fba3bc7",
+   "dracula_player_id": "706148f331c9",
+   "tournament": "",
+   "elo": {
+    "dracula": [
+     1500.0,
+     1480.0
+    ],
+    "hunter": [
+     1500.0,
+     1520.0
+    ]
+   }
   },
   {
    "id": "20261005T000012Z-160d1366",
@@ -159,7 +284,10 @@
    "log_sha256": "a1adad840f99ea472f19e5bb7329307c05cde986f9211199a498cc3fa109cee2",
    "ended_at_utc": "2026-10-05T00:00:07Z",
    "action_count": 608,
-   "tournament": ""
+   "hunter_player_ids": "",
+   "dracula_player_id": "",
+   "tournament": "",
+   "elo": null
   },
   {
    "id": "20261004T162510Z-142dd3a9",
@@ -188,7 +316,10 @@
    "log_sha256": "ed337c578650802f036c62cd9823ca3852150358fe3e20b1d394176f1fc41e1b",
    "ended_at_utc": "2026-10-04T16:25:07Z",
    "action_count": 814,
-   "tournament": ""
+   "hunter_player_ids": "",
+   "dracula_player_id": "",
+   "tournament": "",
+   "elo": null
   },
   {
    "id": "20261004T113929Z-dacd7441",
@@ -217,7 +348,10 @@
    "log_sha256": "a5872e2568bf046e60ad524da0419ba18d9e8b7aa196f0c2166e5bd155442bf2",
    "ended_at_utc": "2026-10-04T11:39:25Z",
    "action_count": 538,
-   "tournament": ""
+   "hunter_player_ids": "",
+   "dracula_player_id": "",
+   "tournament": "",
+   "elo": null
   },
   {
    "id": "20261001T204039Z-45a15160",
@@ -246,7 +380,10 @@
    "log_sha256": "45457c579b4af03255532dc73f869acc1be5543c90cedb1350cd2d321b347509",
    "ended_at_utc": "2026-10-01T20:40:36Z",
    "action_count": 769,
-   "tournament": ""
+   "hunter_player_ids": "",
+   "dracula_player_id": "",
+   "tournament": "",
+   "elo": null
   },
   {
    "id": "20260930T171159Z-6af5a945",
@@ -275,7 +412,10 @@
    "log_sha256": "a43c9da4f50cdbf8817d84e32dac3761b341a6e1c9698d5f2093f8c15490face",
    "ended_at_utc": "2026-09-30T17:11:56Z",
    "action_count": 745,
-   "tournament": ""
+   "hunter_player_ids": "",
+   "dracula_player_id": "",
+   "tournament": "",
+   "elo": null
   },
   {
    "id": "20260929T215513Z-64ccb89d",
@@ -304,7 +444,10 @@
    "log_sha256": "b875ff27526894dcebd41b92311286cd0ce1ae65e969b8e67086b0a92b6ba9a6",
    "ended_at_utc": "2026-09-29T21:55:08Z",
    "action_count": 555,
-   "tournament": ""
+   "hunter_player_ids": "",
+   "dracula_player_id": "",
+   "tournament": "",
+   "elo": null
   },
   {
    "id": "20260928T222419Z-efd4b9fc",
@@ -333,7 +476,10 @@
    "log_sha256": "4a0ab6d828ea132600e37565edae98a5daadb881097a6960808af42ce609f1f6",
    "ended_at_utc": "2026-09-28T17:09:48Z",
    "action_count": 677,
-   "tournament": ""
+   "hunter_player_ids": "",
+   "dracula_player_id": "",
+   "tournament": "",
+   "elo": null
   },
   {
    "id": "20260928T170955Z-5e41562c",
@@ -362,7 +508,10 @@
    "log_sha256": "4a0ab6d828ea132600e37565edae98a5daadb881097a6960808af42ce609f1f6",
    "ended_at_utc": "2026-09-28T17:09:48Z",
    "action_count": 677,
-   "tournament": ""
+   "hunter_player_ids": "",
+   "dracula_player_id": "",
+   "tournament": "",
+   "elo": null
   },
   {
    "id": "20260926T104429Z-272b69df",
@@ -391,7 +540,10 @@
    "log_sha256": "0a7f75480fbf18412485f3923e333e6b7e97e997b4063c803609300dea79629e",
    "ended_at_utc": "2026-09-26T10:44:22Z",
    "action_count": 904,
-   "tournament": ""
+   "hunter_player_ids": "",
+   "dracula_player_id": "",
+   "tournament": "",
+   "elo": null
   },
   {
    "id": "20260924T194907Z-c5ea7216",
@@ -420,7 +572,19 @@
    "log_sha256": "7b973c7ae533f58fbefe9b156ca0f0df7064b126de56e3f42ee6f3c6f30605ed",
    "ended_at_utc": "2026-09-24T19:49:00Z",
    "action_count": 768,
-   "tournament": ""
+   "hunter_player_ids": "c84fc3bcadac",
+   "dracula_player_id": "4de19fba3bc7",
+   "tournament": "",
+   "elo": {
+    "dracula": [
+     1500.0,
+     1520.0
+    ],
+    "hunter": [
+     1500.0,
+     1480.0
+    ]
+   }
   },
   {
    "id": "20260923T184705Z-1f95b05f",
@@ -449,7 +613,10 @@
    "log_sha256": "b4dc22991df0d2d1b386b7ef071b57eba5d7822e5a62b8f16aff23c946eae83f",
    "ended_at_utc": "2026-09-23T18:47:01Z",
    "action_count": 518,
-   "tournament": ""
+   "hunter_player_ids": "",
+   "dracula_player_id": "",
+   "tournament": "",
+   "elo": null
   },
   {
    "id": "20260922T193454Z-06ad15a7",
@@ -478,7 +645,10 @@
    "log_sha256": "71d687d7a2412477f1900a1803363ca4f7734d9fa9144195716629312194e639",
    "ended_at_utc": "2026-09-22T19:34:47Z",
    "action_count": 687,
-   "tournament": ""
+   "hunter_player_ids": "",
+   "dracula_player_id": "",
+   "tournament": "",
+   "elo": null
   },
   {
    "id": "20260919T213131Z-f60e4d14",
@@ -507,7 +677,19 @@
    "log_sha256": "6b48bc2bd42d8b7f49e0d7eabc05008ac98841e890e2b437ef4d397fd279836c",
    "ended_at_utc": "2026-09-19T21:29:02Z",
    "action_count": 592,
-   "tournament": ""
+   "hunter_player_ids": "ff218fc38d41",
+   "dracula_player_id": "4de19fba3bc7",
+   "tournament": "",
+   "elo": {
+    "dracula": [
+     1500.0,
+     1520.0
+    ],
+    "hunter": [
+     1500.0,
+     1480.0
+    ]
+   }
   },
   {
    "id": "20260918T105451Z-8889073e",
@@ -536,7 +718,10 @@
    "log_sha256": "d9b1fcebb6f92d359524b66112224bb61eccb74c34b80f3aef9dc07a6959ba57",
    "ended_at_utc": "2026-09-18T10:54:49Z",
    "action_count": 26,
-   "tournament": ""
+   "hunter_player_ids": "",
+   "dracula_player_id": "",
+   "tournament": "",
+   "elo": null
   },
   {
    "id": "20260918T104637Z-f4290201",
@@ -565,7 +750,10 @@
    "log_sha256": "d7ac8ba5f45e1f367b57e5a42fc8d96a859d41426a1339c0a0af320c13563064",
    "ended_at_utc": "2026-09-18T10:46:34Z",
    "action_count": 24,
-   "tournament": ""
+   "hunter_player_ids": "",
+   "dracula_player_id": "",
+   "tournament": "",
+   "elo": null
   },
   {
    "id": "20260918T103534Z-1e4f20ea",
@@ -594,7 +782,10 @@
    "log_sha256": "bc42a448755cf60fc9aa8896aac030ac3c66bbf7ad620a49781df1cda2522a22",
    "ended_at_utc": "2026-09-18T10:35:31Z",
    "action_count": 29,
-   "tournament": ""
+   "hunter_player_ids": "",
+   "dracula_player_id": "",
+   "tournament": "",
+   "elo": null
   },
   {
    "id": "20260918T102604Z-8f183055",
@@ -623,7 +814,10 @@
    "log_sha256": "9cc0b6be5624304a73a19477220c190c21360d8d5bd87711d5f353d274f8a847",
    "ended_at_utc": "2026-09-18T10:26:02Z",
    "action_count": 25,
-   "tournament": ""
+   "hunter_player_ids": "",
+   "dracula_player_id": "",
+   "tournament": "",
+   "elo": null
   },
   {
    "id": "20260918T005007Z-869a14da",
@@ -652,7 +846,10 @@
    "log_sha256": "1d2adf9e00c9ba5a53780dfc21caa478546df2e1d3413229e4988d7ca3a94aa9",
    "ended_at_utc": "2026-09-18T00:50:04Z",
    "action_count": 627,
-   "tournament": ""
+   "hunter_player_ids": "",
+   "dracula_player_id": "",
+   "tournament": "",
+   "elo": null
   },
   {
    "id": "20260917T223538Z-1bc8bb01",
@@ -681,7 +878,10 @@
    "log_sha256": "9f0131c0fe99210e55adcfa51b207aea41dc9275dce2fe0839427ccf5523bb16",
    "ended_at_utc": "2026-09-17T22:35:27Z",
    "action_count": 25,
-   "tournament": ""
+   "hunter_player_ids": "",
+   "dracula_player_id": "",
+   "tournament": "",
+   "elo": null
   }
  ]
 }

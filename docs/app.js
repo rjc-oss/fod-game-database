@@ -1,5 +1,5 @@
 /* The search site. Loads index.json (built from data/games.csv) and renders one filterable,
-   sortable table. No framework, no build step: edit this file and push.
+   sortable table, and the Elo leaderboard beside it. No framework, no build step: edit this file and push.
 
    Downloads go through fetch + a Blob URL because the `download` attribute is ignored on a
    cross-origin link — a plain link to raw.githubusercontent.com would show the JSON in the tab
@@ -24,7 +24,10 @@
 
   var games = [];
   var tournaments = [];                // newest first, as index.json lists them
+  var ratings = null;                  // index.json's leaderboard (tools/elo.py)
   var state = {
+    // "games" or "leaderboard"; ?view=leaderboard links to the leaderboard.
+    view: parameter("view") === "leaderboard" ? "leaderboard" : "games",
     // What a link points at: a game by upload id, a save by file name. Shown on their own; any filter
     // or search clears them.
     game: parameter("game"),
@@ -60,6 +63,7 @@
     .then(function (index) {
       games = (index && index.games) || [];
       tournaments = (index && index.tournaments) || [];
+      ratings = (index && index.ratings) || null;
       fillTournaments();
       var generated = document.getElementById("generated");
       if (generated && index && index.generated) {
@@ -77,6 +81,10 @@
   }
 
   // Controls --------------------------------------------------------------
+
+  Array.prototype.forEach.call(document.querySelectorAll('.chip[data-filter="view"]'), function (chip) {
+    chip.classList.toggle("is-on", chip.getAttribute("data-value") === state.view);
+  });
 
   document.getElementById("search").addEventListener("input", function (event) {
     state.search = event.target.value.trim().toLowerCase();
@@ -140,6 +148,12 @@
   // Rendering -------------------------------------------------------------
 
   function render() {
+    document.getElementById("games-view").hidden = state.view !== "games";
+    document.getElementById("leaderboard-view").hidden = state.view !== "leaderboard";
+    if (state.view === "leaderboard") {
+      renderBoards();
+      return;
+    }
     var shown = games.filter(matches);
     var linked = state.game || state.save;
     var downloaded = state.save;       // kept for the notice: the fallback below clears state.save
@@ -236,7 +250,10 @@
     var side = document.createElement("span");
     side.className = game.winner_side === "Hunters" ? "side-hunters" : "side-dracula";
     side.textContent = game.winner_side || "";
-    side.title = displayNames(game.winner_players) + " beat " + displayNames(game.loser_players);
+    side.title = displayNames(game.winner_players) + " beat " + displayNames(game.loser_players) +
+      (game.elo ? "\nDracula Elo " + whole(game.elo.dracula[0]) + " → " + whole(game.elo.dracula[1]) +
+                  "\nHunter Elo " + whole(game.elo.hunter[0]) + " → " + whole(game.elo.hunter[1])
+                : "\nNot rated (only online 1 v 1 games with no AI are)");
     winner.appendChild(side);
 
     number(tr, game.influence);
@@ -377,6 +394,100 @@
                         stamp(tournament.start_utc) + " to " +
                         (tournament.end_utc ? stamp(tournament.end_utc) : "now (ongoing)") + " UTC"]
       .filter(Boolean).join(" · ");
+  }
+
+  // Leaderboard -----------------------------------------------------------
+
+  function renderBoards() {
+    var rules = document.getElementById("elo-rules");
+    if (!ratings || !ratings.params) {
+      rules.textContent = "The leaderboard could not be loaded.";
+      return;
+    }
+    var p = ratings.params;
+    rules.textContent = "Rated games are online 1 v 1 games with no AI; local games don't count. " +
+      "Everyone starts at " + whole(p.start) + " as Dracula and as a hunter. A rating moves by K × " +
+      "(result − expected result): K is " + whole(p.k_new) + " for a player's first " + p.new_games +
+      " games on that side (provisional) and " + whole(p.k_settled) + " after, " + whole(p.k_tournament_bonus) +
+      " more in a tournament game. After " + p.grace_days + " days without a rated game, a rating above " +
+      whole(p.start) + " loses " + whole(p.decay_points) + " every " + p.decay_days + " days, down to " +
+      whole(p.start) + ". A player is their Steam account and the name they played under.";
+    fillBoard("board-dracula", ratings.dracula || [], p);
+    fillBoard("board-hunter", ratings.hunter || [], p);
+  }
+
+  function fillBoard(id, entries, p) {
+    var body = document.getElementById(id);
+    body.textContent = "";
+    var now = Date.now();
+    var shown = entries.map(function (entry) {
+      return { entry: entry, rating: currentRating(entry, p, now) };
+    });
+    shown.sort(function (a, b) {
+      return (b.rating - a.rating) ||
+        String(a.entry.shown).localeCompare(String(b.entry.shown), undefined, { sensitivity: "base" });
+    });
+    if (shown.length === 0) {
+      var tr = document.createElement("tr");
+      var td = cell(tr, "No rated games yet.");
+      td.colSpan = 6;
+      td.className = "empty";
+      body.appendChild(tr);
+      return;
+    }
+    shown.forEach(function (item, place) {
+      var entry = item.entry;
+      var tr = document.createElement("tr");
+      number(tr, place + 1);
+      var name = cell(tr, "");
+      var link = document.createElement("button");
+      link.type = "button";
+      link.className = "player-link";
+      link.textContent = entry.shown;
+      link.title = "Show " + entry.name + "'s games";
+      link.addEventListener("click", function () { showPlayer(entry.name); });
+      name.appendChild(link);
+      if (entry.games < p.new_games) {
+        var mark = document.createElement("span");
+        mark.className = "provisional";
+        mark.textContent = " provisional";
+        mark.title = "Fewer than " + p.new_games + " rated games on this side";
+        name.appendChild(mark);
+      }
+      var rating = number(tr, whole(item.rating));
+      if (whole(item.rating) !== whole(entry.rating)) {
+        rating.title = whole(entry.rating) + " at their last game, less the inactivity penalty";
+      }
+      number(tr, entry.games);
+      number(tr, entry.wins + "–" + entry.losses);
+      cell(tr, String(entry.last_played || "?").slice(0, 10));
+      body.appendChild(tr);
+    });
+  }
+
+  // tools/elo.py's decayed(), up to now: the same rule, written out twice.
+  function currentRating(entry, p, now) {
+    var last = Date.parse(entry.last_played);
+    if (isNaN(last) || entry.rating <= p.start) { return entry.rating; }
+    var idle = (now - last) / 86400000;
+    if (idle <= p.grace_days) { return entry.rating; }
+    var weeks = Math.floor((idle - p.grace_days) / p.decay_days);
+    return Math.max(p.start, entry.rating - p.decay_points * weeks);
+  }
+
+  function showPlayer(name) {
+    state.view = "games";
+    state.game = state.save = "";
+    state.search = name.toLowerCase();
+    document.getElementById("search").value = name;
+    Array.prototype.forEach.call(document.querySelectorAll('.chip[data-filter="view"]'), function (chip) {
+      chip.classList.toggle("is-on", chip.getAttribute("data-value") === "games");
+    });
+    render();
+  }
+
+  function whole(value) {
+    return value === null || value === undefined ? "?" : String(Math.round(value));
   }
 
   function summary(shown, total) {

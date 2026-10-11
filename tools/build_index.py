@@ -1,9 +1,10 @@
 """data/games.csv -> docs/index.json, the file the search site loads.
 
 The csv is the canonical table; index.json is just the same rows as JSON, newest first, with the numbers
-and flags as real JSON types so the site doesn't have to parse strings. It adds one thing the csv doesn't
+and flags as real JSON types so the site doesn't have to parse strings. It adds what the csv doesn't
 have: each game's `tournament`, worked out from data/tournaments.csv (see tools/tournaments.py), and the
-list of tournaments itself for the site's dropdown. Run by process_incoming.py after every batch, and by
+list of tournaments itself for the site's dropdown; and the Elo leaderboard (see tools/elo.py), with each
+rated game's `elo`, the two players' ratings before and after it. Run by process_incoming.py after every batch, and by
 hand with: python tools/build_index.py
 """
 
@@ -17,6 +18,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+import elo  # noqa: E402
 import tournaments as tournament_list  # noqa: E402
 from fodsave import BOOL_COLUMNS, INT_COLUMNS  # noqa: E402
 
@@ -25,7 +27,7 @@ GAMES_CSV = ROOT / "data" / "games.csv"
 INDEX_JSON = ROOT / "docs" / "index.json"
 
 # Fields index.json gives each game that games.csv doesn't have.
-DERIVED_COLUMNS = ("tournament",)
+DERIVED_COLUMNS = ("tournament", "elo")
 
 
 def read_games(path=GAMES_CSV):
@@ -51,6 +53,9 @@ def build(games_csv=GAMES_CSV, index_json=INDEX_JSON, tournaments_csv=None):
         tournaments = []
     for game in games:
         game["tournament"] = tournament_list.assign(game, tournaments)
+    board, changes = elo.rate(games)
+    for game in games:
+        game["elo"] = changes.get(game.get("id", ""))
     # Newest first; ids start with the receipt time, so they sort by time.
     games.sort(key=lambda game: game.get("id", ""), reverse=True)
     index = {
@@ -58,6 +63,7 @@ def build(games_csv=GAMES_CSV, index_json=INDEX_JSON, tournaments_csv=None):
         "count": len(games),
         # Newest first, the order the site's dropdown lists them in.
         "tournaments": [tournament.to_json() for tournament in reversed(tournaments)],
+        "ratings": dict(board, params=elo.params()),
         "games": games,
     }
     index_json.parent.mkdir(parents=True, exist_ok=True)

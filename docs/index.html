@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fury of Dracula game database</title>
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 <header>
@@ -15,6 +15,12 @@
 </header>
 
 <main>
+  <div class="chips views" role="group" aria-label="View">
+    <button type="button" class="chip is-on" data-filter="view" data-value="games">Games</button>
+    <button type="button" class="chip" data-filter="view" data-value="leaderboard">Leaderboard</button>
+  </div>
+
+  <section id="games-view">
   <div class="controls">
     <label class="search">
       <span class="visually-hidden">Search player names</span>
@@ -72,6 +78,38 @@
   </div>
 
   <p id="message" class="message" hidden></p>
+  </section>
+
+  <!-- Filled from index.json's ratings (tools/elo.py); the inactivity penalty is applied up to today here. -->
+  <section id="leaderboard-view" hidden>
+    <p id="elo-rules" class="elo-rules"></p>
+    <div class="boards">
+      <div class="board">
+        <h2 class="side-dracula">Dracula</h2>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr><th class="num">#</th><th>Player</th><th class="num">Elo</th><th class="num">Games</th>
+                <th class="num" title="Wins and losses">W–L</th><th title="Their last rated game, either side, in UTC">Last played</th></tr>
+            </thead>
+            <tbody id="board-dracula"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="board">
+        <h2 class="side-hunters">Hunter</h2>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr><th class="num">#</th><th>Player</th><th class="num">Elo</th><th class="num">Games</th>
+                <th class="num" title="Wins and losses">W–L</th><th title="Their last rated game, either side, in UTC">Last played</th></tr>
+            </thead>
+            <tbody id="board-hunter"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer>
@@ -80,7 +118,7 @@
 </footer>
 
 <!-- ?v= is bumped whenever these change: Pages serves them with max-age=600. -->
-<script src="config.js?v=3"></script>
-<script src="app.js?v=3"></script>
+<script src="config.js?v=4"></script>
+<script src="app.js?v=4"></script>
 </body>
 </html>

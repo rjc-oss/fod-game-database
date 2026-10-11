@@ -37,6 +37,8 @@ CONFIG_CODE = re.compile(r"^[0-9A-F]{6}$")
 GAME_TYPES = {0: "Local", 1: "Network"}
 
 NAME_JOIN = " & "
+STEAM_ID = re.compile(r"^\d{1,20}$")
+PLAYER_ID_LENGTH = 12
 MAX_TOKEN = 20
 RULE_JOIN = "; "
 
@@ -102,6 +104,15 @@ MOD_HOUSE_RULES = {
     3 << 29: "Bites score influence",
     3 << 27: "Bitten hunters carry one ticket (not Mina)",
     3 << 25: "Bitten hunters carry one ticket (Mina too)",
+    1000: "Damaging Crucifixes",
+    1001: "Trail Clearing Crucifixes",
+    1002: "Reshuffle Weapon Combat Cancels",
+    1003: "No fast newspapers",
+    1004: "Revised Good Luck",
+    1006: "Hunter allies last 7 days",
+    1008: "Jonathan Harker replaces hunter {}",
+    1009: "Double ticket quantities",
+    1010: "Bodyguards enlarge Dracula's combat hand",
 }
 
 # Non-string columns, for reading games.csv back (build_index.py, the dedupe check).
@@ -146,6 +157,8 @@ class Record:
     log_sha256: str
     ended_at_utc: str
     action_count: int
+    hunter_player_ids: str
+    dracula_player_id: str
 
     @property
     def hunter_names(self):
@@ -166,6 +179,18 @@ def file_token(name):
     if not token:
         token = "Player"
     return token[0].upper() + token[1:].lower()
+
+
+def player_id(online_id):
+    """The key a player is told apart by, from the Steam ID an online seat carries; "" for none.
+
+    A short hash rather than the ID itself, so the table doesn't list Steam IDs. Local and computer seats
+    have no Steam ID, so they have no key. tools/elo.py identifies a player by this key and their name.
+    """
+    if not isinstance(online_id, str) or not STEAM_ID.match(online_id.strip()):
+        return ""
+    digest = hashlib.sha256(("steam:" + online_id.strip()).encode("ascii")).hexdigest()
+    return digest[:PLAYER_ID_LENGTH]
 
 
 def display_players(names):
@@ -290,6 +315,10 @@ def validate(body, envelope):
         if seat != DRACULA_SEAT and player["name"] not in hunters:
             hunters.append(player["name"])
     dracula = players[DRACULA_SEAT]["name"]
+    hunter_ids = []
+    for seat, player in enumerate(players):
+        if seat != DRACULA_SEAT and player["id"] and player["id"] not in hunter_ids:
+            hunter_ids.append(player["id"])
     hunter_victory = meta["hunterVictory"]
     winners = hunters if hunter_victory else [dracula]
     losers = [dracula] if hunter_victory else hunters
@@ -322,6 +351,8 @@ def validate(body, envelope):
         log_sha256=log_sha256(entries),
         ended_at_utc=str(meta.get("endedAtUtc", "")),
         action_count=len(entries),
+        hunter_player_ids=NAME_JOIN.join(hunter_ids),
+        dracula_player_id=players[DRACULA_SEAT]["id"],
     )
 
 
@@ -372,7 +403,8 @@ def _players(save):
             raise Reject("player {} has no usable name".format(seat))
         if player.get("Type") not in (0, 1):
             raise Reject("player {} has type {}".format(seat, player.get("Type")))
-        players.append({"name": name.strip(), "ai": player["Type"] == 1})
+        players.append({"name": name.strip(), "ai": player["Type"] == 1,
+                        "id": player_id(player.get("OnlineID"))})
     return players
 
 

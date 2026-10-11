@@ -95,6 +95,25 @@ def test_several_hunters_are_listed_in_seat_order(save):
     assert record.winner_players == "Bob & Alice & Carol"
 
 
+def test_a_local_game_has_no_player_keys(save):
+    record = validate(body(save), envelope())
+    assert (record.hunter_player_ids, record.dracula_player_id) == ("", "")
+
+
+def test_an_online_game_keys_players_by_steam_id(save):
+    for seat, steam in enumerate(["111", "222", "111", "222", "333"]):
+        save["Config"]["Players"]["$values"][seat]["OnlineID"] = steam
+    record = validate(body(save), envelope())
+    assert record.hunter_player_ids == fodsave.player_id("111") + " & " + fodsave.player_id("222")
+    assert record.dracula_player_id == fodsave.player_id("333")
+    assert len(record.dracula_player_id) == 12
+
+
+@pytest.mark.parametrize("value", [None, "", "abc", 76561198018625408, "1" * 21])
+def test_a_missing_or_odd_steam_id_has_no_key(value):
+    assert fodsave.player_id(value) == ""
+
+
 def test_an_ai_player_is_flagged(save):
     save["Config"]["Players"]["$values"][4]["Type"] = 1
     assert validate(body(save), envelope()).has_ai is True

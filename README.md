@@ -8,7 +8,8 @@ played, who won and how it ended.
 **Search the games:** https://rjc-oss.github.io/fod-game-database/
 
 Anyone who plays with the mod can upload. Uploads are public: the file holds the whole game and the
-players' names as the game showed them. There are no accounts and nothing else about you is stored.
+players' names as the game showed them, and in an online game each seat's Steam ID (the game puts it in
+the save). There are no accounts and nothing else about you is stored.
 
 ## Tournament and casual
 
@@ -44,6 +45,26 @@ An upload is not on the site straight away: games are filed in batches, so a new
 within about an hour. Each new game is then announced in the Discord as **FoD Game Database**, with a
 link that downloads the save.
 
+## Leaderboard
+
+The site's **Leaderboard** (`?view=leaderboard`) ranks players by Elo, worked out by `tools/elo.py` from
+`games.csv` whenever `docs/index.json` is built:
+
+- **Rated games:** 1 v 1 online games with no computer seats (one person holds all four hunter seats).
+  Local games never count: nothing says who sat in the seats. Casual and tournament games both count.
+- **Players:** a player is their Steam account plus the name they played under, and is shown by that
+  name. A new name starts a new player; two players who share a name are told apart by a short tag.
+- **Two ratings:** everyone has a Dracula rating and a Hunter rating, both starting at 1500.
+- **Updates:** expected score `E = 1 / (1 + 10^((opponent − own) / 400))`; a win scores 1, a loss 0.
+  A rating moves by `K × (score − E)`, with K = 40 for a player's first 10 rated games on that side
+  (shown as provisional) and 20 after, both 10 higher in a tournament game.
+- **Order:** games are rated in the order the server received them, recalculated from scratch every build.
+- **Inactivity:** after 30 days without a rated game (on either side), each rating above 1500 loses 5 a
+  week, never going below 1500. The site applies this up to the day it is viewed, and the same rule is
+  applied before a returning player's next game is rated.
+
+Each rated game's ratings before and after are in the Winner column's tooltip.
+
 ## What's here
 
 | Path | |
@@ -52,7 +73,7 @@ link that downloads the save.
 | `data/games.csv` | the table: one row per game, the canonical list |
 | `data/rejected.csv` | uploads that were not stored, and why (no file is kept) |
 | `data/tournaments.csv` | the tournaments and their dates, which decide each tournament game's tournament |
-| `docs/` | the search site (GitHub Pages), `index.json` built from `games.csv` and `tournaments.csv`; `config.js` holds the one copy of the repository's download URL |
+| `docs/` | the search site (GitHub Pages), `index.json` built from `games.csv` and `tournaments.csv` (with the Elo leaderboard); `config.js` holds the one copy of the repository's download URL |
 | `tools/` | the Python that checks uploads, files them, and announces them in the Discord |
 | `worker/` | the Cloudflare Worker the mod uploads to |
 | `tests/` | `python -m pytest` |
@@ -85,6 +106,7 @@ link that downloads the save.
 | `log_sha256` | hash of the action log; two copies of one game that differ here went out of sync |
 | `ended_at_utc` | when the game ended, by the uploading player's clock (not trusted, not used for naming) |
 | `action_count` | how many actions the game took |
+| `hunter_player_ids`, `dracula_player_id` | each player's key: a short hash of the Steam ID an online seat carries (one per distinct hunter player); empty for local and computer seats. The leaderboard tells players apart by this and their name |
 
 ## Replaying a game
 
