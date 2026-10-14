@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-14T07:42:14Z",
- "count": 25,
+ "generated": "2026-10-14T12:01:38Z",
+ "count": 26,
  "tournaments": [
   {
    "name": "LoD 2027 Knockout",
@@ -122,6 +122,38 @@
   }
  },
  "games": [
+  {
+   "id": "20261014T120028Z-1b727d22",
+   "received_at_utc": "2026-10-14T12:00:28.876Z",
+   "database": "casual",
+   "file": "Rtowin_Vs_Dracula_2026-10-14_12-00-28.fod",
+   "hunters": "RToWin",
+   "dracula": "Dracula",
+   "winner_side": "Hunters",
+   "winner_players": "RToWin",
+   "loser_players": "Dracula",
+   "influence": 0,
+   "dracula_health": 0,
+   "dracula_max_health": 15,
+   "days_completed": 6,
+   "score": -15,
+   "game_type": "Local",
+   "advanced_rules": "Power cards: all; Free placement; Rumour tokens; Lairs",
+   "house_rules": "Trail slides before Dracula moves",
+   "mod_house_rules": "Revised Consecrated Ground; Advanced Dracula AI; Dracula starts with an encounter; Mod rule 1011 1; Mod rule 1007 1",
+   "has_ai": true,
+   "save_version": 40,
+   "mod_version": "0.99.0",
+   "config_code": "5EAB41",
+   "identifier": "b6568451-eae9-4373-9527-166a2b398241",
+   "log_sha256": "9ae97da63c9129f7fdc501d94d9780e56aefd0e253d9da4168729c504f1b4a0a",
+   "ended_at_utc": "2026-10-14T12:00:25Z",
+   "action_count": 290,
+   "hunter_player_ids": "",
+   "dracula_player_id": "",
+   "tournament": "",
+   "elo": null
+  },
   {
    "id": "20261013T181730Z-10152829",
    "received_at_utc": "2026-10-13T18:17:30.757Z",
