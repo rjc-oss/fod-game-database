@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-15T18:20:20Z",
- "count": 26,
+ "generated": "2026-10-15T21:33:25Z",
+ "count": 27,
  "tournaments": [
   {
    "name": "LoD 2027 Knockout",
@@ -122,6 +122,38 @@
   }
  },
  "games": [
+  {
+   "id": "20261015T213211Z-4cc2be2c",
+   "received_at_utc": "2026-10-15T21:32:11.890Z",
+   "database": "casual",
+   "file": "Scotsword_Vs_Dracula_2026-10-15_21-32-11.fod",
+   "hunters": "Scotsword",
+   "dracula": "Dracula",
+   "winner_side": "Hunters",
+   "winner_players": "Scotsword",
+   "loser_players": "Dracula",
+   "influence": 5,
+   "dracula_health": 0,
+   "dracula_max_health": 15,
+   "days_completed": 17,
+   "score": -10,
+   "game_type": "Local",
+   "advanced_rules": "Power cards: all; Free placement; Rumour tokens; Lairs",
+   "house_rules": "Trail slides before Dracula moves",
+   "mod_house_rules": "Bites score influence; Manchester becomes Whitby; Sister Agatha damage 1; Long Night at dawn or dusk; Bitten hunters carry one ticket (Mina too); Great Strength only at your location; Advanced Dracula AI; Heroic Leap damage limited by your health; Dracula mulligans his opening hand; Dracula starts with an encounter; Rifle does not clear Rats; Galatz becomes a port; Customs Search on entering a land region; Empowered Devilish Power; Heavenly Host discarded against Great Wolf; Mini VL Blood Transfusion; Jonathan Harker replaces hunter 4; Mod rule 1007 1; Hunter allies last 7 days; Revised Good Luck; No fast newspapers; Reshuffle Weapon Combat Cancels; Hired Scouts playable as an action; Heavenly Host discarded against Desecrated Soil; Matured Spy always discards tickets; Misdirect can target sea locations; Garlic Wreath only discarded by Claws",
+   "has_ai": true,
+   "save_version": 40,
+   "mod_version": "0.90.0",
+   "config_code": "0C84DE",
+   "identifier": "f26b8aa2-38ad-4535-91f4-933f35056285",
+   "log_sha256": "90958c68b93acc24a4f3f762414fe3708938d3928cac7fcd35eebcbe28e2c3a0",
+   "ended_at_utc": "2026-10-15T21:32:06Z",
+   "action_count": 718,
+   "hunter_player_ids": "",
+   "dracula_player_id": "",
+   "tournament": "",
+   "elo": null
+  },
   {
    "id": "20261014T120028Z-1b727d22",
    "received_at_utc": "2026-10-14T12:00:28.876Z",
