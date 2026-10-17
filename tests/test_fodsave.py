@@ -262,6 +262,15 @@ def test_rejects_a_bad_meta_header(save):
         validate(body(save), envelope(dict(META, configCode="abcdef")))
     with pytest.raises(Reject, match="hunterVictory"):
         validate(body(save), envelope(dict(META, hunterVictory="yes")))
+    with pytest.raises(Reject, match="preset"):
+        validate(body(save), envelope(dict(META, preset="Vanilla+")))
+
+
+def test_records_the_preset(save):
+    assert validate(body(save), envelope(dict(META, preset="VanillaPlus"))).preset == "Vanilla+"
+    assert validate(body(save), envelope(dict(META, preset="Custom"))).preset == "Custom"
+    # Uploads from before mod 0.107.0 have no preset.
+    assert validate(body(save), envelope()).preset == ""
 
 
 def test_rejects_a_bad_player_list(save):
@@ -295,6 +304,8 @@ def test_file_name():
     assert file_name(["RToWin"], "scotSWORD", when) == "Rtowin_Vs_Scotsword_2026-09-17_20-11-05.fod"
     assert file_name(["Alice", "Bob"], "Carol", when) == "Alice_Bob_Vs_Carol_2026-09-17_20-11-05.fod"
     assert file_name([], "", when) == "Player_Vs_Player_2026-09-17_20-11-05.fod"
+    assert file_name(["Alice"], "Carol", when, "Vanilla+") == "Alice_Vs_Carol_VanillaPlus_2026-09-17_20-11-05.fod"
+    assert file_name(["Alice"], "Carol", when, "Custom") == "Alice_Vs_Carol_Custom_2026-09-17_20-11-05.fod"
 
 
 @pytest.mark.parametrize("influence,health,maximum,days,expected", [

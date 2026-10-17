@@ -108,6 +108,7 @@ Each rated game's ratings before and after are in the Winner column's tooltip.
 | `has_ai` | whether any seat was played by the computer |
 | `save_version` | the game's save format version |
 | `mod_version`, `config_code` | the mod version and settings the game was played with — **a save only replays correctly with the same ones** |
+| `preset` | whether the uploader's mod settings were one of the DraculaMod page's presets (`Vanilla`, `Vanilla+`, `Modded`) or their own (`Custom`); empty for uploads from before mod 0.107.0 |
 | `identifier` | the game's own id, the same in every player's copy (this is what stops duplicates) |
 | `log_sha256` | hash of the action log; two copies of one game that differ here went out of sync |
 | `ended_at_utc` | when the game ended, by the uploading player's clock (not trusted, not used for naming) |

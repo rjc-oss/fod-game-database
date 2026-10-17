@@ -195,7 +195,7 @@ def _split(value):
 
 def _unique_name(record, used):
     """The record's file name, with _2, _3 … before .fod if that name is taken."""
-    name = file_name(record.hunter_names, record.dracula, _received(record.received_at_utc))
+    name = file_name(record.hunter_names, record.dracula, _received(record.received_at_utc), record.preset)
     if name not in used:
         return name
     stem = name[:-len(".fod")]

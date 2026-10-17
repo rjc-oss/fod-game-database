@@ -115,6 +115,12 @@ def test_the_message_reads_as_the_announcement_should():
                      "https://example.test/db/?save=Rtowin_Vs_Scotsword_2026-09-18_00-50-07.fod")
 
 
+def test_the_preset_comes_before_the_house_rules():
+    words = announce_discord.message(dict(GAME, preset="Vanilla+"), site="https://example.test/")
+
+    assert "RToWin Vs scotSWORD, Vanilla+ settings, with house rules Feed healing 3;" in words
+
+
 def test_a_tournament_game_says_so():
     words = announce_discord.message(dict(GAME, database="tournament"), site="https://example.test/")
 

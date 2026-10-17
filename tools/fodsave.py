@@ -34,6 +34,9 @@ LONG_GAME_DAYS = 21              # from here the hunters get the score bonus
 
 MOD_VERSION = re.compile(r"^\d+\.\d+\.\d+$")
 CONFIG_CODE = re.compile(r"^[0-9A-F]{6}$")
+# The DraculaMod page preset the uploader's settings matched (meta "preset", mod 0.107.0 on; older uploads have
+# none) -> what games.csv holds. The header can't carry "+", so Vanilla+ travels as VanillaPlus.
+PRESETS = {"Vanilla": "Vanilla", "VanillaPlus": "Vanilla+", "Modded": "Modded", "Custom": "Custom"}
 GAME_TYPES = {0: "Local", 1: "Network"}
 
 NAME_JOIN = " & "
@@ -153,6 +156,7 @@ class Record:
     save_version: int
     mod_version: str
     config_code: str
+    preset: str
     identifier: str
     log_sha256: str
     ended_at_utc: str
@@ -209,11 +213,14 @@ def display_players(names):
     return NAME_JOIN.join(shown)
 
 
-def file_name(hunters, dracula, when):
-    """Rtowin_Vs_Scotsword_2026-09-17_20-11-05.fod: the hunters in seat order, Dracula, the time."""
+def file_name(hunters, dracula, when, preset=""):
+    """Rtowin_Vs_Scotsword_VanillaPlus_2026-09-17_20-11-05.fod: the hunters in seat order, Dracula, the mod
+    settings' preset (left out when not recorded; Vanilla+ as VanillaPlus, as the mod names its own saves), the time."""
     tokens = [file_token(name) for name in hunters] or [file_token("")]
-    return "{}_Vs_{}_{}.fod".format(
-        "_".join(tokens), file_token(dracula), when.strftime("%Y-%m-%d_%H-%M-%S")
+    settings = "".join(c for c in preset.replace("+", "Plus") if c.isascii() and c.isalnum())
+    return "{}_Vs_{}_{}{}.fod".format(
+        "_".join(tokens), file_token(dracula), settings + "_" if settings else "",
+        when.strftime("%Y-%m-%d_%H-%M-%S")
     )
 
 
@@ -347,6 +354,7 @@ def validate(body, envelope):
         save_version=save["SaveVersion"],
         mod_version=meta["modVersion"],
         config_code=meta["configCode"],
+        preset=PRESETS.get(meta.get("preset"), ""),
         identifier=save["Identifier"],
         log_sha256=log_sha256(entries),
         ended_at_utc=str(meta.get("endedAtUtc", "")),
@@ -434,6 +442,8 @@ def _meta(envelope, save, entries):
         raise Reject("bad modVersion")
     if not CONFIG_CODE.match(str(meta.get("configCode", ""))):
         raise Reject("bad configCode")
+    if "preset" in meta and meta["preset"] not in PRESETS:
+        raise Reject("bad preset")
     if not isinstance(meta.get("hunterVictory"), bool):
         raise Reject("hunterVictory is not a boolean")
 

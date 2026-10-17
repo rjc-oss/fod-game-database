@@ -121,10 +121,13 @@ def summarise_rules(game):
 
 def message(game, site=None):
     """The line posted for one game."""
-    words = "New {} available, {} Vs {}, with house rules {}, mod {} config {}, {}".format(
+    # Games from before mod 0.107.0 have no preset, so they say nothing about it.
+    preset = plain(game.get("preset"))
+    words = "New {} available, {} Vs {}, {}with house rules {}, mod {} config {}, {}".format(
         "tournament game" if game.get("database") == "tournament" else "game",
         plain(display_players(game.get("hunters", ""))),
         plain(display_players(game.get("dracula", ""))),
+        preset + " settings, " if preset else "",
         plain(summarise_rules(game)),
         plain(game.get("mod_version")) or "?",
         plain(game.get("config_code")) or "?",
