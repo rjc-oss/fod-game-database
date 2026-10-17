@@ -1,5 +1,5 @@
 /* The search site. Loads index.json (built from data/games.csv) and renders one filterable,
-   sortable table, and the Elo leaderboard beside it. No framework, no build step: edit this file and push.
+   sortable table, and the Glicko-2 leaderboard beside it. No framework, no build step: edit this file and push.
 
    Downloads go through fetch + a Blob URL because the `download` attribute is ignored on a
    cross-origin link — a plain link to raw.githubusercontent.com would show the JSON in the tab
@@ -24,7 +24,7 @@
 
   var games = [];
   var tournaments = [];                // newest first, as index.json lists them
-  var ratings = null;                  // index.json's leaderboard (tools/elo.py)
+  var ratings = null;                  // index.json's leaderboard (tools/glicko.py)
   var state = {
     // "games" or "leaderboard"; ?view=leaderboard links to the leaderboard.
     view: parameter("view") === "leaderboard" ? "leaderboard" : "games",
@@ -251,8 +251,8 @@
     side.className = game.winner_side === "Hunters" ? "side-hunters" : "side-dracula";
     side.textContent = game.winner_side || "";
     side.title = displayNames(game.winner_players) + " beat " + displayNames(game.loser_players) +
-      (game.elo ? "\nDracula Elo " + whole(game.elo.dracula[0]) + " → " + whole(game.elo.dracula[1]) +
-                  "\nHunter Elo " + whole(game.elo.hunter[0]) + " → " + whole(game.elo.hunter[1])
+      (game.rating ? "\nDracula rating " + whole(game.rating.dracula[0]) + " → " + whole(game.rating.dracula[1]) +
+                     "\nHunter rating " + whole(game.rating.hunter[0]) + " → " + whole(game.rating.hunter[1])
                 : "\nNot rated (only online 1 v 1 games with no AI are)");
     winner.appendChild(side);
 
@@ -399,19 +399,20 @@
   // Leaderboard -----------------------------------------------------------
 
   function renderBoards() {
-    var rules = document.getElementById("elo-rules");
+    var rules = document.getElementById("rating-rules");
     if (!ratings || !ratings.params) {
       rules.textContent = "The leaderboard could not be loaded.";
       return;
     }
     var p = ratings.params;
     rules.textContent = "Rated games are online 1 v 1 games with no AI; local games don't count. " +
-      "Everyone starts at " + whole(p.start) + " as Dracula and as a hunter. A rating moves by K × " +
-      "(result − expected result): K is " + whole(p.k_new) + " for a player's first " + p.new_games +
-      " games on that side (provisional) and " + whole(p.k_settled) + " after, " + whole(p.k_tournament_bonus) +
-      " more in a tournament game. After " + p.grace_days + " days without a rated game, a rating above " +
-      whole(p.start) + " loses " + whole(p.decay_points) + " every " + p.decay_days + " days, down to " +
-      whole(p.start) + ". A player is their Steam account and the name they played under.";
+      "Ratings are Glicko-2 with lichess's settings, a separate one for Dracula and for the hunters. " +
+      "Everyone starts at " + whole(p.start) + " with a deviation (how unsure the rating is) of " +
+      whole(p.start_deviation) + ": an unsure rating moves fast, and a game against an unsure opponent " +
+      "barely moves a sure one. Each game makes a rating surer; time without a game on that side makes it " +
+      "less sure again. A rating with a deviation above " + whole(p.provisional_deviation) +
+      " is provisional (?) and listed after the ranked players. " +
+      "A player is their Steam account and the name they played under.";
     fillBoard("board-dracula", ratings.dracula || [], p);
     fillBoard("board-hunter", ratings.hunter || [], p);
   }
@@ -421,10 +422,11 @@
     body.textContent = "";
     var now = Date.now();
     var shown = entries.map(function (entry) {
-      return { entry: entry, rating: currentRating(entry, p, now) };
+      var deviation = currentDeviation(entry, p, now);
+      return { entry: entry, deviation: deviation, provisional: deviation > p.provisional_deviation };
     });
     shown.sort(function (a, b) {
-      return (b.rating - a.rating) ||
+      return (a.provisional - b.provisional) || (b.entry.rating - a.entry.rating) ||
         String(a.entry.shown).localeCompare(String(b.entry.shown), undefined, { sensitivity: "base" });
     });
     if (shown.length === 0) {
@@ -438,7 +440,8 @@
     shown.forEach(function (item, place) {
       var entry = item.entry;
       var tr = document.createElement("tr");
-      number(tr, place + 1);
+      if (item.provisional) { tr.className = "provisional"; }
+      number(tr, item.provisional ? "–" : place + 1);
       var name = cell(tr, "");
       var link = document.createElement("button");
       link.type = "button";
@@ -447,17 +450,8 @@
       link.title = "Show " + entry.name + "'s games";
       link.addEventListener("click", function () { showPlayer(entry.name); });
       name.appendChild(link);
-      if (entry.games < p.new_games) {
-        var mark = document.createElement("span");
-        mark.className = "provisional";
-        mark.textContent = " provisional";
-        mark.title = "Fewer than " + p.new_games + " rated games on this side";
-        name.appendChild(mark);
-      }
-      var rating = number(tr, whole(item.rating));
-      if (whole(item.rating) !== whole(entry.rating)) {
-        rating.title = whole(entry.rating) + " at their last game, less the inactivity penalty";
-      }
+      var rating = number(tr, whole(entry.rating) + (item.provisional ? "?" : ""));
+      rating.title = "± " + whole(item.deviation) + (item.provisional ? " (provisional: not ranked yet)" : "");
       number(tr, entry.games);
       number(tr, entry.wins + "–" + entry.losses);
       cell(tr, String(entry.last_played || "?").slice(0, 10));
@@ -465,14 +459,14 @@
     });
   }
 
-  // tools/elo.py's decayed(), up to now: the same rule, written out twice.
-  function currentRating(entry, p, now) {
+  // tools/glicko.py's deviation_after(), up to now: the same rule, written out twice.
+  function currentDeviation(entry, p, now) {
     var last = Date.parse(entry.last_played);
-    if (isNaN(last) || entry.rating <= p.start) { return entry.rating; }
-    var idle = (now - last) / 86400000;
-    if (idle <= p.grace_days) { return entry.rating; }
-    var weeks = Math.floor((idle - p.grace_days) / p.decay_days);
-    return Math.max(p.start, entry.rating - p.decay_points * weeks);
+    if (isNaN(last)) { return entry.deviation; }
+    var days = Math.max(0, (now - last) / 86400000);
+    var phi = entry.deviation / p.scale;
+    var grown = Math.sqrt(phi * phi + entry.volatility * entry.volatility * days * p.periods_per_day) * p.scale;
+    return Math.min(p.max_deviation, grown);
   }
 
   function showPlayer(name) {

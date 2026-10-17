@@ -80,17 +80,17 @@
   <p id="message" class="message" hidden></p>
   </section>
 
-  <!-- Filled from index.json's ratings (tools/elo.py); the inactivity penalty is applied up to today here. -->
+  <!-- Filled from index.json's ratings (tools/glicko.py); each deviation is grown up to today here. -->
   <section id="leaderboard-view" hidden>
-    <p id="elo-rules" class="elo-rules"></p>
+    <p id="rating-rules" class="rating-rules"></p>
     <div class="boards">
       <div class="board">
         <h2 class="side-dracula">Dracula</h2>
         <div class="table-scroll">
           <table>
             <thead>
-              <tr><th class="num">#</th><th>Player</th><th class="num">Elo</th><th class="num">Games</th>
-                <th class="num" title="Wins and losses">W–L</th><th title="Their last rated game, either side, in UTC">Last played</th></tr>
+              <tr><th class="num">#</th><th>Player</th><th class="num" title="Glicko-2 rating; hover one for its deviation">Rating</th><th class="num">Games</th>
+                <th class="num" title="Wins and losses">W–L</th><th title="Their last rated game on this side, in UTC">Last played</th></tr>
             </thead>
             <tbody id="board-dracula"></tbody>
           </table>
@@ -101,8 +101,8 @@
         <div class="table-scroll">
           <table>
             <thead>
-              <tr><th class="num">#</th><th>Player</th><th class="num">Elo</th><th class="num">Games</th>
-                <th class="num" title="Wins and losses">W–L</th><th title="Their last rated game, either side, in UTC">Last played</th></tr>
+              <tr><th class="num">#</th><th>Player</th><th class="num" title="Glicko-2 rating; hover one for its deviation">Rating</th><th class="num">Games</th>
+                <th class="num" title="Wins and losses">W–L</th><th title="Their last rated game on this side, in UTC">Last played</th></tr>
             </thead>
             <tbody id="board-hunter"></tbody>
           </table>

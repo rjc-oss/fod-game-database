@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-17T10:13:05Z",
+ "generated": "2026-10-17T10:39:28Z",
  "count": 28,
  "tournaments": [
   {
@@ -21,7 +21,9 @@
     "key": "4de19fba3bc7:RToWin",
     "name": "RToWin",
     "shown": "RToWin",
-    "rating": 1555.55,
+    "rating": 1896.37,
+    "deviation": 318.9,
+    "volatility": 0.089992,
     "games": 3,
     "wins": 3,
     "losses": 0,
@@ -31,7 +33,9 @@
     "key": "4de19fba3bc7:RToWinLots",
     "name": "RToWinLots",
     "shown": "RToWinLots",
-    "rating": 1520.0,
+    "rating": 1741.48,
+    "deviation": 396.69,
+    "volatility": 0.089998,
     "games": 1,
     "wins": 1,
     "losses": 0,
@@ -41,7 +45,9 @@
     "key": "2083b0699f51:Azaghal8",
     "name": "Azaghal8",
     "shown": "Azaghal8",
-    "rating": 1482.23,
+    "rating": 1379.49,
+    "deviation": 395.27,
+    "volatility": 0.089996,
     "games": 1,
     "wins": 0,
     "losses": 1,
@@ -51,7 +57,9 @@
     "key": "c84fc3bcadac:Tarvalar",
     "name": "Tarvalar",
     "shown": "Tarvalar",
-    "rating": 1481.15,
+    "rating": 1340.98,
+    "deviation": 387.11,
+    "volatility": 0.089996,
     "games": 1,
     "wins": 0,
     "losses": 1,
@@ -61,11 +69,13 @@
     "key": "706148f331c9:Fangs of Fire",
     "name": "Fangs of Fire",
     "shown": "Fangs of Fire",
-    "rating": 1480.0,
+    "rating": 1258.52,
+    "deviation": 396.69,
+    "volatility": 0.089998,
     "games": 1,
     "wins": 0,
     "losses": 1,
-    "last_played": "2026-10-13T18:17:30Z"
+    "last_played": "2026-10-06T17:20:27Z"
    }
   ],
   "hunter": [
@@ -73,17 +83,21 @@
     "key": "4de19fba3bc7:RToWin",
     "name": "RToWin",
     "shown": "RToWin",
-    "rating": 1556.62,
+    "rating": 1934.56,
+    "deviation": 313.82,
+    "volatility": 0.089992,
     "games": 3,
     "wins": 3,
     "losses": 0,
-    "last_played": "2026-10-13T18:17:30Z"
+    "last_played": "2026-10-12T18:42:13Z"
    },
    {
     "key": "706148f331c9:Fangs of Fire",
     "name": "Fangs of Fire",
     "shown": "Fangs of Fire",
-    "rating": 1482.16,
+    "rating": 1364.62,
+    "deviation": 388.49,
+    "volatility": 0.089996,
     "games": 1,
     "wins": 0,
     "losses": 1,
@@ -93,17 +107,21 @@
     "key": "c84fc3bcadac:Tarvalar",
     "name": "Tarvalar",
     "shown": "Tarvalar",
-    "rating": 1480.0,
+    "rating": 1258.52,
+    "deviation": 396.69,
+    "volatility": 0.089998,
     "games": 1,
     "wins": 0,
     "losses": 1,
-    "last_played": "2026-10-06T21:03:20Z"
+    "last_played": "2026-09-24T19:49:07Z"
    },
    {
     "key": "ff218fc38d41:AndreZot",
     "name": "AndreZot",
     "shown": "AndreZot",
-    "rating": 1462.29,
+    "rating": 1190.72,
+    "deviation": 354.5,
+    "volatility": 0.089995,
     "games": 2,
     "wins": 0,
     "losses": 2,
@@ -112,13 +130,11 @@
   ],
   "params": {
    "start": 1500.0,
-   "k_new": 40.0,
-   "k_settled": 20.0,
-   "k_tournament_bonus": 10.0,
-   "new_games": 10,
-   "grace_days": 30,
-   "decay_points": 5.0,
-   "decay_days": 7
+   "start_deviation": 500.0,
+   "max_deviation": 500.0,
+   "provisional_deviation": 110.0,
+   "periods_per_day": 0.21436,
+   "scale": 173.7178
   }
  },
  "games": [
@@ -152,7 +168,7 @@
    "hunter_player_ids": "",
    "dracula_player_id": "",
    "tournament": "",
-   "elo": null
+   "rating": null
   },
   {
    "id": "20261015T213211Z-4cc2be2c",
@@ -184,7 +200,7 @@
    "hunter_player_ids": "",
    "dracula_player_id": "",
    "tournament": "",
-   "elo": null
+   "rating": null
   },
   {
    "id": "20261014T120028Z-1b727d22",
@@ -216,7 +232,7 @@
    "hunter_player_ids": "",
    "dracula_player_id": "",
    "tournament": "",
-   "elo": null
+   "rating": null
   },
   {
    "id": "20261013T181730Z-10152829",
@@ -248,14 +264,14 @@
    "hunter_player_ids": "706148f331c9",
    "dracula_player_id": "4de19fba3bc7",
    "tournament": "",
-   "elo": {
+   "rating": {
     "dracula": [
-     1537.71,
-     1555.55
+     1809.28,
+     1896.37
     ],
     "hunter": [
      1500.0,
-     1482.16
+     1364.62
     ]
    }
   },
@@ -289,14 +305,14 @@
    "hunter_player_ids": "4de19fba3bc7",
    "dracula_player_id": "2083b0699f51",
    "tournament": "",
-   "elo": {
+   "rating": {
     "dracula": [
      1500.0,
-     1482.23
+     1379.49
     ],
     "hunter": [
-     1538.85,
-     1556.62
+     1859.22,
+     1934.56
     ]
    }
   },
@@ -330,14 +346,14 @@
    "hunter_player_ids": "ff218fc38d41",
    "dracula_player_id": "4de19fba3bc7",
    "tournament": "",
-   "elo": {
+   "rating": {
     "dracula": [
-     1520.0,
-     1537.71
+     1741.48,
+     1809.28
     ],
     "hunter": [
-     1480.0,
-     1462.29
+     1258.52,
+     1190.72
     ]
    }
   },
@@ -371,7 +387,7 @@
    "hunter_player_ids": "",
    "dracula_player_id": "",
    "tournament": "",
-   "elo": null
+   "rating": null
   },
   {
    "id": "20261006T210320Z-2dd4f756",
@@ -403,14 +419,14 @@
    "hunter_player_ids": "4de19fba3bc7",
    "dracula_player_id": "c84fc3bcadac",
    "tournament": "",
-   "elo": {
+   "rating": {
     "dracula": [
      1500.0,
-     1481.15
+     1340.98
     ],
     "hunter": [
-     1520.0,
-     1538.85
+     1741.48,
+     1859.22
     ]
    }
   },
@@ -444,14 +460,14 @@
    "hunter_player_ids": "4de19fba3bc7",
    "dracula_player_id": "706148f331c9",
    "tournament": "",
-   "elo": {
+   "rating": {
     "dracula": [
      1500.0,
-     1480.0
+     1258.52
     ],
     "hunter": [
      1500.0,
-     1520.0
+     1741.48
     ]
    }
   },
@@ -485,7 +501,7 @@
    "hunter_player_ids": "",
    "dracula_player_id": "",
    "tournament": "",
-   "elo": null
+   "rating": null
   },
   {
    "id": "20261004T162510Z-142dd3a9",
@@ -517,7 +533,7 @@
    "hunter_player_ids": "",
    "dracula_player_id": "",
    "tournament": "",
-   "elo": null
+   "rating": null
   },
   {
    "id": "20261004T113929Z-dacd7441",
@@ -549,7 +565,7 @@
    "hunter_player_ids": "",
    "dracula_player_id": "",
    "tournament": "",
-   "elo": null
+   "rating": null
   },
   {
    "id": "20261001T204039Z-45a15160",
@@ -581,7 +597,7 @@
    "hunter_player_ids": "",
    "dracula_player_id": "",
    "tournament": "",
-   "elo": null
+   "rating": null
   },
   {
    "id": "20260930T171159Z-6af5a945",
@@ -613,7 +629,7 @@
    "hunter_player_ids": "",
    "dracula_player_id": "",
    "tournament": "",
-   "elo": null
+   "rating": null
   },
   {
    "id": "20260929T215513Z-64ccb89d",
@@ -645,7 +661,7 @@
    "hunter_player_ids": "",
    "dracula_player_id": "",
    "tournament": "",
-   "elo": null
+   "rating": null
   },
   {
    "id": "20260928T222419Z-efd4b9fc",
@@ -677,7 +693,7 @@
    "hunter_player_ids": "",
    "dracula_player_id": "",
    "tournament": "",
-   "elo": null
+   "rating": null
   },
   {
    "id": "20260928T170955Z-5e41562c",
@@ -709,7 +725,7 @@
    "hunter_player_ids": "",
    "dracula_player_id": "",
    "tournament": "",
-   "elo": null
+   "rating": null
   },
   {
    "id": "20260926T104429Z-272b69df",
@@ -741,7 +757,7 @@
    "hunter_player_ids": "",
    "dracula_player_id": "",
    "tournament": "",
-   "elo": null
+   "rating": null
   },
   {
    "id": "20260924T194907Z-c5ea7216",
@@ -773,14 +789,14 @@
    "hunter_player_ids": "c84fc3bcadac",
    "dracula_player_id": "4de19fba3bc7",
    "tournament": "",
-   "elo": {
+   "rating": {
     "dracula": [
      1500.0,
-     1520.0
+     1741.48
     ],
     "hunter": [
      1500.0,
-     1480.0
+     1258.52
     ]
    }
   },
@@ -814,7 +830,7 @@
    "hunter_player_ids": "",
    "dracula_player_id": "",
    "tournament": "",
-   "elo": null
+   "rating": null
   },
   {
    "id": "20260922T193454Z-06ad15a7",
@@ -846,7 +862,7 @@
    "hunter_player_ids": "",
    "dracula_player_id": "",
    "tournament": "",
-   "elo": null
+   "rating": null
   },
   {
    "id": "20260919T213131Z-f60e4d14",
@@ -878,14 +894,14 @@
    "hunter_player_ids": "ff218fc38d41",
    "dracula_player_id": "4de19fba3bc7",
    "tournament": "",
-   "elo": {
+   "rating": {
     "dracula": [
      1500.0,
-     1520.0
+     1741.48
     ],
     "hunter": [
      1500.0,
-     1480.0
+     1258.52
     ]
    }
   },
@@ -919,7 +935,7 @@
    "hunter_player_ids": "",
    "dracula_player_id": "",
    "tournament": "",
-   "elo": null
+   "rating": null
   },
   {
    "id": "20260918T104637Z-f4290201",
@@ -951,7 +967,7 @@
    "hunter_player_ids": "",
    "dracula_player_id": "",
    "tournament": "",
-   "elo": null
+   "rating": null
   },
   {
    "id": "20260918T103534Z-1e4f20ea",
@@ -983,7 +999,7 @@
    "hunter_player_ids": "",
    "dracula_player_id": "",
    "tournament": "",
-   "elo": null
+   "rating": null
   },
   {
    "id": "20260918T102604Z-8f183055",
@@ -1015,7 +1031,7 @@
    "hunter_player_ids": "",
    "dracula_player_id": "",
    "tournament": "",
-   "elo": null
+   "rating": null
   },
   {
    "id": "20260918T005007Z-869a14da",
@@ -1047,7 +1063,7 @@
    "hunter_player_ids": "",
    "dracula_player_id": "",
    "tournament": "",
-   "elo": null
+   "rating": null
   },
   {
    "id": "20260917T223538Z-1bc8bb01",
@@ -1079,7 +1095,7 @@
    "hunter_player_ids": "",
    "dracula_player_id": "",
    "tournament": "",
-   "elo": null
+   "rating": null
   }
  ]
 }

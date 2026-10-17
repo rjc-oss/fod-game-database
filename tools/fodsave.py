@@ -185,7 +185,7 @@ def player_id(online_id):
     """The key a player is told apart by, from the Steam ID an online seat carries; "" for none.
 
     A short hash rather than the ID itself, so the table doesn't list Steam IDs. Local and computer seats
-    have no Steam ID, so they have no key. tools/elo.py identifies a player by this key and their name.
+    have no Steam ID, so they have no key. tools/glicko.py identifies a player by this key and their name.
     """
     if not isinstance(online_id, str) or not STEAM_ID.match(online_id.strip()):
         return ""
