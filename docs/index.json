@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-19T19:21:52Z",
- "count": 30,
+ "generated": "2026-10-19T20:00:36Z",
+ "count": 31,
  "tournaments": [
   {
    "name": "LoD 2027 Knockout",
@@ -150,6 +150,39 @@
   }
  },
  "games": [
+  {
+   "id": "20261019T195927Z-86403f36",
+   "received_at_utc": "2026-10-19T19:59:27.989Z",
+   "database": "casual",
+   "file": "Scotsword_Vs_Dracula_2026-10-19_19-59-27.fod",
+   "hunters": "Scotsword",
+   "dracula": "Dracula",
+   "winner_side": "Hunters",
+   "winner_players": "Scotsword",
+   "loser_players": "Dracula",
+   "influence": 0,
+   "dracula_health": 0,
+   "dracula_max_health": 25,
+   "days_completed": 14,
+   "score": -25,
+   "game_type": "Local",
+   "advanced_rules": "Power cards: all; Free placement; Rumour tokens; Lairs",
+   "house_rules": "Trail slides before Dracula moves",
+   "mod_house_rules": "Bites score influence; Manchester becomes Whitby; Sister Agatha damage 1; Long Night at dawn or dusk; Bitten hunters carry one ticket (Mina too); Heavenly Host range 2; Great Strength only at your location; Advanced Dracula AI; Heroic Leap damage limited by your health; Dracula mulligans his opening hand; Dracula starts with an encounter; Dracula additional health 10; Rifle does not clear Rats; Feed healing 6; Galatz becomes a port; Customs Search on entering a land region; Empowered Devilish Power; Heavenly Host discarded against Great Wolf; Mini VL Blood Transfusion; Mod rule 1011 1; Bodyguards enlarge Dracula's combat hand; Mod rule 1007 1; Revised Good Luck; No fast newspapers; Reshuffle Weapon Combat Cancels; Hired Scouts playable as an action; Heavenly Host discarded against Desecrated Soil; Matured Spy always discards tickets; Misdirect can target sea locations; Garlic Wreath only discarded by Claws",
+   "has_ai": true,
+   "save_version": 40,
+   "mod_version": "0.106.0",
+   "config_code": "2325D2",
+   "preset": "",
+   "identifier": "eb0531d9-3944-409b-9cfe-a216da3069f7",
+   "log_sha256": "962b2500c0e2c69a0aabc26319b588e6a1b40cb2b81d6ec20e269498decd8f4f",
+   "ended_at_utc": "2026-10-19T19:59:25Z",
+   "action_count": 664,
+   "hunter_player_ids": "",
+   "dracula_player_id": "",
+   "tournament": "",
+   "rating": null
+  },
   {
    "id": "20261019T192042Z-bcdb4dde",
    "received_at_utc": "2026-10-19T19:20:42.535Z",
