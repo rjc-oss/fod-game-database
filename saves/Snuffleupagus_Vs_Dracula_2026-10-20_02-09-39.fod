@@ -1,0 +1,5155 @@
+{
+  "$type": "FuryOfDracula.Core.PersistentGameState, Assembly-CSharp",
+  "Config": {
+    "$type": "FuryOfDracula.Core.GameConfig, Assembly-CSharp",
+    "AdvancedRules": {
+      "$type": "FuryOfDracula.Core.AdvancedRules, Assembly-CSharp",
+      "PowerCardsConfig": 31,
+      "FreePlacement": true,
+      "RumourTokens": true,
+      "Lairs": true
+    },
+    "HouseRules": {
+      "$type": "FuryOfDracula.Core.HouseRules, Assembly-CSharp",
+      "_powerCardsPlayLimits": {
+        "$type": "System.Collections.Generic.Dictionary`2[[FuryOfDracula.Core.AdvancedRules+PowerCards, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib",
+        "1007": 1,
+        "1011": 1,
+        "16777216": 1,
+        "1073741824": 1
+      },
+      "DraculaLandToSeaDamage": 2,
+      "DraculaSeaToSeaDamage": 1,
+      "FODInfluence": 3,
+      "FODAllowedSeaHideoutCount": 6,
+      "RumourTokenInfluence": 3,
+      "DarkCallDrawEventCard": true,
+      "DraculaCantSeeMarkers": false,
+      "SlideTrailBeforeMovingDracula": true,
+      "ForbidWolfFormOnConsecratedGround": false,
+      "RemoveRumourTokensWhenNoEncounters": false
+    },
+    "DebugConfig": null,
+    "GameType": 0,
+    "Players": {
+      "$type": "FuryOfDracula.Core.PlayerConfig[], Assembly-CSharp",
+      "$values": [
+        {
+          "$type": "FuryOfDracula.Core.PlayerConfig, Assembly-CSharp",
+          "Type": 0,
+          "AIDifficultyIndex": 0,
+          "LocalGamePlayerID": 0,
+          "PlayerName": "Snuffleupagus",
+          "IsLoggedInPlayer": true,
+          "OnlineID": null
+        },
+        {
+          "$type": "FuryOfDracula.Core.PlayerConfig, Assembly-CSharp",
+          "Type": 0,
+          "AIDifficultyIndex": 0,
+          "LocalGamePlayerID": 0,
+          "PlayerName": "Snuffleupagus",
+          "IsLoggedInPlayer": true,
+          "OnlineID": null
+        },
+        {
+          "$type": "FuryOfDracula.Core.PlayerConfig, Assembly-CSharp",
+          "Type": 0,
+          "AIDifficultyIndex": 0,
+          "LocalGamePlayerID": 0,
+          "PlayerName": "Snuffleupagus",
+          "IsLoggedInPlayer": true,
+          "OnlineID": null
+        },
+        {
+          "$type": "FuryOfDracula.Core.PlayerConfig, Assembly-CSharp",
+          "Type": 0,
+          "AIDifficultyIndex": 0,
+          "LocalGamePlayerID": 0,
+          "PlayerName": "Snuffleupagus",
+          "IsLoggedInPlayer": true,
+          "OnlineID": null
+        },
+        {
+          "$type": "FuryOfDracula.Core.PlayerConfig, Assembly-CSharp",
+          "Type": 1,
+          "AIDifficultyIndex": 0,
+          "LocalGamePlayerID": 0,
+          "PlayerName": "Dracula",
+          "IsLoggedInPlayer": false,
+          "OnlineID": null
+        }
+      ]
+    },
+    "StartingPlayerIds": {
+      "$type": "System.String[], mscorlib",
+      "$values": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "GameID": "2026/10/19 21:49:16.475",
+    "Seed": 1502476140
+  },
+  "ActionLog": {
+    "$type": "FuryOfDracula.Core.GameActionLog, Assembly-CSharp",
+    "_actions": {
+      "$type": "System.Collections.Generic.List`1[[FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp]], mscorlib",
+      "$values": [
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2399476319,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.HunterPlacementAction, Assembly-CSharp",
+            "LocationID": 58,
+            "UID": 0,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2945076582,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.HunterPlacementAction, Assembly-CSharp",
+            "LocationID": 34,
+            "UID": 1,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3951352446,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.HunterPlacementAction, Assembly-CSharp",
+            "LocationID": 33,
+            "UID": 2,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1786283975,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.HunterPlacementAction, Assembly-CSharp",
+            "LocationID": 58,
+            "UID": 3,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3550477619,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DraculaPlacementAction, Assembly-CSharp",
+            "LocationID": 40,
+            "UID": 4,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2218984181,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SupplyAction, Assembly-CSharp",
+            "LocationId": 58,
+            "UID": 5,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3682143360,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SupplyAction, Assembly-CSharp",
+            "LocationId": 34,
+            "UID": 6,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 508272606,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SupplyAction, Assembly-CSharp",
+            "LocationId": 33,
+            "UID": 7,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 441239806,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SupplyAction, Assembly-CSharp",
+            "LocationId": 58,
+            "UID": 8,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 441239806,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SetHunterRevealedCardsAction, Assembly-CSharp",
+            "RevealedItemCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                33
+              ]
+            },
+            "RevealedEventCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "UID": 9,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 441239806,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.PhaseConcludedMarker, Assembly-CSharp",
+            "UID": 10,
+            "PlayerIdx": -1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 441239806,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDuskAction, Assembly-CSharp",
+            "UID": 11,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 441239806,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDuskAction, Assembly-CSharp",
+            "UID": 12,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 441239806,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDuskAction, Assembly-CSharp",
+            "UID": 13,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 441239806,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDuskAction, Assembly-CSharp",
+            "UID": 14,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 441239806,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDuskAction, Assembly-CSharp",
+            "UID": 15,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 168712228,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ReserveRailTicketAction, Assembly-CSharp",
+            "UID": 16,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 168712228,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardRailTicketAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": []
+            },
+            "UID": 17,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 4294949412,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ReserveRailTicketAction, Assembly-CSharp",
+            "UID": 18,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 4294949412,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardRailTicketAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": []
+            },
+            "UID": 19,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3767893315,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ReserveRailTicketAction, Assembly-CSharp",
+            "UID": 20,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3767893315,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardRailTicketAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": []
+            },
+            "UID": 21,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2517248019,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ReserveRailTicketAction, Assembly-CSharp",
+            "UID": 22,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2517248019,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardRailTicketAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": []
+            },
+            "UID": 23,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2517248019,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.PhaseConcludedMarker, Assembly-CSharp",
+            "UID": 24,
+            "PlayerIdx": -1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2517248019,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 64,
+            "UID": 25,
+            "IsCancel": true,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1880643055,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DraculaSlideTrailAction, Assembly-CSharp",
+            "UID": 26,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1880643055,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 64,
+            "UID": 27,
+            "IsCancel": true,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 354797460,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DraculaMoveByRoad, Assembly-CSharp",
+            "LocationAttachedCard": {
+              "$type": "FuryOfDracula.Core.Cards.EncounterCardRef, Assembly-CSharp",
+              "ID": 8
+            },
+            "FromLocationId": 40,
+            "ToLocationId": 5,
+            "TypeOfConnection": 1,
+            "RecordAction": true,
+            "UID": 28,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 354797460,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.PlaceRumourTokenAction, Assembly-CSharp",
+            "TrailIdx": -1,
+            "UID": 29,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 354797460,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 64,
+            "UID": 30,
+            "IsCancel": true,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 354797460,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DraculaPassPhaseAction, Assembly-CSharp",
+            "UID": 31,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 354797460,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDawnAction, Assembly-CSharp",
+            "UID": 32,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 354797460,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDawnAction, Assembly-CSharp",
+            "UID": 33,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 354797460,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDawnAction, Assembly-CSharp",
+            "UID": 34,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 354797460,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDawnAction, Assembly-CSharp",
+            "UID": 35,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 354797460,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDawnAction, Assembly-CSharp",
+            "UID": 36,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1127906140,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SupplyAction, Assembly-CSharp",
+            "LocationId": 58,
+            "UID": 37,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1127906140,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardItemCardAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                19
+              ]
+            },
+            "UID": 38,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3208234751,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SupplyAction, Assembly-CSharp",
+            "LocationId": 34,
+            "UID": 39,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2025693223,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SupplyAction, Assembly-CSharp",
+            "LocationId": 33,
+            "UID": 40,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 4040248435,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SupplyAction, Assembly-CSharp",
+            "LocationId": 58,
+            "UID": 41,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 4040248435,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SetHunterRevealedCardsAction, Assembly-CSharp",
+            "RevealedItemCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                33
+              ]
+            },
+            "RevealedEventCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "UID": 42,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 4040248435,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.PhaseConcludedMarker, Assembly-CSharp",
+            "UID": 43,
+            "PlayerIdx": -1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 4040248435,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDuskAction, Assembly-CSharp",
+            "UID": 44,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 4040248435,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDuskAction, Assembly-CSharp",
+            "UID": 45,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 4040248435,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDuskAction, Assembly-CSharp",
+            "UID": 46,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 4040248435,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDuskAction, Assembly-CSharp",
+            "UID": 47,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 4040248435,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDuskAction, Assembly-CSharp",
+            "UID": 48,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2986228657,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ReserveRailTicketAction, Assembly-CSharp",
+            "UID": 49,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2547042940,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardRailTicketAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                9
+              ]
+            },
+            "UID": 50,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3348400282,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardRailTicketAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": []
+            },
+            "UID": 51,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3835539527,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardRailTicketAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                15
+              ]
+            },
+            "UID": 52,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2986228657,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardRailTicketAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": []
+            },
+            "UID": 53,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2001923084,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ReserveRailTicketAction, Assembly-CSharp",
+            "UID": 54,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2001923084,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardRailTicketAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": []
+            },
+            "UID": 55,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3176874015,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ReserveRailTicketAction, Assembly-CSharp",
+            "UID": 56,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3176874015,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardRailTicketAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": []
+            },
+            "UID": 57,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3176874015,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeRequestAction, Assembly-CSharp",
+            "TradedPlayerIdx": 0,
+            "EventCardTrade": false,
+            "UID": 58,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3843719391,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmTradeAction, Assembly-CSharp",
+            "TraderPlayerIdx": 3,
+            "TradeEventCards": false,
+            "Choice": true,
+            "UID": 59,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3176874015,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeProposalAction, Assembly-CSharp",
+            "TraderOwnedItemCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                8,
+                24,
+                33
+              ]
+            },
+            "TraderOwnedEventCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOwnedRailTicketIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                4,
+                6
+              ]
+            },
+            "TradeeOwnedItemCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                11,
+                37
+              ]
+            },
+            "TradeeOwnedEventCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOwnedRailTicketIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                3
+              ]
+            },
+            "TraderIdx": 3,
+            "TradeeIdx": 0,
+            "CurrentProposerIdx": 3,
+            "OtherProposerIdx": 0,
+            "TradedEventCards": false,
+            "FirstProposalMade": false,
+            "TradeAccepted": true,
+            "IsCancel": false,
+            "TraderOwnedCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOfferedCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOfferedRailTickets": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOwnedCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOfferedCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOfferedRailTickets": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "LastProposerIdx": -1,
+            "UID": 60,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3843719391,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeAction, Assembly-CSharp",
+            "TraderOwnedItemCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                8,
+                24,
+                33
+              ]
+            },
+            "TraderOwnedEventCardIDs": null,
+            "TraderOwnedRailTicketIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                4,
+                6
+              ]
+            },
+            "TradeeOwnedItemCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                11,
+                37
+              ]
+            },
+            "TradeeOwnedEventCardIDs": null,
+            "TradeeOwnedRailTicketIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                3
+              ]
+            },
+            "TradeeIdx": 0,
+            "TradedEventCards": false,
+            "DeclinedTrade": false,
+            "CardsExchanged": true,
+            "TraderIncomingCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderIncomingRailTickets": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOutgoingCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOutgoingRailTickets": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "UID": 61,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3843719391,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SetHunterRevealedCardsAction, Assembly-CSharp",
+            "RevealedItemCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                33
+              ]
+            },
+            "RevealedEventCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "UID": 62,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3843719391,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeConcludedMarker, Assembly-CSharp",
+            "UID": 63,
+            "PlayerIdx": -1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3843719391,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.PhaseConcludedMarker, Assembly-CSharp",
+            "UID": 64,
+            "PlayerIdx": -1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3843719391,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 64,
+            "UID": 65,
+            "IsCancel": true,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 116821404,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DraculaSlideTrailAction, Assembly-CSharp",
+            "UID": 66,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 116821404,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 64,
+            "UID": 67,
+            "IsCancel": true,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2894533978,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DraculaUsePowerCardAction, Assembly-CSharp",
+            "PowerCardID": 73,
+            "LocationAttachedCard": {
+              "$type": "FuryOfDracula.Core.Cards.EncounterCardRef, Assembly-CSharp",
+              "ID": -595
+            },
+            "FromLocationId": 0,
+            "ToLocationId": 0,
+            "TypeOfConnection": 1,
+            "RecordAction": false,
+            "UID": 68,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2894533978,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SelectEventCardLocationTargetAction, Assembly-CSharp",
+            "TrailIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                2
+              ]
+            },
+            "UID": 69,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2894533978,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 64,
+            "UID": 70,
+            "IsCancel": true,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 798644168,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DraculaMoveByRoad, Assembly-CSharp",
+            "LocationAttachedCard": {
+              "$type": "FuryOfDracula.Core.Cards.EncounterCardRef, Assembly-CSharp",
+              "ID": 27
+            },
+            "FromLocationId": 5,
+            "ToLocationId": 45,
+            "TypeOfConnection": 1,
+            "RecordAction": true,
+            "UID": 71,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 798644168,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.PlaceRumourTokenAction, Assembly-CSharp",
+            "TrailIdx": -1,
+            "UID": 72,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 798644168,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 64,
+            "UID": 73,
+            "IsCancel": true,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 798644168,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DraculaPassPhaseAction, Assembly-CSharp",
+            "UID": 74,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 798644168,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDawnAction, Assembly-CSharp",
+            "UID": 75,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 798644168,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDawnAction, Assembly-CSharp",
+            "UID": 76,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 798644168,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDawnAction, Assembly-CSharp",
+            "UID": 77,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 798644168,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDawnAction, Assembly-CSharp",
+            "UID": 78,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 798644168,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDawnAction, Assembly-CSharp",
+            "UID": 79,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3156275623,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SupplyAction, Assembly-CSharp",
+            "LocationId": 58,
+            "UID": 80,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2211703295,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardItemCardAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                3
+              ]
+            },
+            "UID": 81,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3156275623,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardAction, Assembly-CSharp",
+            "EventCardID": 47,
+            "PlayTriggers": 1024,
+            "UID": 82,
+            "IsCancel": false,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 555272756,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SelectCardResolveEffectAction, Assembly-CSharp",
+            "ChoiceIdx": 1,
+            "UID": 83,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3095049585,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SupplyAction, Assembly-CSharp",
+            "LocationId": 34,
+            "UID": 84,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2897719245,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SupplyAction, Assembly-CSharp",
+            "LocationId": 33,
+            "UID": 85,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2862395910,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SupplyAction, Assembly-CSharp",
+            "LocationId": 58,
+            "UID": 86,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2897719245,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardItemCardAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                0
+              ]
+            },
+            "UID": 87,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2897719245,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SetHunterRevealedCardsAction, Assembly-CSharp",
+            "RevealedItemCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                33
+              ]
+            },
+            "RevealedEventCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "UID": 88,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2862395910,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SetHunterRevealedCardsAction, Assembly-CSharp",
+            "RevealedItemCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                33
+              ]
+            },
+            "RevealedEventCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                68
+              ]
+            },
+            "UID": 89,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2862395910,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.PhaseConcludedMarker, Assembly-CSharp",
+            "UID": 90,
+            "PlayerIdx": -1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2862395910,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDuskAction, Assembly-CSharp",
+            "UID": 91,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2862395910,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDuskAction, Assembly-CSharp",
+            "UID": 92,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2862395910,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDuskAction, Assembly-CSharp",
+            "UID": 93,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2862395910,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDuskAction, Assembly-CSharp",
+            "UID": 94,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2862395910,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDuskAction, Assembly-CSharp",
+            "UID": 95,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2183679042,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ReserveRailTicketAction, Assembly-CSharp",
+            "UID": 96,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2291701411,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardRailTicketAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": []
+            },
+            "UID": 97,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1131425257,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardRailTicketAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                3
+              ]
+            },
+            "UID": 98,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2183679042,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardRailTicketAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": []
+            },
+            "UID": 99,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 312425040,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ReserveRailTicketAction, Assembly-CSharp",
+            "UID": 100,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2364913618,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardRailTicketAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                9
+              ]
+            },
+            "UID": 101,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 312425040,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardRailTicketAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": []
+            },
+            "UID": 102,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 312425040,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeRequestAction, Assembly-CSharp",
+            "TradedPlayerIdx": 1,
+            "EventCardTrade": true,
+            "UID": 103,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3870138195,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmTradeAction, Assembly-CSharp",
+            "TraderPlayerIdx": 2,
+            "TradeEventCards": true,
+            "Choice": true,
+            "UID": 104,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 312425040,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeProposalAction, Assembly-CSharp",
+            "TraderOwnedItemCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOwnedEventCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                35,
+                55,
+                60
+              ]
+            },
+            "TraderOwnedRailTicketIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOwnedItemCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOwnedEventCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                40,
+                59,
+                69
+              ]
+            },
+            "TradeeOwnedRailTicketIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderIdx": 2,
+            "TradeeIdx": 1,
+            "CurrentProposerIdx": 2,
+            "OtherProposerIdx": 1,
+            "TradedEventCards": true,
+            "FirstProposalMade": false,
+            "TradeAccepted": true,
+            "IsCancel": false,
+            "TraderOwnedCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOfferedCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOfferedRailTickets": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOwnedCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOfferedCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOfferedRailTickets": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "LastProposerIdx": -1,
+            "UID": 105,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3870138195,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeAction, Assembly-CSharp",
+            "TraderOwnedItemCardIDs": null,
+            "TraderOwnedEventCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                35,
+                55,
+                60
+              ]
+            },
+            "TraderOwnedRailTicketIDs": null,
+            "TradeeOwnedItemCardIDs": null,
+            "TradeeOwnedEventCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                40,
+                59,
+                69
+              ]
+            },
+            "TradeeOwnedRailTicketIDs": null,
+            "TradeeIdx": 1,
+            "TradedEventCards": true,
+            "DeclinedTrade": false,
+            "CardsExchanged": true,
+            "TraderIncomingCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderIncomingRailTickets": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOutgoingCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOutgoingRailTickets": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "UID": 106,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3870138195,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeConcludedMarker, Assembly-CSharp",
+            "UID": 107,
+            "PlayerIdx": -1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3870138195,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeRequestAction, Assembly-CSharp",
+            "TradedPlayerIdx": 0,
+            "EventCardTrade": false,
+            "UID": 108,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2019137210,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmTradeAction, Assembly-CSharp",
+            "TraderPlayerIdx": 3,
+            "TradeEventCards": false,
+            "Choice": true,
+            "UID": 109,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3870138195,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeProposalAction, Assembly-CSharp",
+            "TraderOwnedItemCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                8,
+                24,
+                33
+              ]
+            },
+            "TraderOwnedEventCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOwnedRailTicketIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                0,
+                6
+              ]
+            },
+            "TradeeOwnedItemCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                11,
+                2,
+                37
+              ]
+            },
+            "TradeeOwnedEventCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOwnedRailTicketIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                4,
+                7
+              ]
+            },
+            "TraderIdx": 3,
+            "TradeeIdx": 0,
+            "CurrentProposerIdx": 3,
+            "OtherProposerIdx": 0,
+            "TradedEventCards": false,
+            "FirstProposalMade": false,
+            "TradeAccepted": true,
+            "IsCancel": false,
+            "TraderOwnedCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOfferedCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOfferedRailTickets": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOwnedCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOfferedCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOfferedRailTickets": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "LastProposerIdx": -1,
+            "UID": 110,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2019137210,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeAction, Assembly-CSharp",
+            "TraderOwnedItemCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                8,
+                24,
+                33
+              ]
+            },
+            "TraderOwnedEventCardIDs": null,
+            "TraderOwnedRailTicketIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                0,
+                6
+              ]
+            },
+            "TradeeOwnedItemCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                11,
+                2,
+                37
+              ]
+            },
+            "TradeeOwnedEventCardIDs": null,
+            "TradeeOwnedRailTicketIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                4,
+                7
+              ]
+            },
+            "TradeeIdx": 0,
+            "TradedEventCards": false,
+            "DeclinedTrade": false,
+            "CardsExchanged": true,
+            "TraderIncomingCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderIncomingRailTickets": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOutgoingCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOutgoingRailTickets": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "UID": 111,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2019137210,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SetHunterRevealedCardsAction, Assembly-CSharp",
+            "RevealedItemCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                33
+              ]
+            },
+            "RevealedEventCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                68
+              ]
+            },
+            "UID": 112,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2019137210,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeConcludedMarker, Assembly-CSharp",
+            "UID": 113,
+            "PlayerIdx": -1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2019137210,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.PhaseConcludedMarker, Assembly-CSharp",
+            "UID": 114,
+            "PlayerIdx": -1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2019137210,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 64,
+            "UID": 115,
+            "IsCancel": true,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2855767239,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DraculaSlideTrailAction, Assembly-CSharp",
+            "UID": 116,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2855767239,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 64,
+            "UID": 117,
+            "IsCancel": true,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3152187807,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DraculaMoveByRoad, Assembly-CSharp",
+            "LocationAttachedCard": {
+              "$type": "FuryOfDracula.Core.Cards.EncounterCardRef, Assembly-CSharp",
+              "ID": 3
+            },
+            "FromLocationId": 45,
+            "ToLocationId": 20,
+            "TypeOfConnection": 1,
+            "RecordAction": true,
+            "UID": 118,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3152187807,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.PlaceRumourTokenAction, Assembly-CSharp",
+            "TrailIdx": -1,
+            "UID": 119,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3152187807,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 64,
+            "UID": 120,
+            "IsCancel": true,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3152187807,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DraculaPassPhaseAction, Assembly-CSharp",
+            "UID": 121,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3152187807,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 1,
+            "UID": 122,
+            "IsCancel": true,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3152187807,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDawnAction, Assembly-CSharp",
+            "UID": 123,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3865459342,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SupplyAction, Assembly-CSharp",
+            "LocationId": 58,
+            "UID": 124,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2704961292,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardItemCardAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                11,
+                20
+              ]
+            },
+            "UID": 125,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1721247307,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SupplyAction, Assembly-CSharp",
+            "LocationId": 34,
+            "UID": 126,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3498756957,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardAction, Assembly-CSharp",
+            "EventCardID": 55,
+            "PlayTriggers": 256,
+            "UID": 127,
+            "IsCancel": false,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1382267831,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SupplyAction, Assembly-CSharp",
+            "LocationId": 58,
+            "UID": 128,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 4030487238,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardItemCardAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                33
+              ]
+            },
+            "UID": 129,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 4030487238,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SetHunterRevealedCardsAction, Assembly-CSharp",
+            "RevealedItemCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                8
+              ]
+            },
+            "RevealedEventCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                68
+              ]
+            },
+            "UID": 130,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1382267831,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SetHunterRevealedCardsAction, Assembly-CSharp",
+            "RevealedItemCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                8
+              ]
+            },
+            "RevealedEventCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                68
+              ]
+            },
+            "UID": 131,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1382267831,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.PhaseConcludedMarker, Assembly-CSharp",
+            "UID": 132,
+            "PlayerIdx": -1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1382267831,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDuskAction, Assembly-CSharp",
+            "UID": 133,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1382267831,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDuskAction, Assembly-CSharp",
+            "UID": 134,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1382267831,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDuskAction, Assembly-CSharp",
+            "UID": 135,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1382267831,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDuskAction, Assembly-CSharp",
+            "UID": 136,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1382267831,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDuskAction, Assembly-CSharp",
+            "UID": 137,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1049714625,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SupplyAction, Assembly-CSharp",
+            "LocationId": 58,
+            "UID": 138,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 204892337,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardItemCardAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                2,
+                13
+              ]
+            },
+            "UID": 139,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2090207347,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SupplyAction, Assembly-CSharp",
+            "LocationId": 34,
+            "UID": 140,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2090207347,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardItemCardAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                5
+              ]
+            },
+            "UID": 141,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2090207347,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardAction, Assembly-CSharp",
+            "EventCardID": 43,
+            "PlayTriggers": 1024,
+            "UID": 142,
+            "IsCancel": false,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2996304953,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SelectEventCardCityTargetAction, Assembly-CSharp",
+            "NodeIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                55,
+                10
+              ]
+            },
+            "UID": 143,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1285158554,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SupplyAction, Assembly-CSharp",
+            "LocationId": 33,
+            "UID": 144,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3968495163,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardItemCardAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                10
+              ]
+            },
+            "UID": 145,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2255394204,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SupplyAction, Assembly-CSharp",
+            "LocationId": 58,
+            "UID": 146,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1851201939,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardItemCardAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                34
+              ]
+            },
+            "UID": 147,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1851201939,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SetHunterRevealedCardsAction, Assembly-CSharp",
+            "RevealedItemCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                8
+              ]
+            },
+            "RevealedEventCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                68
+              ]
+            },
+            "UID": 148,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2255394204,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SetHunterRevealedCardsAction, Assembly-CSharp",
+            "RevealedItemCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                8
+              ]
+            },
+            "RevealedEventCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                68
+              ]
+            },
+            "UID": 149,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2255394204,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.PhaseConcludedMarker, Assembly-CSharp",
+            "UID": 150,
+            "PlayerIdx": -1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2255394204,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 64,
+            "UID": 151,
+            "IsCancel": true,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2173493006,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DraculaSlideTrailAction, Assembly-CSharp",
+            "UID": 152,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2173493006,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 64,
+            "UID": 153,
+            "IsCancel": true,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2320339219,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DraculaMoveByRoad, Assembly-CSharp",
+            "LocationAttachedCard": {
+              "$type": "FuryOfDracula.Core.Cards.EncounterCardRef, Assembly-CSharp",
+              "ID": 14
+            },
+            "FromLocationId": 20,
+            "ToLocationId": 25,
+            "TypeOfConnection": 1,
+            "RecordAction": true,
+            "UID": 154,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2320339219,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.PlaceRumourTokenAction, Assembly-CSharp",
+            "TrailIdx": -1,
+            "UID": 155,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2320339219,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 64,
+            "UID": 156,
+            "IsCancel": true,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2320339219,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DraculaPassPhaseAction, Assembly-CSharp",
+            "UID": 157,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2320339219,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 1,
+            "UID": 158,
+            "IsCancel": true,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2320339219,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDawnAction, Assembly-CSharp",
+            "UID": 159,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2320339219,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 1,
+            "UID": 160,
+            "IsCancel": true,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2320339219,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDawnAction, Assembly-CSharp",
+            "UID": 161,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2085288277,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SupplyAction, Assembly-CSharp",
+            "LocationId": 58,
+            "UID": 162,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2085288277,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardItemCardAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                15,
+                26
+              ]
+            },
+            "UID": 163,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2034338621,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.MoveByRail, Assembly-CSharp",
+            "UseRailTicket": true,
+            "FromLocationId": 34,
+            "ToLocationId": 42,
+            "TypeOfConnection": 2,
+            "RecordAction": true,
+            "UID": 164,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1531725506,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardRailTicketAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                14
+              ]
+            },
+            "UID": 165,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2034338621,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeRequestAction, Assembly-CSharp",
+            "TradedPlayerIdx": 3,
+            "EventCardTrade": true,
+            "UID": 166,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 533634260,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmTradeAction, Assembly-CSharp",
+            "TraderPlayerIdx": 2,
+            "TradeEventCards": true,
+            "Choice": true,
+            "UID": 167,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2034338621,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeProposalAction, Assembly-CSharp",
+            "TraderOwnedItemCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOwnedEventCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                35,
+                65,
+                72
+              ]
+            },
+            "TraderOwnedRailTicketIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOwnedItemCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOwnedEventCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                26,
+                60,
+                68
+              ]
+            },
+            "TradeeOwnedRailTicketIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderIdx": 2,
+            "TradeeIdx": 3,
+            "CurrentProposerIdx": 2,
+            "OtherProposerIdx": 3,
+            "TradedEventCards": true,
+            "FirstProposalMade": false,
+            "TradeAccepted": true,
+            "IsCancel": false,
+            "TraderOwnedCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOfferedCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOfferedRailTickets": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOwnedCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOfferedCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOfferedRailTickets": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "LastProposerIdx": -1,
+            "UID": 168,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 533634260,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeAction, Assembly-CSharp",
+            "TraderOwnedItemCardIDs": null,
+            "TraderOwnedEventCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                35,
+                65,
+                72
+              ]
+            },
+            "TraderOwnedRailTicketIDs": null,
+            "TradeeOwnedItemCardIDs": null,
+            "TradeeOwnedEventCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                26,
+                60,
+                68
+              ]
+            },
+            "TradeeOwnedRailTicketIDs": null,
+            "TradeeIdx": 3,
+            "TradedEventCards": true,
+            "DeclinedTrade": false,
+            "CardsExchanged": true,
+            "TraderIncomingCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderIncomingRailTickets": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOutgoingCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOutgoingRailTickets": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "UID": 169,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 533634260,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SetHunterRevealedCardsAction, Assembly-CSharp",
+            "RevealedItemCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                8
+              ]
+            },
+            "RevealedEventCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                68
+              ]
+            },
+            "UID": 170,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 533634260,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeConcludedMarker, Assembly-CSharp",
+            "UID": 171,
+            "PlayerIdx": -1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 533634260,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SupplyAction, Assembly-CSharp",
+            "LocationId": 58,
+            "UID": 172,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 533634260,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardItemCardAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                12
+              ]
+            },
+            "UID": 173,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 533634260,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SetHunterRevealedCardsAction, Assembly-CSharp",
+            "RevealedItemCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                8
+              ]
+            },
+            "RevealedEventCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                68
+              ]
+            },
+            "UID": 174,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 533634260,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardAction, Assembly-CSharp",
+            "EventCardID": 63,
+            "PlayTriggers": 1024,
+            "UID": 175,
+            "IsCancel": false,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3570315418,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SelectCardResolveEffectAction, Assembly-CSharp",
+            "ChoiceIdx": 0,
+            "UID": 176,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3570315418,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SelectEventCardCityTargetAction, Assembly-CSharp",
+            "NodeIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                45
+              ]
+            },
+            "UID": 177,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 533634260,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SetHunterRevealedCardsAction, Assembly-CSharp",
+            "RevealedItemCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                8
+              ]
+            },
+            "RevealedEventCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                68
+              ]
+            },
+            "UID": 178,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 533634260,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SetHunterRevealedCardsAction, Assembly-CSharp",
+            "RevealedItemCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                8
+              ]
+            },
+            "RevealedEventCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                68
+              ]
+            },
+            "UID": 179,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 533634260,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.PhaseConcludedMarker, Assembly-CSharp",
+            "UID": 180,
+            "PlayerIdx": -1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 533634260,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 8,
+            "UID": 181,
+            "IsCancel": true,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 533634260,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDuskAction, Assembly-CSharp",
+            "UID": 182,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 533634260,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ReserveRailTicketAction, Assembly-CSharp",
+            "UID": 183,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 99005083,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardRailTicketAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                4
+              ]
+            },
+            "UID": 184,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 99005083,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardRailTicketAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                14
+              ]
+            },
+            "UID": 185,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 533634260,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardRailTicketAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": []
+            },
+            "UID": 186,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2164676155,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ReserveRailTicketAction, Assembly-CSharp",
+            "UID": 187,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2164676155,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardRailTicketAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": []
+            },
+            "UID": 188,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2164676155,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeRequestAction, Assembly-CSharp",
+            "TradedPlayerIdx": 1,
+            "EventCardTrade": true,
+            "UID": 189,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 4288776941,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmTradeAction, Assembly-CSharp",
+            "TraderPlayerIdx": 2,
+            "TradeEventCards": true,
+            "Choice": true,
+            "UID": 190,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2164676155,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeProposalAction, Assembly-CSharp",
+            "TraderOwnedItemCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOwnedEventCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                35,
+                65
+              ]
+            },
+            "TraderOwnedRailTicketIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOwnedItemCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOwnedEventCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                40,
+                59,
+                69,
+                72
+              ]
+            },
+            "TradeeOwnedRailTicketIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderIdx": 2,
+            "TradeeIdx": 1,
+            "CurrentProposerIdx": 2,
+            "OtherProposerIdx": 1,
+            "TradedEventCards": true,
+            "FirstProposalMade": false,
+            "TradeAccepted": true,
+            "IsCancel": false,
+            "TraderOwnedCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOfferedCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOfferedRailTickets": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOwnedCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOfferedCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOfferedRailTickets": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "LastProposerIdx": -1,
+            "UID": 191,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 4288776941,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeAction, Assembly-CSharp",
+            "TraderOwnedItemCardIDs": null,
+            "TraderOwnedEventCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                35,
+                65
+              ]
+            },
+            "TraderOwnedRailTicketIDs": null,
+            "TradeeOwnedItemCardIDs": null,
+            "TradeeOwnedEventCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                40,
+                59,
+                69,
+                72
+              ]
+            },
+            "TradeeOwnedRailTicketIDs": null,
+            "TradeeIdx": 1,
+            "TradedEventCards": true,
+            "DeclinedTrade": false,
+            "CardsExchanged": true,
+            "TraderIncomingCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderIncomingRailTickets": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOutgoingCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOutgoingRailTickets": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "UID": 192,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 4288776941,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeConcludedMarker, Assembly-CSharp",
+            "UID": 193,
+            "PlayerIdx": -1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 303464084,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ReserveRailTicketAction, Assembly-CSharp",
+            "UID": 194,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2373337788,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardRailTicketAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                6
+              ]
+            },
+            "UID": 195,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 303464084,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardRailTicketAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": []
+            },
+            "UID": 196,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 303464084,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.PhaseConcludedMarker, Assembly-CSharp",
+            "UID": 197,
+            "PlayerIdx": -1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 303464084,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 64,
+            "UID": 198,
+            "IsCancel": true,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3330181828,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DraculaSlideTrailAction, Assembly-CSharp",
+            "UID": 199,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3330181828,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 64,
+            "UID": 200,
+            "IsCancel": true,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2962744108,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DraculaMoveByRoad, Assembly-CSharp",
+            "LocationAttachedCard": {
+              "$type": "FuryOfDracula.Core.Cards.EncounterCardRef, Assembly-CSharp",
+              "ID": 26
+            },
+            "FromLocationId": 25,
+            "ToLocationId": 36,
+            "TypeOfConnection": 1,
+            "RecordAction": true,
+            "UID": 201,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2962744108,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.PlaceRumourTokenAction, Assembly-CSharp",
+            "TrailIdx": -1,
+            "UID": 202,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2962744108,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 64,
+            "UID": 203,
+            "IsCancel": true,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2962744108,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DraculaPassPhaseAction, Assembly-CSharp",
+            "UID": 204,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2962744108,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 1,
+            "UID": 205,
+            "IsCancel": true,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2962744108,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDawnAction, Assembly-CSharp",
+            "UID": 206,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2962744108,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 1,
+            "UID": 207,
+            "IsCancel": true,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2962744108,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDawnAction, Assembly-CSharp",
+            "UID": 208,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2962744108,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 1,
+            "UID": 209,
+            "IsCancel": true,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2962744108,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDawnAction, Assembly-CSharp",
+            "UID": 210,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2660998484,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.MoveByRail, Assembly-CSharp",
+            "UseRailTicket": true,
+            "FromLocationId": 58,
+            "ToLocationId": 57,
+            "TypeOfConnection": 3,
+            "RecordAction": true,
+            "UID": 211,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3326390537,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardRailTicketAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                4
+              ]
+            },
+            "UID": 212,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 490841206,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.MoveByRail, Assembly-CSharp",
+            "UseRailTicket": true,
+            "FromLocationId": 42,
+            "ToLocationId": 36,
+            "TypeOfConnection": 2,
+            "RecordAction": true,
+            "UID": 213,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3015962504,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardRailTicketAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                9
+              ]
+            },
+            "UID": 214,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 490841206,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEncounterCardsAction, Assembly-CSharp",
+            "TargetedHunters": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                1
+              ]
+            },
+            "EncounterCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                26
+              ]
+            },
+            "LocationCardID": 35,
+            "MatureEffect": false,
+            "IsAmbush": true,
+            "UID": 215,
+            "IsCancel": false,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3394057551,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.HunterConfirmAmbushAction, Assembly-CSharp",
+            "UID": 216,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 490841206,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeRequestAction, Assembly-CSharp",
+            "TradedPlayerIdx": 3,
+            "EventCardTrade": true,
+            "UID": 217,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 490841206,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmTradeAction, Assembly-CSharp",
+            "TraderPlayerIdx": 2,
+            "TradeEventCards": true,
+            "Choice": true,
+            "UID": 218,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 490841206,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeProposalAction, Assembly-CSharp",
+            "TraderOwnedItemCardIDs": null,
+            "TraderOwnedEventCardIDs": null,
+            "TraderOwnedRailTicketIDs": null,
+            "TradeeOwnedItemCardIDs": null,
+            "TradeeOwnedEventCardIDs": null,
+            "TradeeOwnedRailTicketIDs": null,
+            "TraderIdx": 0,
+            "TradeeIdx": 0,
+            "CurrentProposerIdx": 0,
+            "OtherProposerIdx": 0,
+            "TradedEventCards": false,
+            "FirstProposalMade": false,
+            "TradeAccepted": false,
+            "IsCancel": true,
+            "TraderOwnedCards": null,
+            "TraderOfferedCards": null,
+            "TraderOfferedRailTickets": null,
+            "TradeeOwnedCards": null,
+            "TradeeOfferedCards": null,
+            "TradeeOfferedRailTickets": null,
+            "LastProposerIdx": 0,
+            "UID": 219,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 490841206,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeAction, Assembly-CSharp",
+            "TraderOwnedItemCardIDs": null,
+            "TraderOwnedEventCardIDs": null,
+            "TraderOwnedRailTicketIDs": null,
+            "TradeeOwnedItemCardIDs": null,
+            "TradeeOwnedEventCardIDs": null,
+            "TradeeOwnedRailTicketIDs": null,
+            "TradeeIdx": 0,
+            "TradedEventCards": false,
+            "DeclinedTrade": true,
+            "CardsExchanged": false,
+            "TraderIncomingCards": null,
+            "TraderIncomingRailTickets": null,
+            "TraderOutgoingCards": null,
+            "TraderOutgoingRailTickets": null,
+            "UID": 220,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 490841206,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeConcludedMarker, Assembly-CSharp",
+            "UID": 221,
+            "PlayerIdx": -1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3617368368,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardAction, Assembly-CSharp",
+            "EventCardID": 26,
+            "PlayTriggers": 131072,
+            "UID": 222,
+            "IsCancel": false,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1837192267,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardRailTicketAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                14
+              ]
+            },
+            "UID": 223,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2301326851,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.MoveByRail, Assembly-CSharp",
+            "UseRailTicket": false,
+            "FromLocationId": 58,
+            "ToLocationId": 36,
+            "TypeOfConnection": 3,
+            "RecordAction": false,
+            "UID": 224,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3617368368,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SetHunterRevealedCardsAction, Assembly-CSharp",
+            "RevealedItemCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                8
+              ]
+            },
+            "RevealedEventCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                68
+              ]
+            },
+            "UID": 225,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3617368368,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.PhaseConcludedMarker, Assembly-CSharp",
+            "UID": 226,
+            "PlayerIdx": -1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3617368368,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 8,
+            "UID": 227,
+            "IsCancel": true,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3617368368,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDuskAction, Assembly-CSharp",
+            "UID": 228,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 564237854,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmCombatCancelAction, Assembly-CSharp",
+            "UID": 229,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 564237854,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmCombatCancelAction, Assembly-CSharp",
+            "UID": 230,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 564237854,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmCombatCancelAction, Assembly-CSharp",
+            "UID": 231,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 564237854,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmCombatCancelAction, Assembly-CSharp",
+            "UID": 232,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 564237854,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmCombatCancelAction, Assembly-CSharp",
+            "UID": 233,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 856263040,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                59
+              ]
+            },
+            "PlayTriggers": 16384,
+            "UID": 234,
+            "IsCancel": false,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3242162754,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeItemCardsAction, Assembly-CSharp",
+            "ItemCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                4
+              ]
+            },
+            "PlayTriggers": 4,
+            "UID": 235,
+            "IsCancel": false,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3242162754,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardItemCardAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                4
+              ]
+            },
+            "UID": 236,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3242162754,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfrimPreCombatCardsAction, Assembly-CSharp",
+            "UID": 237,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2933340229,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                60
+              ]
+            },
+            "PlayTriggers": 16384,
+            "UID": 238,
+            "IsCancel": false,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2933340229,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SetHunterRevealedCardsAction, Assembly-CSharp",
+            "RevealedItemCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                8
+              ]
+            },
+            "RevealedEventCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                68
+              ]
+            },
+            "UID": 239,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2933340229,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfrimPreCombatCardsAction, Assembly-CSharp",
+            "UID": 240,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 985914451,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.HunterSelectCombatCardAction, Assembly-CSharp",
+            "CombatCardID": 40,
+            "UID": 241,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1012532140,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.HunterSelectCombatCardAction, Assembly-CSharp",
+            "CombatCardID": 40,
+            "UID": 242,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2020649869,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DraculaSelectCombatOptionsAction, Assembly-CSharp",
+            "EngagedHunterIdx": 1,
+            "CombatCardID": 9,
+            "UID": 243,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2020649869,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.YesNoChoiceAction, Assembly-CSharp",
+            "Choice": true,
+            "UID": 244,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3944042355,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.HunterSelectCombatCardAction, Assembly-CSharp",
+            "CombatCardID": 40,
+            "UID": 245,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 264147427,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.YesNoChoiceAction, Assembly-CSharp",
+            "Choice": true,
+            "UID": 246,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1017567545,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.HunterSelectCombatCardAction, Assembly-CSharp",
+            "CombatCardID": 24,
+            "UID": 247,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 43222968,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardItemCardAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                24
+              ]
+            },
+            "UID": 248,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 43222968,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SetHunterRevealedCardsAction, Assembly-CSharp",
+            "RevealedItemCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "RevealedEventCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                68
+              ]
+            },
+            "UID": 249,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2475209800,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.CombatRoundConcludedMarker, Assembly-CSharp",
+            "UID": 250,
+            "PlayerIdx": -1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 968047718,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.HunterSelectCombatCardAction, Assembly-CSharp",
+            "CombatCardID": 36,
+            "UID": 251,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 112029728,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.HunterSelectCombatCardAction, Assembly-CSharp",
+            "CombatCardID": 29,
+            "UID": 252,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2749699437,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DraculaSelectCombatOptionsAction, Assembly-CSharp",
+            "EngagedHunterIdx": 3,
+            "CombatCardID": 11,
+            "UID": 253,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2150639057,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardItemCardAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                29
+              ]
+            },
+            "UID": 254,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2150639057,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SetHunterRevealedCardsAction, Assembly-CSharp",
+            "RevealedItemCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "RevealedEventCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                68
+              ]
+            },
+            "UID": 255,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 4147326490,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.CombatRoundConcludedMarker, Assembly-CSharp",
+            "UID": 256,
+            "PlayerIdx": -1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1011251853,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.HunterSelectCombatCardAction, Assembly-CSharp",
+            "CombatCardID": 39,
+            "UID": 257,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2672452125,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.HunterSelectCombatCardAction, Assembly-CSharp",
+            "CombatCardID": 39,
+            "UID": 258,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2637856975,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DraculaSelectCombatOptionsAction, Assembly-CSharp",
+            "EngagedHunterIdx": 3,
+            "CombatCardID": 5,
+            "UID": 259,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 14634451,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.CombatRoundConcludedMarker, Assembly-CSharp",
+            "UID": 260,
+            "PlayerIdx": -1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2394760698,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SetHunterRevealedCardsAction, Assembly-CSharp",
+            "RevealedItemCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                8
+              ]
+            },
+            "RevealedEventCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                68
+              ]
+            },
+            "UID": 261,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 4248800959,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ReserveRailTicketAction, Assembly-CSharp",
+            "UID": 262,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2394760698,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardRailTicketAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                8
+              ]
+            },
+            "UID": 263,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 4248800959,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardRailTicketAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": []
+            },
+            "UID": 264,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1327695848,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.BatsMovementTrigger, Assembly-CSharp",
+            "UID": 265,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1327695848,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DraculaMoveHunterAction, Assembly-CSharp",
+            "Movement": {
+              "$type": "FuryOfDracula.Core.GameActions.MoveByRoad, Assembly-CSharp",
+              "FromLocationId": 36,
+              "ToLocationId": 25,
+              "TypeOfConnection": 1,
+              "RecordAction": false,
+              "UID": -1,
+              "PlayerIdx": 1
+            },
+            "UID": 266,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 4248800959,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.BecomeDelayedAction, Assembly-CSharp",
+            "UID": 267,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 4157961336,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.RemoveBatsTokenAction, Assembly-CSharp",
+            "UID": 268,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1327695848,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEncounterCardsAction, Assembly-CSharp",
+            "TargetedHunters": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                1
+              ]
+            },
+            "EncounterCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "LocationCardID": 24,
+            "MatureEffect": false,
+            "IsAmbush": true,
+            "UID": 269,
+            "IsCancel": true,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1327695848,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeRequestAction, Assembly-CSharp",
+            "TradedPlayerIdx": 0,
+            "EventCardTrade": true,
+            "UID": 270,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 121933255,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmTradeAction, Assembly-CSharp",
+            "TraderPlayerIdx": 2,
+            "TradeEventCards": true,
+            "Choice": true,
+            "UID": 271,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1327695848,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeProposalAction, Assembly-CSharp",
+            "TraderOwnedItemCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOwnedEventCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                35
+              ]
+            },
+            "TraderOwnedRailTicketIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOwnedItemCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOwnedEventCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                52,
+                62,
+                65
+              ]
+            },
+            "TradeeOwnedRailTicketIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderIdx": 2,
+            "TradeeIdx": 0,
+            "CurrentProposerIdx": 2,
+            "OtherProposerIdx": 0,
+            "TradedEventCards": true,
+            "FirstProposalMade": false,
+            "TradeAccepted": true,
+            "IsCancel": false,
+            "TraderOwnedCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOfferedCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOfferedRailTickets": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOwnedCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOfferedCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOfferedRailTickets": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "LastProposerIdx": -1,
+            "UID": 272,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 121933255,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeAction, Assembly-CSharp",
+            "TraderOwnedItemCardIDs": null,
+            "TraderOwnedEventCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                35
+              ]
+            },
+            "TraderOwnedRailTicketIDs": null,
+            "TradeeOwnedItemCardIDs": null,
+            "TradeeOwnedEventCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                52,
+                62,
+                65
+              ]
+            },
+            "TradeeOwnedRailTicketIDs": null,
+            "TradeeIdx": 0,
+            "TradedEventCards": true,
+            "DeclinedTrade": false,
+            "CardsExchanged": true,
+            "TraderIncomingCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderIncomingRailTickets": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOutgoingCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOutgoingRailTickets": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "UID": 273,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 121933255,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeConcludedMarker, Assembly-CSharp",
+            "UID": 274,
+            "PlayerIdx": -1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1286638554,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.RestAction, Assembly-CSharp",
+            "LocationId": 36,
+            "UID": 275,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1286638554,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.PhaseConcludedMarker, Assembly-CSharp",
+            "UID": 276,
+            "PlayerIdx": -1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1286638554,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 64,
+            "UID": 277,
+            "IsCancel": true,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 5753194,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DraculaSlideTrailAction, Assembly-CSharp",
+            "UID": 278,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 5753194,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 64,
+            "UID": 279,
+            "IsCancel": true,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1799788144,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DraculaUsePowerCardAction, Assembly-CSharp",
+            "PowerCardID": 71,
+            "LocationAttachedCard": {
+              "$type": "FuryOfDracula.Core.Cards.EncounterCardRef, Assembly-CSharp",
+              "ID": -595
+            },
+            "FromLocationId": 0,
+            "ToLocationId": 0,
+            "TypeOfConnection": 1,
+            "RecordAction": true,
+            "UID": 280,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1799788144,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 64,
+            "UID": 281,
+            "IsCancel": true,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1799788144,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DraculaPassPhaseAction, Assembly-CSharp",
+            "UID": 282,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 406616268,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                62
+              ]
+            },
+            "PlayTriggers": 1,
+            "UID": 283,
+            "IsCancel": false,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 406616268,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDawnAction, Assembly-CSharp",
+            "UID": 284,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 406616268,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 1,
+            "UID": 285,
+            "IsCancel": true,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 406616268,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDawnAction, Assembly-CSharp",
+            "UID": 286,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2805591113,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                68
+              ]
+            },
+            "PlayTriggers": 1,
+            "UID": 287,
+            "IsCancel": false,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2805591113,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SetHunterRevealedCardsAction, Assembly-CSharp",
+            "RevealedItemCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                8
+              ]
+            },
+            "RevealedEventCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "UID": 288,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2805591113,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDawnAction, Assembly-CSharp",
+            "UID": 289,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2805591113,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 1,
+            "UID": 290,
+            "IsCancel": true,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2805591113,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDawnAction, Assembly-CSharp",
+            "UID": 291,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2914620501,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmCombatCancelAction, Assembly-CSharp",
+            "UID": 292,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2914620501,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmCombatCancelAction, Assembly-CSharp",
+            "UID": 293,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2914620501,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmCombatCancelAction, Assembly-CSharp",
+            "UID": 294,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2914620501,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmCombatCancelAction, Assembly-CSharp",
+            "UID": 295,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2914620501,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmCombatCancelAction, Assembly-CSharp",
+            "UID": 296,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2914620501,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfrimPreCombatCardsAction, Assembly-CSharp",
+            "UID": 297,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2914620501,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfrimPreCombatCardsAction, Assembly-CSharp",
+            "UID": 298,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2914620501,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfrimPreCombatCardsAction, Assembly-CSharp",
+            "UID": 299,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2914620501,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfrimPreCombatCardsAction, Assembly-CSharp",
+            "UID": 300,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2914620501,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfrimPreCombatCardsAction, Assembly-CSharp",
+            "UID": 301,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 4243530942,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.HunterSelectCombatCardAction, Assembly-CSharp",
+            "CombatCardID": 39,
+            "UID": 302,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2937767806,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DraculaSelectCombatOptionsAction, Assembly-CSharp",
+            "EngagedHunterIdx": 3,
+            "CombatCardID": 5,
+            "UID": 303,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1533747270,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.CombatRoundConcludedMarker, Assembly-CSharp",
+            "UID": 304,
+            "PlayerIdx": -1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1810106777,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardAction, Assembly-CSharp",
+            "EventCardID": 65,
+            "PlayTriggers": 256,
+            "UID": 305,
+            "IsCancel": false,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3012295109,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.MoveByRoad, Assembly-CSharp",
+            "FromLocationId": 57,
+            "ToLocationId": 36,
+            "TypeOfConnection": 1,
+            "RecordAction": false,
+            "UID": 306,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 414878116,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SupplyAction, Assembly-CSharp",
+            "LocationId": 36,
+            "UID": 307,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 414878116,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardItemCardAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                14,
+                17
+              ]
+            },
+            "UID": 308,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 414878116,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardAction, Assembly-CSharp",
+            "EventCardID": 45,
+            "PlayTriggers": 1024,
+            "UID": 309,
+            "IsCancel": false,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3923165478,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SelectEventCardCityTargetAction, Assembly-CSharp",
+            "NodeIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                20,
+                57
+              ]
+            },
+            "UID": 310,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 414878116,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.PassAction, Assembly-CSharp",
+            "UID": 311,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1423324991,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardAction, Assembly-CSharp",
+            "EventCardID": 35,
+            "PlayTriggers": 256,
+            "UID": 312,
+            "IsCancel": false,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 569018791,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.MoveBySea, Assembly-CSharp",
+            "FromLocationId": 33,
+            "ToLocationId": 29,
+            "TypeOfConnection": 4,
+            "RecordAction": false,
+            "UID": 313,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1455438268,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.MoveByRail, Assembly-CSharp",
+            "UseRailTicket": true,
+            "FromLocationId": 29,
+            "ToLocationId": 36,
+            "TypeOfConnection": 2,
+            "RecordAction": true,
+            "UID": 314,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 502305397,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardRailTicketAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                11
+              ]
+            },
+            "UID": 315,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1392340347,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SupplyAction, Assembly-CSharp",
+            "LocationId": 36,
+            "UID": 316,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1392340347,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SetHunterRevealedCardsAction, Assembly-CSharp",
+            "RevealedItemCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                8
+              ]
+            },
+            "RevealedEventCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "UID": 317,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1392340347,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeRequestAction, Assembly-CSharp",
+            "TradedPlayerIdx": 0,
+            "EventCardTrade": false,
+            "UID": 318,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2412738990,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmTradeAction, Assembly-CSharp",
+            "TraderPlayerIdx": 3,
+            "TradeEventCards": false,
+            "Choice": true,
+            "UID": 319,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1392340347,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeProposalAction, Assembly-CSharp",
+            "TraderOwnedItemCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                8,
+                1,
+                37
+              ]
+            },
+            "TraderOwnedEventCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOwnedRailTicketIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                7,
+                9
+              ]
+            },
+            "TradeeOwnedItemCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                7,
+                31
+              ]
+            },
+            "TradeeOwnedEventCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOwnedRailTicketIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                0
+              ]
+            },
+            "TraderIdx": 3,
+            "TradeeIdx": 0,
+            "CurrentProposerIdx": 3,
+            "OtherProposerIdx": 0,
+            "TradedEventCards": false,
+            "FirstProposalMade": false,
+            "TradeAccepted": true,
+            "IsCancel": false,
+            "TraderOwnedCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOfferedCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOfferedRailTickets": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOwnedCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOfferedCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TradeeOfferedRailTickets": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "LastProposerIdx": -1,
+            "UID": 320,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2412738990,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeAction, Assembly-CSharp",
+            "TraderOwnedItemCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                8,
+                1,
+                37
+              ]
+            },
+            "TraderOwnedEventCardIDs": null,
+            "TraderOwnedRailTicketIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                7,
+                9
+              ]
+            },
+            "TradeeOwnedItemCardIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                7,
+                31
+              ]
+            },
+            "TradeeOwnedEventCardIDs": null,
+            "TradeeOwnedRailTicketIDs": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                0
+              ]
+            },
+            "TradeeIdx": 0,
+            "TradedEventCards": false,
+            "DeclinedTrade": false,
+            "CardsExchanged": true,
+            "TraderIncomingCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderIncomingRailTickets": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOutgoingCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "TraderOutgoingRailTickets": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "UID": 321,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2412738990,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SetHunterRevealedCardsAction, Assembly-CSharp",
+            "RevealedItemCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": [
+                8
+              ]
+            },
+            "RevealedEventCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "UID": 322,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2412738990,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.TradeConcludedMarker, Assembly-CSharp",
+            "UID": 323,
+            "PlayerIdx": -1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2412738990,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.PhaseConcludedMarker, Assembly-CSharp",
+            "UID": 324,
+            "PlayerIdx": -1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3726501356,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                -595
+              ]
+            },
+            "PlayTriggers": 8,
+            "UID": 325,
+            "IsCancel": true,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3726501356,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmDuskAction, Assembly-CSharp",
+            "UID": 326,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 897616443,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmCombatCancelAction, Assembly-CSharp",
+            "UID": 327,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 897616443,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmCombatCancelAction, Assembly-CSharp",
+            "UID": 328,
+            "PlayerIdx": 1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 897616443,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmCombatCancelAction, Assembly-CSharp",
+            "UID": 329,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 897616443,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmCombatCancelAction, Assembly-CSharp",
+            "UID": 330,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 897616443,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfirmCombatCancelAction, Assembly-CSharp",
+            "UID": 331,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 653597726,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeEventCardsAction, Assembly-CSharp",
+            "EventCardIDs": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                52
+              ]
+            },
+            "PlayTriggers": 16384,
+            "UID": 332,
+            "IsCancel": false,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3661447396,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.KeepPeekedItemCardAction, Assembly-CSharp",
+            "ChosenCardID": 28,
+            "ShowReceiveDialog": true,
+            "HandleExceedHandLimit": true,
+            "UID": 333,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 653597726,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.ConfrimPreCombatCardsAction, Assembly-CSharp",
+            "UID": 334,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3232452470,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.HunterSelectCombatCardAction, Assembly-CSharp",
+            "CombatCardID": 31,
+            "UID": 335,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2569170895,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.HunterSelectCombatCardAction, Assembly-CSharp",
+            "CombatCardID": 35,
+            "UID": 336,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3759625883,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.HunterSelectCombatCardAction, Assembly-CSharp",
+            "CombatCardID": 38,
+            "UID": 337,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2388353647,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DraculaSelectCombatOptionsAction, Assembly-CSharp",
+            "EngagedHunterIdx": 3,
+            "CombatCardID": 10,
+            "UID": 338,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 1822985460,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.PlottingSelectCardAction, Assembly-CSharp",
+            "ChosenCardID": 3,
+            "UID": 339,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2894254354,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.CombatRoundConcludedMarker, Assembly-CSharp",
+            "UID": 340,
+            "PlayerIdx": -1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 151734792,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.HunterSelectCombatCardAction, Assembly-CSharp",
+            "CombatCardID": 28,
+            "UID": 341,
+            "PlayerIdx": 0
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3915089379,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.HunterSelectCombatCardAction, Assembly-CSharp",
+            "CombatCardID": 27,
+            "UID": 342,
+            "PlayerIdx": 2
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 3279207913,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.HunterSelectCombatCardAction, Assembly-CSharp",
+            "CombatCardID": 37,
+            "UID": 343,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 398995665,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DraculaSelectCombatOptionsAction, Assembly-CSharp",
+            "EngagedHunterIdx": 3,
+            "CombatCardID": 3,
+            "UID": 344,
+            "PlayerIdx": 4
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2321179453,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.InvokeItemCardAction, Assembly-CSharp",
+            "ItemCardID": 1,
+            "PlayTriggers": 8,
+            "UID": 345,
+            "IsCancel": false,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2321179453,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.DiscardItemCardAction, Assembly-CSharp",
+            "CardIds": {
+              "$type": "System.Int32[], mscorlib",
+              "$values": [
+                1
+              ]
+            },
+            "UID": 346,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 2321179453,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.SetHunterRevealedCardsAction, Assembly-CSharp",
+            "RevealedItemCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "RevealedEventCards": {
+              "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "UID": 347,
+            "PlayerIdx": 3
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 0,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.CombatRoundConcludedMarker, Assembly-CSharp",
+            "UID": 348,
+            "PlayerIdx": -1
+          }
+        },
+        {
+          "$type": "FuryOfDracula.Core.GameActionLog+ActionLogEntry, Assembly-CSharp",
+          "ResultingHash": 0,
+          "Action": {
+            "$type": "FuryOfDracula.Core.GameActions.GameOverMarker, Assembly-CSharp",
+            "UID": -1,
+            "PlayerIdx": -1
+          }
+        }
+      ]
+    },
+    "Size": 350
+  },
+  "DraculaMarkerNodeIds": {
+    "$type": "System.Int32[], mscorlib",
+    "$values": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "BuildVersion": 0,
+  "SaveVersion": 40,
+  "Thumbnail": null,
+  "Identifier": "1ca77cdc-3775-4984-b9b4-553f4a5b4904"
+}
