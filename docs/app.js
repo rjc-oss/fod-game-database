@@ -275,8 +275,7 @@
       (game.mod_version || "?") + " · " + (game.config_code || "?"));
     mod.title = "Mod version " + (game.mod_version || "?") + ", config code " +
       (game.config_code || "?") + ", save version " + text(game.save_version) +
-      "
-Mod settings: " + (game.preset ? game.preset + (game.preset === "Custom" ? "" : " preset") : "not recorded") +
+      "\nMod settings: " + (game.preset ? game.preset + (game.preset === "Custom" ? "" : " preset") : "not recorded") +
       "\nAdvanced rules: " + (game.advanced_rules || "?") +
       "\nHouse rules: " + (game.house_rules || "none beyond the standard ones") +
       "\nMod house rules: " + (game.mod_house_rules || "none");
