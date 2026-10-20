@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-20T02:24:51Z",
- "count": 36,
+ "generated": "2026-10-20T02:50:41Z",
+ "count": 37,
  "tournaments": [
   {
    "name": "LoD 2027 Knockout",
@@ -150,6 +150,39 @@
   }
  },
  "games": [
+  {
+   "id": "20261020T024934Z-d03978cb",
+   "received_at_utc": "2026-10-20T02:49:34.040Z",
+   "database": "casual",
+   "file": "Snuffleupagus_Vs_Dracula_2026-10-20_02-49-34.fod",
+   "hunters": "Snuffleupagus",
+   "dracula": "Dracula",
+   "winner_side": "Hunters",
+   "winner_players": "Snuffleupagus",
+   "loser_players": "Dracula",
+   "influence": 0,
+   "dracula_health": 0,
+   "dracula_max_health": 15,
+   "days_completed": 6,
+   "score": -15,
+   "game_type": "Local",
+   "advanced_rules": "Power cards: all; Free placement; Rumour tokens; Lairs",
+   "house_rules": "Dark Call draws an event card; Trail slides before Dracula moves",
+   "mod_house_rules": "Revised Consecrated Ground; Advanced Dracula AI; Mod rule 1011 1; Mod rule 1007 1",
+   "has_ai": true,
+   "save_version": 40,
+   "mod_version": "0.106.0",
+   "config_code": "2325D2",
+   "preset": "",
+   "identifier": "c4cf8faa-0b36-435d-b682-65396b348014",
+   "log_sha256": "e9f1f19643d97d792a26257d4d5f17b0e8f2075f97b09de33dfa30640123a572",
+   "ended_at_utc": "2026-10-20T02:49:32Z",
+   "action_count": 403,
+   "hunter_player_ids": "",
+   "dracula_player_id": "",
+   "tournament": "",
+   "rating": null
+  },
   {
    "id": "20261020T022341Z-a01db987",
    "received_at_utc": "2026-10-20T02:23:41.557Z",
