@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-20T13:35:37Z",
- "count": 38,
+ "generated": "2026-10-20T17:57:52Z",
+ "count": 39,
  "tournaments": [
   {
    "name": "LoD 2027 Knockout",
@@ -150,6 +150,39 @@
   }
  },
  "games": [
+  {
+   "id": "20261020T175640Z-a9737a9b",
+   "received_at_utc": "2026-10-20T17:56:40.106Z",
+   "database": "casual",
+   "file": "Rtowin_Vs_Peterclee_VanillaPlus_2026-10-20_17-56-40.fod",
+   "hunters": "RToWin",
+   "dracula": "Peter C. Lee",
+   "winner_side": "Hunters",
+   "winner_players": "RToWin",
+   "loser_players": "Peter C. Lee",
+   "influence": 1,
+   "dracula_health": 0,
+   "dracula_max_health": 15,
+   "days_completed": 16,
+   "score": -14,
+   "game_type": "Network",
+   "advanced_rules": "Power cards: all; Free placement; Rumour tokens; Lairs",
+   "house_rules": "Dark Call draws an event card; Trail slides before Dracula moves",
+   "mod_house_rules": "",
+   "has_ai": false,
+   "save_version": 40,
+   "mod_version": "0.109.0",
+   "config_code": "508CFA",
+   "preset": "Vanilla+",
+   "identifier": "3cb81d85-93d4-4506-adf3-17118e4cada5",
+   "log_sha256": "5544bb973b008e4c204a573087800ac9494325cdf5104109326fc32fcb3067d3",
+   "ended_at_utc": "2026-10-20T17:56:34Z",
+   "action_count": 717,
+   "hunter_player_ids": "4de19fba3bc7",
+   "dracula_player_id": "",
+   "tournament": "",
+   "rating": null
+  },
   {
    "id": "20261020T042535Z-795d8c87",
    "received_at_utc": "2026-10-20T04:25:35.472Z",
