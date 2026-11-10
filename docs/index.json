@@ -1,6 +1,6 @@
 {
- "generated": "2026-11-09T18:51:21Z",
- "count": 43,
+ "generated": "2026-11-10T02:11:46Z",
+ "count": 44,
  "tournaments": [
   {
    "name": "LoD 2027 Knockout",
@@ -57,13 +57,13 @@
     "key": "c84fc3bcadac:Tarvalar",
     "name": "Tarvalar",
     "shown": "Tarvalar",
-    "rating": 1340.98,
-    "deviation": 387.11,
-    "volatility": 0.089996,
-    "games": 1,
+    "rating": 1298.54,
+    "deviation": 357.12,
+    "volatility": 0.089993,
+    "games": 2,
     "wins": 0,
-    "losses": 1,
-    "last_played": "2026-10-06T21:03:20Z"
+    "losses": 2,
+    "last_played": "2026-11-10T00:15:45Z"
    },
    {
     "key": "706148f331c9:Fangs of Fire",
@@ -95,13 +95,13 @@
     "key": "4de19fba3bc7:RToWin",
     "name": "RToWin",
     "shown": "RToWin",
-    "rating": 1934.56,
-    "deviation": 313.82,
-    "volatility": 0.089992,
-    "games": 3,
-    "wins": 3,
+    "rating": 1968.11,
+    "deviation": 298.39,
+    "volatility": 0.089989,
+    "games": 4,
+    "wins": 4,
     "losses": 0,
-    "last_played": "2026-10-12T18:42:13Z"
+    "last_played": "2026-11-10T00:15:45Z"
    },
    {
     "key": "6e9f4090d4fc:Snuffaluffagus",
@@ -162,6 +162,48 @@
   }
  },
  "games": [
+  {
+   "id": "20261110T001545Z-83ff62fc",
+   "received_at_utc": "2026-11-10T00:15:45.831Z",
+   "database": "casual",
+   "file": "Rtowin_Vs_Tarvalar_VanillaPlus_2026-11-10_00-15-45.fod",
+   "hunters": "RToWin",
+   "dracula": "Tarvalar",
+   "winner_side": "Hunters",
+   "winner_players": "RToWin",
+   "loser_players": "Tarvalar",
+   "influence": 5,
+   "dracula_health": 0,
+   "dracula_max_health": 15,
+   "days_completed": 18,
+   "score": -10,
+   "game_type": "Network",
+   "advanced_rules": "Power cards: all; Free placement; Rumour tokens; Lairs",
+   "house_rules": "Dark Call draws an event card; Dracula can't see the markers; Trail slides before Dracula moves",
+   "mod_house_rules": "",
+   "has_ai": false,
+   "save_version": 40,
+   "mod_version": "0.117.0",
+   "config_code": "8FC785",
+   "preset": "Vanilla+",
+   "identifier": "3ac79f6c-c164-43c0-b0a5-38c822a5c8b0",
+   "log_sha256": "87fba1a126a153e1a723afcf6c0a5713c10a5ace15d16d4aecdaaaaa1fe2dd4d",
+   "ended_at_utc": "2026-11-10T00:14:37Z",
+   "action_count": 720,
+   "hunter_player_ids": "4de19fba3bc7",
+   "dracula_player_id": "c84fc3bcadac",
+   "tournament": "",
+   "rating": {
+    "dracula": [
+     1340.98,
+     1298.54
+    ],
+    "hunter": [
+     1934.56,
+     1968.11
+    ]
+   }
+  },
   {
    "id": "20261103T213534Z-7295e02e",
    "received_at_utc": "2026-11-03T21:35:34.656Z",
