@@ -1,6 +1,6 @@
 {
- "generated": "2026-11-11T15:18:11Z",
- "count": 44,
+ "generated": "2026-11-11T22:43:47Z",
+ "count": 45,
  "tournaments": [
   {
    "name": "LoD 2027 Knockout",
@@ -76,6 +76,18 @@
     "wins": 0,
     "losses": 1,
     "last_played": "2026-10-06T17:20:27Z"
+   },
+   {
+    "key": "e52554cf817e:Mistergreen",
+    "name": "Mistergreen",
+    "shown": "Mistergreen",
+    "rating": 1258.52,
+    "deviation": 396.69,
+    "volatility": 0.089998,
+    "games": 1,
+    "wins": 0,
+    "losses": 1,
+    "last_played": "2026-11-11T22:25:41Z"
    }
   ],
   "hunter": [
@@ -102,6 +114,18 @@
     "wins": 4,
     "losses": 0,
     "last_played": "2026-11-10T00:15:45Z"
+   },
+   {
+    "key": "384595a36b87:Terminus",
+    "name": "Terminus",
+    "shown": "Terminus",
+    "rating": 1741.48,
+    "deviation": 396.69,
+    "volatility": 0.089998,
+    "games": 1,
+    "wins": 1,
+    "losses": 0,
+    "last_played": "2026-11-11T22:25:41Z"
    },
    {
     "key": "6e9f4090d4fc:Snuffaluffagus",
@@ -162,6 +186,48 @@
   }
  },
  "games": [
+  {
+   "id": "20261111T222541Z-08794f34",
+   "received_at_utc": "2026-11-11T22:25:41.972Z",
+   "database": "casual",
+   "file": "Terminus_Vs_Mistergreen_Custom_2026-11-11_22-25-41.fod",
+   "hunters": "Terminus",
+   "dracula": "Mistergreen",
+   "winner_side": "Hunters",
+   "winner_players": "Terminus",
+   "loser_players": "Mistergreen",
+   "influence": 12,
+   "dracula_health": 0,
+   "dracula_max_health": 15,
+   "days_completed": 21,
+   "score": -1,
+   "game_type": "Network",
+   "advanced_rules": "Power cards: all; Free placement; Rumour tokens; Lairs",
+   "house_rules": "Dark Call draws an event card; Trail slides before Dracula moves",
+   "mod_house_rules": "",
+   "has_ai": false,
+   "save_version": 40,
+   "mod_version": "0.126.0",
+   "config_code": "CA29B0",
+   "preset": "Custom",
+   "identifier": "98847088-1b17-47f9-a074-94aa07781986",
+   "log_sha256": "53a4eaaecd75e07f52864d52cf399f30c246c87ddd16ca39e5341e777a96f22d",
+   "ended_at_utc": "2026-11-11T22:25:32Z",
+   "action_count": 930,
+   "hunter_player_ids": "384595a36b87",
+   "dracula_player_id": "e52554cf817e",
+   "tournament": "",
+   "rating": {
+    "dracula": [
+     1500.0,
+     1258.52
+    ],
+    "hunter": [
+     1500.0,
+     1741.48
+    ]
+   }
+  },
   {
    "id": "20261110T001545Z-83ff62fc",
    "received_at_utc": "2026-11-10T00:15:45.831Z",
