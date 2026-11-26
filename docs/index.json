@@ -1,6 +1,6 @@
 {
- "generated": "2026-11-25T15:41:16Z",
- "count": 47,
+ "generated": "2026-11-26T00:26:52Z",
+ "count": 48,
  "tournaments": [
   {
    "name": "LoD 2027 Knockout",
@@ -30,18 +30,6 @@
     "last_played": "2026-11-03T21:35:34Z"
    },
    {
-    "key": "c84fc3bcadac:Tarvalar",
-    "name": "Tarvalar",
-    "shown": "Tarvalar",
-    "rating": 1747.41,
-    "deviation": 337.54,
-    "volatility": 0.090029,
-    "games": 3,
-    "wins": 1,
-    "losses": 2,
-    "last_played": "2026-11-12T20:59:29Z"
-   },
-   {
     "key": "4de19fba3bc7:RToWinLots",
     "name": "RToWinLots",
     "shown": "RToWinLots",
@@ -52,6 +40,18 @@
     "wins": 1,
     "losses": 0,
     "last_played": "2026-09-24T19:49:07Z"
+   },
+   {
+    "key": "c84fc3bcadac:Tarvalar",
+    "name": "Tarvalar",
+    "shown": "Tarvalar",
+    "rating": 1561.95,
+    "deviation": 275.63,
+    "volatility": 0.090028,
+    "games": 4,
+    "wins": 1,
+    "losses": 3,
+    "last_played": "2026-11-25T22:24:16Z"
    },
    {
     "key": "2083b0699f51:Azaghal8",
@@ -104,6 +104,18 @@
     "last_played": "2026-11-03T21:35:34Z"
    },
    {
+    "key": "4de19fba3bc7:RToWin",
+    "name": "RToWin",
+    "shown": "RToWin",
+    "rating": 1818.67,
+    "deviation": 251.0,
+    "volatility": 0.090019,
+    "games": 6,
+    "wins": 5,
+    "losses": 1,
+    "last_played": "2026-11-25T22:24:16Z"
+   },
+   {
     "key": "384595a36b87:Terminus",
     "name": "Terminus",
     "shown": "Terminus",
@@ -114,18 +126,6 @@
     "wins": 1,
     "losses": 0,
     "last_played": "2026-11-11T22:25:41Z"
-   },
-   {
-    "key": "4de19fba3bc7:RToWin",
-    "name": "RToWin",
-    "shown": "RToWin",
-    "rating": 1678.22,
-    "deviation": 286.46,
-    "volatility": 0.090019,
-    "games": 5,
-    "wins": 4,
-    "losses": 1,
-    "last_played": "2026-11-12T20:59:29Z"
    },
    {
     "key": "6e9f4090d4fc:Snuffaluffagus",
@@ -186,6 +186,48 @@
   }
  },
  "games": [
+  {
+   "id": "20261125T222416Z-3db95d77",
+   "received_at_utc": "2026-11-25T22:24:16.921Z",
+   "database": "casual",
+   "file": "Rtowin_Vs_Tarvalar_Custom_2026-11-25_22-24-16.fod",
+   "hunters": "RToWin",
+   "dracula": "Tarvalar",
+   "winner_side": "Hunters",
+   "winner_players": "RToWin",
+   "loser_players": "Tarvalar",
+   "influence": 3,
+   "dracula_health": 0,
+   "dracula_max_health": 15,
+   "days_completed": 18,
+   "score": -12,
+   "game_type": "Network",
+   "advanced_rules": "Power cards: all; Free placement; Rumour tokens; Lairs",
+   "house_rules": "Dark Call draws an event card; Trail slides before Dracula moves",
+   "mod_house_rules": "",
+   "has_ai": false,
+   "save_version": 40,
+   "mod_version": "0.134.0",
+   "config_code": "4ACA6D",
+   "preset": "Custom",
+   "identifier": "177c1d59-2180-4e38-a7be-33c782d6cdfc",
+   "log_sha256": "0cc429f8b5dc3c8a515a84b04bf34ee3f8ebbe03226491f0df81032be366a833",
+   "ended_at_utc": "2026-11-25T22:10:21Z",
+   "action_count": 684,
+   "hunter_player_ids": "4de19fba3bc7",
+   "dracula_player_id": "c84fc3bcadac",
+   "tournament": "",
+   "rating": {
+    "dracula": [
+     1747.41,
+     1561.95
+    ],
+    "hunter": [
+     1678.22,
+     1818.67
+    ]
+   }
+  },
   {
    "id": "20261125T142310Z-10ebb700",
    "received_at_utc": "2026-11-25T14:23:10.164Z",
