@@ -1,6 +1,6 @@
 {
- "generated": "2026-11-28T03:56:36Z",
- "count": 53,
+ "generated": "2026-11-28T13:07:02Z",
+ "count": 54,
  "tournaments": [
   {
    "name": "LoD 2027 Knockout",
@@ -210,6 +210,39 @@
   }
  },
  "games": [
+  {
+   "id": "20261128T122842Z-20f1740c",
+   "received_at_utc": "2026-11-28T12:28:42.385Z",
+   "database": "casual",
+   "file": "Player2_Vs_Dracula_Custom_2026-11-28_12-28-42.fod",
+   "hunters": "Player 2",
+   "dracula": "Dracula",
+   "winner_side": "Hunters",
+   "winner_players": "Player 2",
+   "loser_players": "Dracula",
+   "influence": 3,
+   "dracula_health": 0,
+   "dracula_max_health": 15,
+   "days_completed": 16,
+   "score": -12,
+   "game_type": "Local",
+   "advanced_rules": "Power cards: all; Free placement; Rumour tokens; Lairs",
+   "house_rules": "Trail slides before Dracula moves",
+   "mod_house_rules": "Bites score influence; Manchester becomes Whitby; Sister Agatha damage 1; Long Night at dawn or dusk; Bitten hunters carry one ticket (Mina too); Heavenly Host range 2; Great Strength only at your location; Advanced Dracula AI; Heroic Leap damage limited by your health; Dracula mulligans his opening hand; Galatz becomes a port; Customs Search on entering a land region; Empowered Devilish Power; Heavenly Host discarded against Great Wolf; Mini VL Blood Transfusion; Mod rule 1018 1; Bodyguards enlarge Dracula's combat hand; Revised Good Luck; No fast newspapers; Hired Scouts playable as an action; Heavenly Host discarded against Desecrated Soil; Matured Spy always discards tickets; Misdirect can target sea locations; Garlic Wreath only discarded by Claws",
+   "has_ai": true,
+   "save_version": 40,
+   "mod_version": "0.133.0",
+   "config_code": "F4A977",
+   "preset": "Custom",
+   "identifier": "41b76095-0806-4bae-8532-5370cac0c491",
+   "log_sha256": "e0dd27cec7a738b5f2f5fe3dd65ada30c00e45ba75170d9c5d0ce1202b66b8c0",
+   "ended_at_utc": "2026-11-28T12:28:39Z",
+   "action_count": 730,
+   "hunter_player_ids": "",
+   "dracula_player_id": "",
+   "tournament": "",
+   "rating": null
+  },
   {
    "id": "20261127T030033Z-0a65f490",
    "received_at_utc": "2026-11-27T03:00:33.503Z",
