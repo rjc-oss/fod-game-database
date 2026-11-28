@@ -3,9 +3,8 @@
 
    Downloads go through fetch + a Blob URL because the `download` attribute is ignored on a
    cross-origin link — a plain link to raw.githubusercontent.com would show the JSON in the tab
-   instead of saving a .fod. That is also why the Discord announcements link here: ?save=<file> fetches
-   that save and hands it over straight away, without waiting for the table (the index is only rebuilt
-   when Pages redeploys, a minute or so after the file itself is there), and ?game=<id> shows one game. */
+   instead of saving a .fod. That is also why the Discord announcements link here: ?save=<file> and
+   ?game=<id> show that one game, and its Save button downloads it. Nothing downloads until it is clicked. */
 
 (function () {
   "use strict";
@@ -42,15 +41,9 @@
     descending: true
   };
 
-  var pending = !!state.game;          // a ?game= link downloads once the table knows which file it is
-
   var rows = document.getElementById("rows");
   var count = document.getElementById("count");
   var message = document.getElementById("message");
-
-  // A linked save is fetched at once, before the table has loaded: the file is in the repository as
-  // soon as the message is posted, while the index behind the table is a redeploy behind.
-  if (state.save) { download(state.save); }
 
   // Loading ---------------------------------------------------------------
 
@@ -156,13 +149,11 @@
     }
     var shown = games.filter(matches);
     var linked = state.game || state.save;
-    var downloaded = state.save;       // kept for the notice: the fallback below clears state.save
     var stale = false;
     if (linked && shown.length === 0 && games.length > 0) {
       // The link points at a game this index doesn't hold yet: it is rebuilt when Pages redeploys, a
-      // minute or so behind the save itself. A ?save= download is already on its way regardless.
+      // minute or so behind the save itself.
       state.game = state.save = "";
-      pending = false;
       stale = true;
       shown = games.filter(matches);
     }
@@ -177,22 +168,15 @@
     if (games.length === 0) {
       say("No games yet. Finish a game with the mod and use the Game Over screen to send one.", false);
     } else if (stale) {
-      say(downloading(downloaded, "The list doesn't have that game yet — it appears here a minute " +
-                      "or so after the save does. Showing every game."), false);
+      say("The list doesn't have that game yet — it appears here a minute or so after the save does. " +
+          "Reload the link then. Showing every game.", false);
     } else if (shown.length === 0) {
       say("No game matches that.", false);
     } else if (linked) {
-      say(downloading(downloaded,
-                      "One game, the one the link points at. Any filter above brings back every game."),
-          false);
+      say("One game, the one the link points at. Use its Save button to download it. " +
+          "Any filter above brings back every game.", false);
     } else {
       say("", false);
-    }
-
-    if (pending && state.game && shown.length > 0) {
-      pending = false;
-      var first = rows.querySelector(".download");
-      if (first) { first.click(); }
     }
   }
 
@@ -322,11 +306,6 @@
     }
   }
 
-  function downloading(file, words) {
-    // Browsers can stop a download nobody clicked for, so never let the page look like it did nothing.
-    return file ? "Downloading " + file + ". If your browser stopped that, use the Save button. " + words
-      : words;
-  }
 
   function button(game) {
     var element = document.createElement("button");

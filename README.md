@@ -140,7 +140,7 @@ mod (Game Over screen)  --POST .fod + result-->  Cloudflare Worker  --> Workers 
 
 The announcement runs after the commit has been pushed, so its link already works, and then waits for
 GitHub Pages to redeploy (at most `FOD_SITE_WAIT`, five minutes, and usually under one) so that the
-reader gets the game's row on the site as well as the download. Nothing is lost by the wait: games are
+reader finds the game's row on the site. Nothing is lost by the wait: games are
 filed in hourly batches. It is the last step and cannot fail the run: with no `DISCORD_WEBHOOK_URL` secret, or a Discord that won't answer, the games
 are in the repository just the same. One line per game, posted as **FoD Game Database**:
 
@@ -151,9 +151,9 @@ https://rjc-oss.github.io/fod-game-database/?save=Rtowin_Vs_Scotsword_2026-09-18
 
 The link names the **file**, not the upload id, because the file can be fetched as soon as the commit
 is pushed, while the index the table is drawn from is only rebuilt when Pages redeploys a minute or so
-later; `?save=<file>` downloads it whether or not the table has caught up (a plain link to the file
-would show the JSON in the browser instead: raw.githubusercontent.com serves it as text). `?game=<id>`
-still works and shows one game. Player names reach Discord as plain text with mentions turned off.
+later. `?save=<file>` shows that one game with its Save button (a plain link to the file would show
+the JSON in the browser instead: raw.githubusercontent.com serves it as text); nothing downloads until
+it is clicked. `?game=<id>` works the same way. Player names reach Discord as plain text with mentions turned off.
 
 The Worker only does what is cheap (size, a header sniff, a rate limit) and never parses the file;
 `tools/fodsave.py` does the real checking on a runner. An upload is stored only if it is a genuine
