@@ -30,7 +30,9 @@ MAX_INFLUENCE = 13
 VANILLA_MAX_HEALTH = 15          # CharacterSheetData.StartingHealth
 HIGHEST_MAX_HEALTH = 25          # plus the mod's DraculaAdditionalHealth house rule (up to 10)
 MAX_DAYS = 500
-LONG_GAME_DAYS = 21              # from here the hunters get the score bonus
+LONG_GAME_DAYS = 21              # from here (the third despair token is out, week 4) Dracula gets the score bonus
+LONG_GAME_BONUS = 2              # also Dracula's for winning, so his widest win is +15 as the hunters' is -15
+SCORE_MARGIN = MAX_INFLUENCE + LONG_GAME_BONUS   # the widest win either side can have: +15 for Dracula, -15 for the hunters
 
 MOD_VERSION = re.compile(r"^\d+\.\d+\.\d+$")
 CONFIG_CODE = re.compile(r"^[0-9A-F]{6}$")
@@ -116,13 +118,25 @@ MOD_HOUSE_RULES = {
     1008: "Jonathan Harker replaces hunter {}",
     1009: "Double ticket quantities",
     1010: "Bodyguards enlarge Dracula's combat hand",
+    1012: "Search Dracula AI",
+    1013: "Search hunter AI",
+    1014: "Search AI thinking time {}",
+    1015: "Inert horses AI",
+    1016: "Inert horses AI thinking time {}",
+    1018: "Revised Dark Call",
 }
+
+# Mod rules left out of the rules text: "AI Dracula looks ahead" (1007) and "AI Dracula plans ahead" (1011) are only tick boxes
+# in development builds; a release always has them on with the Advanced Dracula AI, so they say nothing a reader needs.
+UNLISTED_MOD_HOUSE_RULES = {1007, 1011}
 
 # Non-string columns, for reading games.csv back (build_index.py, the dedupe check).
 INT_COLUMNS = (
-    "influence", "dracula_health", "dracula_max_health", "days_completed", "score",
+    "influence", "dracula_health", "dracula_max_health", "days_completed",
     "save_version", "action_count",
 )
+# The score has one decimal place when Dracula's maximum health isn't 15 (see score()).
+NUMBER_COLUMNS = ("score",)
 BOOL_COLUMNS = ("has_ai",)
 
 
@@ -147,7 +161,7 @@ class Record:
     dracula_health: int
     dracula_max_health: int
     days_completed: int
-    score: int
+    score: float
     game_type: str
     advanced_rules: str
     house_rules: str
@@ -224,10 +238,28 @@ def file_name(hunters, dracula, when, preset=""):
     )
 
 
-def score(influence, dracula_health, dracula_max_health, days_completed):
-    """Influence less the damage the hunters dealt, plus 2 if they held out for 21 days or more."""
-    return (influence - (dracula_max_health - dracula_health)
-            + (2 if days_completed >= LONG_GAME_DAYS else 0))
+def score(influence, dracula_health, dracula_max_health, days_completed, dracula_won):
+    """Influence, less the health Dracula lost, plus 2 if he won or the game reached week 4 (the third despair token).
+
+    The health lost is scaled to a 15-health Dracula, so the margin always runs from +15 (13 influence, the bonus,
+    full health) to -15 (no influence, no health, no bonus) whatever house rules set his maximum health. The health
+    lost is rounded to one decimal place, halves up, so the score has at most one; a whole number comes back as an
+    int. Done in whole tenths so the mod's GameOverSave.Score rounds identically.
+    """
+    lost = dracula_max_health - dracula_health
+    lost_tenths = (2 * 10 * (SCORE_MARGIN * lost) + dracula_max_health) // (2 * dracula_max_health)
+    tenths = (10 * influence - lost_tenths
+              + (10 * LONG_GAME_BONUS if dracula_won or days_completed >= LONG_GAME_DAYS else 0))
+    return tenths // 10 if tenths % 10 == 0 else tenths / 10
+
+
+def parse_score(text):
+    """A games.csv score cell back to a number ("5" -> 5, "-12.6" -> -12.6); None if it isn't one."""
+    try:
+        value = float(text)
+    except (TypeError, ValueError):
+        return None
+    return int(value) if value.is_integer() else value
 
 
 def log_sha256(entries):
@@ -286,8 +318,8 @@ def mod_house_rules(config):
         return "unknown"
     parts = []
     for bit, value in sorted(_limits(rules).items(), reverse=True):
-        if bit <= POWER_CARDS[-1][0] or not value:
-            continue                                 # a real power card's play limit, or an unset rule
+        if bit <= POWER_CARDS[-1][0] or not value or bit in UNLISTED_MOD_HOUSE_RULES:
+            continue                                 # a real power card's play limit, an unset rule, or one not listed
         label = MOD_HOUSE_RULES.get(bit, "Mod rule {}".format(bit) + " {}")
         parts.append(label.format(0 if value == STORED_ZERO else value) if "{}" in label else label)
     return RULE_JOIN.join(parts)
@@ -345,7 +377,7 @@ def validate(body, envelope):
         dracula_max_health=meta["draculaMaxHealth"],
         days_completed=meta["daysCompleted"],
         score=score(meta["influence"], meta["draculaHealth"], meta["draculaMaxHealth"],
-                    meta["daysCompleted"]),
+                    meta["daysCompleted"], not hunter_victory),
         game_type=GAME_TYPES[save["Config"]["GameType"]],
         advanced_rules=advanced_rules(save["Config"]),
         house_rules=house_rules(save["Config"]),

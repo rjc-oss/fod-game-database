@@ -100,7 +100,7 @@ Each rated game's ratings before and after are in the Winner column's tooltip.
 | `influence` | Dracula's influence at the end (0–13; he wins at 13) |
 | `dracula_health`, `dracula_max_health` | his health at the end, and the maximum in that game (15, or up to 25 with the mod's additional-health house rule) |
 | `days_completed` | days the hunters survived |
-| `score` | `influence − (dracula_max_health − dracula_health)`, plus 2 if the game lasted 21 days or more: what Dracula scored, less the damage the hunters dealt |
+| `score` | `influence − 15 × (dracula_max_health − dracula_health) / dracula_max_health`, plus 2 if Dracula won or the game reached week 4 (21 days or more: the third despair token is out), once. Dracula's margin of victory: from +15 (a win at full health) to −15 (no influence, no health, before week 4) whatever his maximum health. The health lost is rounded to one decimal place, halves up, so with a maximum other than 15 the score can have one |
 | `game_type` | `Local` or `Network` |
 | `advanced_rules` | the advanced rules the game was set up with: power cards, free placement, rumour tokens, lairs |
 | `house_rules` | the game's own house rules that were not the standard ones; empty means a standard game |

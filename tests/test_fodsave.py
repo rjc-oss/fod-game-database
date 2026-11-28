@@ -160,6 +160,14 @@ def test_a_mod_rule_this_database_has_not_heard_of_is_still_reported(save):
     assert "Mod rule 1999 4" in fodsave.mod_house_rules(save["Config"])
 
 
+def test_the_ai_lookahead_and_planning_rules_are_not_listed(save):
+    limits = save["Config"]["HouseRules"]["_powerCardsPlayLimits"]
+    limits[str(1007)] = 1
+    limits[str(1011)] = 1
+    text = fodsave.mod_house_rules(save["Config"])
+    assert "1007" not in text and "1011" not in text
+
+
 def test_a_vanilla_play_limit_is_a_house_rule_not_a_mod_rule(save):
     save["Config"]["HouseRules"]["_powerCardsPlayLimits"]["2"] = 3     # Wolf Form, three plays
     assert "Wolf Form limit 3" in fodsave.house_rules(save["Config"])
@@ -249,8 +257,8 @@ def test_accepts_the_additional_health_house_rule(save):
         dict(META, hunterVictory=False, influence=13, draculaHealth=20, draculaMaxHealth=25,
              daysCompleted=25)))
     assert record.winner_side == "Dracula"
-    # 13 influence, 5 damage dealt, and the hunters lasted 21 days or more.
-    assert record.score == 13 - 5 + 2
+    # 13 influence, 5 of 25 health lost (3 of 15), and the bonus once (he won, and the game reached week 4).
+    assert record.score == 13 - 3 + 2
 
 
 def test_rejects_a_bad_meta_header(save):
@@ -308,11 +316,27 @@ def test_file_name():
     assert file_name(["Alice"], "Carol", when, "Custom") == "Alice_Vs_Carol_Custom_2026-09-17_20-11-05.fod"
 
 
-@pytest.mark.parametrize("influence,health,maximum,days,expected", [
-    (13, 7, 15, 10, 5),        # Dracula won with 8 damage taken
-    (13, 7, 15, 21, 7),        # the same game, but the hunters held out for three weeks
-    (0, 0, 15, 23, -13),       # hunters won without Dracula scoring
-    (13, 20, 25, 5, 8),        # additional health: the damage is measured against this game's maximum
+@pytest.mark.parametrize("influence,health,maximum,days,won,expected", [
+    (13, 7, 15, 10, True, 7),         # Dracula won with 8 damage taken: winning earns the bonus
+    (13, 7, 15, 25, True, 7),         # ... and it isn't doubled when the game also reached week 4
+    (12, 7, 15, 20, False, 4),        # the last day of week 3, hunters won: no bonus yet
+    (12, 7, 15, 21, False, 6),        # the same, reaching week 4 (the third despair token): Dracula's bonus
+    (13, 15, 15, 5, True, 15),        # Dracula's widest win
+    (0, 0, 15, 20, False, -15),       # the hunters' widest win
+    (0, 0, 15, 23, False, -13),       # hunters won, but only in week 4
+    (0, 0, 25, 20, False, -15),       # extra health: the hunters' widest win is still -15
+    (13, 25, 25, 5, True, 15),        # ... and Dracula's still +15
+    (13, 20, 25, 5, True, 12),        # 5 of 25 health lost counts as 3 of 15
+    (13, 16, 17, 5, True, 14.1),      # 1 of 17 is 0.88 of 15, rounded to 0.9
+    (6, 0, 17, 10, False, -9),        # 17 of 17 lost is 15
+    (13, 19, 20, 5, True, 14.2),      # 1 of 20 is 0.75 of 15: the half rounds up, to 0.8 lost
 ])
-def test_score(influence, health, maximum, days, expected):
-    assert score(influence, health, maximum, days) == expected
+def test_score(influence, health, maximum, days, won, expected):
+    result = score(influence, health, maximum, days, won)
+    assert result == expected and type(result) is type(expected)
+
+
+@pytest.mark.parametrize("text,expected", [("5", 5), ("-15", -15), ("-12.6", -12.6), ("12.0", 12), ("", None), ("?", None)])
+def test_parse_score(text, expected):
+    result = fodsave.parse_score(text)
+    assert result == expected and type(result) is type(expected)

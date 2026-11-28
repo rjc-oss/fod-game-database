@@ -20,7 +20,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import glicko  # noqa: E402
 import tournaments as tournament_list  # noqa: E402
-from fodsave import BOOL_COLUMNS, INT_COLUMNS  # noqa: E402
+from fodsave import BOOL_COLUMNS, INT_COLUMNS, NUMBER_COLUMNS, parse_score  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 GAMES_CSV = ROOT / "data" / "games.csv"
@@ -80,6 +80,8 @@ def _typed(row):
             game[column] = int(game.get(column, ""))
         except (TypeError, ValueError):
             game[column] = None
+    for column in NUMBER_COLUMNS:
+        game[column] = parse_score(game.get(column, ""))
     for column in BOOL_COLUMNS:
         game[column] = str(game.get(column, "")).lower() == "true"
     return game
